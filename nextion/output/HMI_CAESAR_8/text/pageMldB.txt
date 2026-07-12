@@ -1,0 +1,451 @@
+Page pageMldB
+    Attributes
+        ID               : 0
+        Scope            : local
+        Send Component ID: disabled
+        Width            : 480
+        Locked           : no
+        Fill             : no background (white)
+    
+    Events
+        Preinitialize Event
+            
+        Postinitialize Event
+            tModMB.txt=pageSys.tBMldModel.txt
+            nCavB.val=pageSys.nBCav.val
+            nIsiB.val=pageSys.nBIsi.val
+        
+        Touch Press Event
+            
+        Touch Release Event
+            
+        Page Exit Event
+            
+Number nIsiB
+    Attributes
+        ID                      : 8
+        Scope                   : global
+        Send Component ID       : on release
+        x coordinate            : 250
+        y coordinate            : 175
+        Width                   : 72
+        Height                  : 50
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 4
+        Back. Color             : 65535
+        Font Color              : 33280
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nCavB
+    Attributes
+        ID                      : 11
+        Scope                   : global
+        Send Component ID       : disabled
+        x coordinate            : 136
+        y coordinate            : 176
+        Width                   : 71
+        Height                  : 50
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 4
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t5
+    Attributes
+        ID                  : 1
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 0
+        y coordinate        : 0
+        Width               : 480
+        Height              : 320
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 0
+        Back. Color         : 64512
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : 
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t1
+    Attributes
+        ID                  : 2
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 124
+        y coordinate        : 157
+        Width               : 90
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 64512
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : JML CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t38
+    Attributes
+        ID                  : 3
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 54
+        y coordinate        : 69
+        Width               : 109
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 64512
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : KODE MOULD
+        Max. Text Size      : 30
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t2
+    Attributes
+        ID                  : 7
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 248
+        y coordinate        : 157
+        Width               : 97
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 64512
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : ISI CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t4
+    Attributes
+        ID                  : 9
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 176
+        y coordinate        : 36
+        Width               : 160
+        Height              : 26
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 2
+        Back. Color         : 50712
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : BP 01 BELAKANG
+        Max. Text Size      : 30
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text tInMB
+    Attributes
+        ID                  : 10
+        Scope               : global
+        Send Component ID   : disabled
+        x coordinate        : 40
+        y coordinate        : 94
+        Width               : 175
+        Height              : 42
+        Fill                : solid color
+        Style               : border
+        Associated Keyboard : 1
+        Border Color        : 0
+        Border Width        : 2
+        Font ID             : 4
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : 
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text tModMB
+    Attributes
+        ID                  : 12
+        Scope               : global
+        Send Component ID   : disabled
+        x coordinate        : 247
+        y coordinate        : 92
+        Width               : 175
+        Height              : 42
+        Fill                : solid color
+        Style               : border
+        Associated Keyboard : none
+        Border Color        : 0
+        Border Width        : 2
+        Font ID             : 4
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : 
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t0
+    Attributes
+        ID                  : 13
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 249
+        y coordinate        : 71
+        Width               : 120
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 64512
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : MODEL
+        Max. Text Size      : 30
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bClearMB
+    Attributes
+        ID                        : 4
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 128
+        y coordinate              : 234
+        Width                     : 80
+        Height                    : 50
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 2
+        Back. Color               : 34816
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 65535
+        Font Color (Unpressed)    : 65535
+        Font Color (Pressed)      : 34816
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : CLEAR
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            tInMB.txt=""
+            tModMB.txt=""
+            nCavB.val=0
+            nIsiB.val=0
+            pageSys.tBMld.txt=""
+            pageSys.tBMldModel.txt=""
+            pageSys.nBCav.val=0
+            pageSys.nBIsi.val=0
+        
+Button bOkMB
+    Attributes
+        ID                        : 5
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 250
+        y coordinate              : 233
+        Width                     : 80
+        Height                    : 50
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 4
+        Back. Color               : 2016
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 2016
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : OK
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            if(tInMB.txt=="A008A")
+            {
+                tModMB.txt="MOULD A"
+                nCavB.val=8
+            }else if(tInMB.txt=="B006B")
+            {
+                tModMB.txt="MOULD B"
+                nCavB.val=6
+            }else if(tInMB.txt=="C004C")
+            {
+                tModMB.txt="MOULD C"
+                nCavB.val=4
+            }else
+            {
+                tModMB.txt="MOULD NG"
+                nCavB.val=0
+            }
+            if(nCavB.val==0)
+            {
+                tModMB.txt="MOULD NG"
+            }else
+            {
+                nIsiB.val=nCavB.val
+                pageSys.tBMld.txt=tInMB.txt
+                pageSys.tBMldModel.txt=tModMB.txt
+                pageSys.nBCav.val=nCavB.val
+                pageSys.nBIsi.val=nIsiB.val
+            }
+        
+Button bBackMB
+    Attributes
+        ID                        : 6
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 440
+        y coordinate              : 0
+        Width                     : 40
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 5
+        Back. Color               : 63488
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 63488
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : X
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            page pageDashboard
+        

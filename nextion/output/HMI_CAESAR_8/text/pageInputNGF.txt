@@ -1,0 +1,377 @@
+Page pageInputNGF
+    Attributes
+        ID               : 0
+        Scope            : local
+        Send Component ID: disabled
+        Width            : 480
+        Locked           : no
+        Fill             : no background (white)
+    
+    Events
+        Preinitialize Event
+            //65 page id press
+            printh 65 09 00 00 FF FF FF
+        
+        Postinitialize Event
+            pageSys.tFNgTmp.txt=pageSys.tFNgType.txt
+        
+        Touch Press Event
+            
+        Touch Release Event
+            
+        Page Exit Event
+            
+Text t5
+    Attributes
+        ID                  : 1
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 0
+        y coordinate        : 0
+        Width               : 480
+        Height              : 320
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 0
+        Back. Color         : 1040
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : 
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bBackTypeF
+    Attributes
+        ID                        : 2
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 440
+        y coordinate              : 0
+        Width                     : 40
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 5
+        Back. Color               : 63488
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 63488
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : X
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            pageSys.tFNgTmp.txt=pageSys.tFNgType.txt
+            page pageOutputNG
+        
+Button bRetakF
+    Attributes
+        ID                        : 3
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 38
+        y coordinate              : 48
+        Width                     : 170
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64528
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64528
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : RETAK
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            pageSys.tFNgTmp.txt="RETAK"
+        
+Button bTRataF
+    Attributes
+        ID                        : 4
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 229
+        y coordinate              : 48
+        Width                     : 210
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64528
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64528
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : TIDAK RATA
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            pageSys.tFNgTmp.txt="TIDAK RATA"
+        
+Button bKeropF
+    Attributes
+        ID                        : 5
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 38
+        y coordinate              : 98
+        Width                     : 170
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64528
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64528
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : KEROPOS
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            pageSys.tFNgTmp.txt="KEROPOS"
+        
+Button bBBerbF
+    Attributes
+        ID                        : 6
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 229
+        y coordinate              : 98
+        Width                     : 210
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64528
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64528
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : BERAT BERLEBIH
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            pageSys.tFNgTmp.txt="BERAT BERLEBIH"
+        
+Button bGoresF
+    Attributes
+        ID                        : 7
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 38
+        y coordinate              : 148
+        Width                     : 170
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64528
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64528
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : TERGORES
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            pageSys.tFNgTmp.txt="TERGORES"
+        
+Button bBKurgF
+    Attributes
+        ID                        : 8
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 229
+        y coordinate              : 148
+        Width                     : 210
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64528
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64528
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : BERAT KURANG
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            pageSys.tFNgTmp.txt="BERAT KURANG"
+        
+Button bPatahF
+    Attributes
+        ID                        : 9
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 38
+        y coordinate              : 198
+        Width                     : 170
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64528
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64528
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : PATAH
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            pageSys.tFNgTmp.txt="PATAH"
+        
+Button bOkTypeF
+    Attributes
+        ID                        : 10
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 200
+        y coordinate              : 255
+        Width                     : 93
+        Height                    : 50
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 5
+        Back. Color               : 13926
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 13926
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : OK
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            if(pageSys.tFNgTmp.txt!="")
+            {
+                pageSys.tFNgType.txt=pageSys.tFNgTmp.txt
+            }
+            page pageOutputNG
+        
+Button bGeleF
+    Attributes
+        ID                        : 11
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 228
+        y coordinate              : 198
+        Width                     : 210
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64528
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64528
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : BERGELEMBUNG
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            pageSys.tFNgTmp.txt="BERGELEMBUNG"
+        

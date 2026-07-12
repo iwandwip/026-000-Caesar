@@ -1,0 +1,281 @@
+Page pageSys
+    Attributes
+        ID               : 0
+        Scope            : local
+        Send Component ID: disabled
+        Width            : 480
+        Locked           : no
+        Fill             : solid color
+        Back. Color      : 65535
+    
+    Events
+        Preinitialize Event
+            
+        Postinitialize Event
+            
+        Touch Press Event
+            
+        Touch Release Event
+            
+        Page Exit Event
+            
+Variable (int32) adminId
+    Attributes
+        ID   : 1
+        Scope: global
+        Value: 1111
+    
+Variable (int32) frontLogin
+    Attributes
+        ID   : 2
+        Scope: global
+        Value: 0
+    
+Variable (int32) backLogin
+    Attributes
+        ID   : 3
+        Scope: global
+        Value: 0
+    
+Variable (int32) activeSide
+    Attributes
+        ID   : 4
+        Scope: global
+        Value: 0
+    
+Variable (string) tFLot
+    Attributes
+        ID            : 5
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (string) tFModel
+    Attributes
+        ID            : 6
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (int32) nFQuota
+    Attributes
+        ID   : 7
+        Scope: global
+        Value: 0
+    
+Variable (string) tBLot
+    Attributes
+        ID            : 8
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (string) tBModel
+    Attributes
+        ID            : 9
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (int32) nBQuota
+    Attributes
+        ID   : 10
+        Scope: global
+        Value: 0
+    
+Variable (string) tFMld
+    Attributes
+        ID            : 11
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (int32) nFCav
+    Attributes
+        ID   : 12
+        Scope: global
+        Value: 0
+    
+Variable (int32) nFIsi
+    Attributes
+        ID   : 13
+        Scope: global
+        Value: 0
+    
+Variable (string) tBMld
+    Attributes
+        ID            : 14
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (int32) nBCav
+    Attributes
+        ID   : 15
+        Scope: global
+        Value: 0
+    
+Variable (int32) nBIsi
+    Attributes
+        ID   : 16
+        Scope: global
+        Value: 0
+    
+Variable (int32) nFCyc
+    Attributes
+        ID   : 17
+        Scope: global
+        Value: 0
+    
+Variable (int32) nFOut
+    Attributes
+        ID   : 18
+        Scope: global
+        Value: 0
+    
+Variable (int32) nFOK
+    Attributes
+        ID   : 19
+        Scope: global
+        Value: 0
+    
+Variable (int32) nFNG
+    Attributes
+        ID   : 20
+        Scope: global
+        Value: 0
+    
+Variable (int32) nBCyc
+    Attributes
+        ID   : 21
+        Scope: global
+        Value: 0
+    
+Variable (int32) nBOut
+    Attributes
+        ID   : 22
+        Scope: global
+        Value: 0
+    
+Variable (int32) nBOK
+    Attributes
+        ID   : 23
+        Scope: global
+        Value: 0
+    
+Variable (int32) nBNG
+    Attributes
+        ID   : 24
+        Scope: global
+        Value: 0
+    
+Variable (int32) nFReady
+    Attributes
+        ID   : 25
+        Scope: global
+        Value: 0
+    
+Variable (int32) nBReady
+    Attributes
+        ID   : 26
+        Scope: global
+        Value: 0
+    
+Variable (int32) nMReady
+    Attributes
+        ID   : 27
+        Scope: global
+        Value: 0
+    
+Variable (int32) nFOpId
+    Attributes
+        ID   : 28
+        Scope: global
+        Value: 0
+    
+Variable (string) tFOpName
+    Attributes
+        ID            : 29
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (int32) nBOpId
+    Attributes
+        ID   : 30
+        Scope: global
+        Value: 0
+    
+Variable (string) tBOpName
+    Attributes
+        ID            : 31
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (string) tFMldModel
+    Attributes
+        ID            : 32
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (string) tBMldModel
+    Attributes
+        ID            : 33
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (int32) nFTarget
+    Attributes
+        ID   : 34
+        Scope: global
+        Value: 0
+    
+Variable (int32) nBTarget
+    Attributes
+        ID   : 35
+        Scope: global
+        Value: 0
+    
+Variable (string) tFNgType
+    Attributes
+        ID            : 36
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (string) tBNgType
+    Attributes
+        ID            : 37
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (int32) nTmp
+    Attributes
+        ID   : 38
+        Scope: global
+        Value: 0
+    
+Variable (string) tFNgTmp
+    Attributes
+        ID            : 39
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (string) tBNgTmp
+    Attributes
+        ID            : 40
+        Scope         : global
+        Text          : 
+        Max. Text Size: 30
+    
+Variable (int32) va5
+    Attributes
+        ID   : 41
+        Scope: local
+        Value: 0
+    
