@@ -3,7 +3,7 @@ Program.s
 	6    Line(s) of event code
 	6    Unique line(s) of event code
 pageSys
-	17   Component(s)
+	28   Component(s)
 	0    Line(s) of event code
 	0    Unique line(s) of event code
 pageLogin
@@ -30,17 +30,21 @@ pageMldB
 	14   Component(s)
 	38   Line(s) of event code
 	26   Unique line(s) of event code
+pageSim
+	31   Component(s)
+	124  Line(s) of event code
+	93   Unique line(s) of event code
+pageDashboard
+	59   Component(s)
+	193  Line(s) of event code
+	71   Unique line(s) of event code
 keybdA
 	51   Component(s)
 	416  Line(s) of event code
 	193  Unique line(s) of event code
-pageDashboard
-	58   Component(s)
-	98   Line(s) of event code
-	29   Unique line(s) of event code
 
 Total
-	9    Page(s)
-	223  Component(s)
-	888  Line(s) of event code
-	330  Unique line(s) of event code
+	10   Page(s)
+	266  Component(s)
+	1107 Line(s) of event code
+	455  Unique line(s) of event code

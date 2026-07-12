@@ -1,0 +1,1049 @@
+Page pageSim
+    Attributes
+        ID               : 0
+        Scope            : local
+        Send Component ID: disabled
+        Width            : 480
+        Locked           : no
+        Fill             : solid color
+        Back. Color      : 65535
+    
+    Events
+        Preinitialize Event
+            
+        Postinitialize Event
+            nSCycF.val=pageSys.nFCyc.val
+            nSOutF.val=pageSys.nFOut.val
+            nSQuotaF.val=pageSys.nFQuota.val
+            nSIsiF.val=pageSys.nFIsi.val
+            nSNGF.val=pageSys.nFNG.val
+            nSOKF.val=pageSys.nFOK.val
+            nSCycB.val=pageSys.nBCyc.val
+            nSOutB.val=pageSys.nBOut.val
+            nSQuotaB.val=pageSys.nBQuota.val
+            nSIsiB.val=pageSys.nBIsi.val
+            nSNGB.val=pageSys.nBNG.val
+            nSOKB.val=pageSys.nBOK.val
+            if(pageSys.nMReady.val==1)
+            {
+                tSimInfo.txt="MESIN READY"
+                tsw bCycleF,1
+                tsw bCycleB,1
+                tsw bCycleAll,1
+            }else
+            {
+                tSimInfo.txt="MESIN LOCK"
+                tsw bCycleF,0
+                tsw bCycleB,0
+                tsw bCycleAll,0
+            }
+        
+        Touch Press Event
+            
+        Touch Release Event
+            
+        Page Exit Event
+            
+Number nSCycF
+    Attributes
+        ID                      : 1
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 0
+        y coordinate            : 22
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nSOutF
+    Attributes
+        ID                      : 3
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 0
+        y coordinate            : 68
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nSQuotaF
+    Attributes
+        ID                      : 5
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 1
+        y coordinate            : 116
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nSIsiF
+    Attributes
+        ID                      : 7
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 1
+        y coordinate            : 163
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nSNGF
+    Attributes
+        ID                      : 9
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 1
+        y coordinate            : 209
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nSOKF
+    Attributes
+        ID                      : 11
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 4
+        y coordinate            : 255
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nSCycB
+    Attributes
+        ID                      : 13
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 306
+        y coordinate            : 21
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nSOutB
+    Attributes
+        ID                      : 15
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 306
+        y coordinate            : 67
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nSQuotaB
+    Attributes
+        ID                      : 17
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 307
+        y coordinate            : 115
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nSIsiB
+    Attributes
+        ID                      : 19
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 307
+        y coordinate            : 162
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nSNGB
+    Attributes
+        ID                      : 21
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 307
+        y coordinate            : 208
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nSOKB
+    Attributes
+        ID                      : 23
+        Scope                   : local
+        Send Component ID       : disabled
+        x coordinate            : 310
+        y coordinate            : 254
+        Width                   : 104
+        Height                  : 25
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 2
+        Back. Color             : 65535
+        Font Color              : 0
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t1
+    Attributes
+        ID                  : 2
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 0
+        y coordinate        : 2
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t0
+    Attributes
+        ID                  : 4
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 0
+        y coordinate        : 48
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t2
+    Attributes
+        ID                  : 6
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 1
+        y coordinate        : 96
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t3
+    Attributes
+        ID                  : 8
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 1
+        y coordinate        : 143
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t4
+    Attributes
+        ID                  : 10
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 1
+        y coordinate        : 189
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t5
+    Attributes
+        ID                  : 12
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 4
+        y coordinate        : 235
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t6
+    Attributes
+        ID                  : 14
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 306
+        y coordinate        : 1
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t7
+    Attributes
+        ID                  : 16
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 306
+        y coordinate        : 47
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t8
+    Attributes
+        ID                  : 18
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 307
+        y coordinate        : 95
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t9
+    Attributes
+        ID                  : 20
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 307
+        y coordinate        : 142
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t10
+    Attributes
+        ID                  : 22
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 307
+        y coordinate        : 188
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t11
+    Attributes
+        ID                  : 24
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 310
+        y coordinate        : 234
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : CAVITY
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text tSimInfo
+    Attributes
+        ID                  : 30
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 139
+        y coordinate        : 10
+        Width               : 129
+        Height              : 26
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 2
+        Back. Color         : 50712
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : BP DEPAN
+        Max. Text Size      : 30
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bCycleF
+    Attributes
+        ID                        : 25
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 5
+        y coordinate              : 287
+        Width                     : 80
+        Height                    : 29
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 2
+        Back. Color               : 2016
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 2016
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : OK
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            if(pageSys.nMReady.val==1)
+            {
+                if(pageSys.nFQuota.val>=pageSys.nFIsi.val)
+                {
+                    pageSys.nFCyc.val+=1
+                    pageSys.nFOut.val+=pageSys.nFIsi.val
+                    pageSys.nFQuota.val-=pageSys.nFIsi.val
+                    pageSys.nFOK.val=pageSys.nFOut.val
+                    pageSys.nFOK.val-=pageSys.nFNG.val
+                    nSCycF.val=pageSys.nFCyc.val
+                    nSOutF.val=pageSys.nFOut.val
+                    nSQuotaF.val=pageSys.nFQuota.val
+                    nSOKF.val=pageSys.nFOK.val
+                    tSimInfo.txt="CYCLE F OK"
+                }else
+                {
+                    tSimInfo.txt="KUOTA F KURANG"
+                }
+            }else
+            {
+                tSimInfo.txt="MESIN LOCK"
+            }
+        
+Button bCycleB
+    Attributes
+        ID                        : 26
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 308
+        y coordinate              : 286
+        Width                     : 80
+        Height                    : 29
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 2
+        Back. Color               : 2016
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 2016
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : CYCLE B
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            if(pageSys.nMReady.val==1)
+            {
+                if(pageSys.nBQuota.val>=pageSys.nBIsi.val)
+                {
+                    pageSys.nBCyc.val+=1
+                    pageSys.nBOut.val+=pageSys.nBIsi.val
+                    pageSys.nBQuota.val-=pageSys.nBIsi.val
+                    pageSys.nBOK.val=pageSys.nBOut.val
+                    pageSys.nBOK.val-=pageSys.nBNG.val
+                    nSCycB.val=pageSys.nBCyc.val
+                    nSOutB.val=pageSys.nBOut.val
+                    nSQuotaB.val=pageSys.nBQuota.val
+                    nSOKB.val=pageSys.nBOK.val
+                    tSimInfo.txt="CYCLE B OK"
+                }else
+                {
+                    tSimInfo.txt="KUOTA B KURANG"
+                }
+            }else
+            {
+                tSimInfo.txt="MESIN LOCK"
+            }
+        
+Button bCycleAll
+    Attributes
+        ID                        : 27
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 165
+        y coordinate              : 247
+        Width                     : 80
+        Height                    : 29
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 2
+        Back. Color               : 2016
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 2016
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : CYCLE ALL
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            if(pageSys.nMReady.val==1)
+            {
+                if(pageSys.nFQuota.val>=pageSys.nFIsi.val)
+                {
+                    if(pageSys.nBQuota.val>=pageSys.nBIsi.val)
+                    {
+                        pageSys.nFCyc.val+=1
+                        pageSys.nFOut.val+=pageSys.nFIsi.val
+                        pageSys.nFQuota.val-=pageSys.nFIsi.val
+                        pageSys.nFOK.val=pageSys.nFOut.val
+                        pageSys.nFOK.val-=pageSys.nFNG.val
+                        pageSys.nBCyc.val+=1
+                        pageSys.nBOut.val+=pageSys.nBIsi.val
+                        pageSys.nBQuota.val-=pageSys.nBIsi.val
+                        pageSys.nBOK.val=pageSys.nBOut.val
+                        pageSys.nBOK.val-=pageSys.nBNG.val
+                        nSCycF.val=pageSys.nFCyc.val
+                        nSOutF.val=pageSys.nFOut.val
+                        nSQuotaF.val=pageSys.nFQuota.val
+                        nSOKF.val=pageSys.nFOK.val
+                        nSCycB.val=pageSys.nBCyc.val
+                        nSOutB.val=pageSys.nBOut.val
+                        nSQuotaB.val=pageSys.nBQuota.val
+                        nSOKB.val=pageSys.nBOK.val
+                        tSimInfo.txt="CYCLE ALL OK"
+                    }else
+                    {
+                        tSimInfo.txt="KUOTA B KURANG"
+                    }
+                }else
+                {
+                    tSimInfo.txt="KUOTA F KURANG"
+                }
+            }else
+            {
+                tSimInfo.txt="MESIN LOCK"
+            }
+        
+Button bResetSim
+    Attributes
+        ID                        : 28
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 167
+        y coordinate              : 282
+        Width                     : 80
+        Height                    : 29
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 2
+        Back. Color               : 2016
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 2016
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : RESET
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            pageSys.nFCyc.val=0
+            pageSys.nFOut.val=0
+            pageSys.nFOK.val=0
+            pageSys.nFNG.val=0
+            pageSys.nBCyc.val=0
+            pageSys.nBOut.val=0
+            pageSys.nBOK.val=0
+            pageSys.nBNG.val=0
+            nSCycF.val=0
+            nSOutF.val=0
+            nSNGF.val=0
+            nSOKF.val=0
+            nSCycB.val=0
+            nSOutB.val=0
+            nSNGB.val=0
+            nSOKB.val=0
+            tSimInfo.txt="SIM RESET"
+        
+Button bBackSim
+    Attributes
+        ID                        : 29
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 439
+        y coordinate              : 1
+        Width                     : 40
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 5
+        Back. Color               : 63488
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 63488
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : X
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            page pageDashboard
+        

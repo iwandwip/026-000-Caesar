@@ -11,7 +11,7 @@
         },
         "Events": {
             "Preinitialize Event": "",
-            "Postinitialize Event": "if(pageSys.frontLogin.val==1)\n{\n  if(pageSys.tFModel.txt!=\"\")\n  {\n    bFLot.txt=pageSys.tFModel.txt\n  }else\n  {\n    bFLot.txt=\"Input LOT\"\n  }\n}else\n{\n  bFLot.txt=\"Login dulu\"\n}\nif(pageSys.backLogin.val==1)\n{\n  if(pageSys.tBModel.txt!=\"\")\n  {\n    bBLot.txt=pageSys.tBModel.txt\n  }else\n  {\n    bBLot.txt=\"Input LOT\"\n  }\n}else\n{\n  bBLot.txt=\"Login dulu\"\n}\nif(pageSys.frontLogin.val==1)\n{\n  nFCavD.val=pageSys.nFCav.val\n}else\n{\n  nFCavD.val=0\n}\nif(pageSys.backLogin.val==1)\n{\n  nBCavD.val=pageSys.nBCav.val\n}else\n{\n  nBCavD.val=0\n}\nif(pageSys.frontLogin.val==1)\n{\n  nFIsiD.val=pageSys.nFIsi.val\n}else\n{\n  nFIsiD.val=0\n}\nif(pageSys.backLogin.val==1)\n{\n  nBIsiD.val=pageSys.nBIsi.val\n}else\n{\n  nBIsiD.val=0\n}",
+            "Postinitialize Event": "if(pageSys.frontLogin.val==1)\n{\n  if(pageSys.tFModel.txt!=\"\")\n  {\n    bFLot.txt=pageSys.tFModel.txt\n  }else\n  {\n    bFLot.txt=\"Input LOT\"\n  }\n}else\n{\n  bFLot.txt=\"Login dulu\"\n}\nif(pageSys.backLogin.val==1)\n{\n  if(pageSys.tBModel.txt!=\"\")\n  {\n    bBLot.txt=pageSys.tBModel.txt\n  }else\n  {\n    bBLot.txt=\"Input LOT\"\n  }\n}else\n{\n  bBLot.txt=\"Login dulu\"\n}\nif(pageSys.frontLogin.val==1)\n{\n  nFCavD.val=pageSys.nFCav.val\n}else\n{\n  nFCavD.val=0\n}\nif(pageSys.backLogin.val==1)\n{\n  nBCavD.val=pageSys.nBCav.val\n}else\n{\n  nBCavD.val=0\n}\nif(pageSys.frontLogin.val==1)\n{\n  nFIsiD.val=pageSys.nFIsi.val\n}else\n{\n  nFIsiD.val=0\n}\nif(pageSys.backLogin.val==1)\n{\n  nBIsiD.val=pageSys.nBIsi.val\n}else\n{\n  nBIsiD.val=0\n}\n//-------------------------------------------------------------------------//\nif(pageSys.frontLogin.val==0)\n{\n  tFStat.txt=\"BP DEPAN LOCKED\"\n}else if(pageSys.tFModel.txt==\"\")\n{\n  tFStat.txt=\"BP DEPAN NO LOT\"\n}else if(pageSys.nFQuota.val==0)\n{\n  tFStat.txt=\"BP DEPAN NO LOT\"\n}else if(pageSys.tFMld.txt==\"\")\n{\n  tFStat.txt=\"BP DEPAN NO MOULD\"\n}else if(pageSys.nFCav.val==0)\n{\n  tFStat.txt=\"BP DEPAN NO MOULD\"\n}else if(pageSys.nFIsi.val==0)\n{\n  tFStat.txt=\"BP DEPAN ISI 0\"\n}else\n{\n  tFStat.txt=\"BP DEPAN READY\"\n}\nif(pageSys.backLogin.val==0)\n{\n  tBStat.txt=\"BP BELAKANG LOCKED\"\n}else if(pageSys.tBModel.txt==\"\")\n{\n  tBStat.txt=\"BP BELAKANG NO LOT\"\n}else if(pageSys.nBQuota.val==0)\n{\n  tBStat.txt=\"BP BELAKANG NO LOT\"\n}else if(pageSys.tBMld.txt==\"\")\n{\n  tBStat.txt=\"BP BELAKANG NO MOULD\"\n}else if(pageSys.nBCav.val==0)\n{\n  tBStat.txt=\"BP BELAKANG NO MOULD\"\n}else if(pageSys.nBIsi.val==0)\n{\n  tBStat.txt=\"BP BELAKANG ISI 0\"\n}else\n{\n  tBStat.txt=\"BP BELAKANG READY\"\n}\n//-------------------------------------------------------------------------/\nif(tFStat.txt==\"BP DEPAN READY\")\n{\n  pageSys.nFReady.val=1\n}else\n{\n  pageSys.nFReady.val=0\n}\nif(tBStat.txt==\"BP BELAKANG READY\")\n{\n  pageSys.nBReady.val=1\n}else\n{\n  pageSys.nBReady.val=0\n}\nif(pageSys.nFReady.val==1)\n{\n  if(pageSys.nBReady.val==1)\n  {\n    pageSys.nMReady.val=1\n    tILock.bco=2024\n  }else\n  {\n    pageSys.nMReady.val=0\n    tILock.bco=63488\n  }\n}else\n{\n  pageSys.nMReady.val=0\n  tILock.bco=63488\n}\n//-------------------------------------------------------------------------/\nif(pageSys.frontLogin.val==1)\n{\n  nFOutD.val=pageSys.nFOut.val\n}else\n{\n  nFOutD.val=0\n}\nif(pageSys.backLogin.val==1)\n{\n  nBOutD.val=pageSys.nBOut.val\n}else\n{\n  nBOutD.val=0\n}",
             "Touch Press Event": "",
             "Touch Release Event": "",
             "Page Exit Event": ""
@@ -412,7 +412,7 @@
             "Touch Release Event": "if(pageSys.frontLogin.val==1)\n{\n  page pageMldF\n}else\n{\n  nFIsiD.val=0\n}"
         }
     },
-    "Number aOutput": {
+    "Number nFOutD": {
         "Attributes": {
             "ID": 14,
             "Scope": "global",
@@ -505,7 +505,7 @@
             "Touch Release Event": "if(pageSys.backLogin.val==1)\n{\n  page pageMldB\n}else\n{\n  nBIsiD.val=0\n}"
         }
     },
-    "Number bOutput": {
+    "Number nBOutD": {
         "Attributes": {
             "ID": 17,
             "Scope": "global",
@@ -652,7 +652,7 @@
             "Touch Release Event": ""
         }
     },
-    "Text t10": {
+    "Text tFStat": {
         "Attributes": {
             "ID": 22,
             "Scope": "local",
@@ -664,13 +664,13 @@
             "Fill": "solid color",
             "Style": "flat",
             "Associated Keyboard": "none",
-            "Font ID": 3,
+            "Font ID": 2,
             "Back. Color": 50712,
             "Font Color": 0,
             "Horizontal Alignment": "center",
             "Vertical Alignment": "center",
             "Input Type": "character",
-            "Text": "BP 01 DEPAN",
+            "Text": "BP DEPAN",
             "Max. Text Size": 30,
             "Word wrap": "disabled",
             "Horizontal Spacing": 0,
@@ -681,7 +681,7 @@
             "Touch Release Event": ""
         }
     },
-    "Text t11": {
+    "Text tBStat": {
         "Attributes": {
             "ID": 23,
             "Scope": "local",
@@ -693,13 +693,13 @@
             "Fill": "solid color",
             "Style": "flat",
             "Associated Keyboard": "none",
-            "Font ID": 3,
+            "Font ID": 2,
             "Back. Color": 50712,
             "Font Color": 0,
             "Horizontal Alignment": "center",
             "Vertical Alignment": "center",
             "Input Type": "character",
-            "Text": "BP 01 BELAKANG",
+            "Text": "BP BELAKANG",
             "Max. Text Size": 30,
             "Word wrap": "disabled",
             "Horizontal Spacing": 0,
@@ -1302,7 +1302,7 @@
             "Touch Release Event": ""
         }
     },
-    "Text indikator": {
+    "Text tILock": {
         "Attributes": {
             "ID": 44,
             "Scope": "global",
@@ -1716,6 +1716,33 @@
         "Events": {
             "Touch Press Event": "",
             "Touch Release Event": ""
+        }
+    },
+    "Button bSim": {
+        "Attributes": {
+            "ID": 58,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 68,
+            "y coordinate": 5,
+            "Width": 28,
+            "Height": 28,
+            "Fill": "image",
+            "Font ID": 0,
+            "Background Picture ID (Unpressed)": 11,
+            "Back. Picture ID (Pressed)": 10,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "if(pageSys.nMReady.val==1)\n{\n  page pageSim\n}else\n{\n  tILock.bco=63488\n}"
         }
     }
 }

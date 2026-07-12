@@ -66,6 +66,97 @@ Page pageDashboard
             {
                 nBIsiD.val=0
             }
+            //-------------------------------------------------------------------------//
+            if(pageSys.frontLogin.val==0)
+            {
+                tFStat.txt="BP DEPAN LOCKED"
+            }else if(pageSys.tFModel.txt=="")
+            {
+                tFStat.txt="BP DEPAN NO LOT"
+            }else if(pageSys.nFQuota.val==0)
+            {
+                tFStat.txt="BP DEPAN NO LOT"
+            }else if(pageSys.tFMld.txt=="")
+            {
+                tFStat.txt="BP DEPAN NO MOULD"
+            }else if(pageSys.nFCav.val==0)
+            {
+                tFStat.txt="BP DEPAN NO MOULD"
+            }else if(pageSys.nFIsi.val==0)
+            {
+                tFStat.txt="BP DEPAN ISI 0"
+            }else
+            {
+                tFStat.txt="BP DEPAN READY"
+            }
+            if(pageSys.backLogin.val==0)
+            {
+                tBStat.txt="BP BELAKANG LOCKED"
+            }else if(pageSys.tBModel.txt=="")
+            {
+                tBStat.txt="BP BELAKANG NO LOT"
+            }else if(pageSys.nBQuota.val==0)
+            {
+                tBStat.txt="BP BELAKANG NO LOT"
+            }else if(pageSys.tBMld.txt=="")
+            {
+                tBStat.txt="BP BELAKANG NO MOULD"
+            }else if(pageSys.nBCav.val==0)
+            {
+                tBStat.txt="BP BELAKANG NO MOULD"
+            }else if(pageSys.nBIsi.val==0)
+            {
+                tBStat.txt="BP BELAKANG ISI 0"
+            }else
+            {
+                tBStat.txt="BP BELAKANG READY"
+            }
+            //-------------------------------------------------------------------------/
+            if(tFStat.txt=="BP DEPAN READY")
+            {
+                pageSys.nFReady.val=1
+            }else
+            {
+                pageSys.nFReady.val=0
+            }
+            if(tBStat.txt=="BP BELAKANG READY")
+            {
+                pageSys.nBReady.val=1
+            }else
+            {
+                pageSys.nBReady.val=0
+            }
+            if(pageSys.nFReady.val==1)
+            {
+                if(pageSys.nBReady.val==1)
+                {
+                    pageSys.nMReady.val=1
+                    tILock.bco=2024
+                }else
+                {
+                    pageSys.nMReady.val=0
+                    tILock.bco=63488
+                }
+            }else
+            {
+                pageSys.nMReady.val=0
+                tILock.bco=63488
+            }
+            //-------------------------------------------------------------------------/
+            if(pageSys.frontLogin.val==1)
+            {
+                nFOutD.val=pageSys.nFOut.val
+            }else
+            {
+                nFOutD.val=0
+            }
+            if(pageSys.backLogin.val==1)
+            {
+                nBOutD.val=pageSys.nBOut.val
+            }else
+            {
+                nBOutD.val=0
+            }
         
         Touch Press Event
             
@@ -149,7 +240,7 @@ Number nFIsiD
                 nFIsiD.val=0
             }
         
-Number aOutput
+Number nFOutD
     Attributes
         ID                      : 14
         Scope                   : global
@@ -256,7 +347,7 @@ Number nBIsiD
                 nBIsiD.val=0
             }
         
-Number bOutput
+Number nBOutD
     Attributes
         ID                      : 17
         Scope                   : global
@@ -825,7 +916,7 @@ Text t5
             
         Touch Release Event
             
-Text t10
+Text tFStat
     Attributes
         ID                  : 22
         Scope               : local
@@ -837,13 +928,13 @@ Text t10
         Fill                : solid color
         Style               : flat
         Associated Keyboard : none
-        Font ID             : 3
+        Font ID             : 2
         Back. Color         : 50712
         Font Color          : 0
         Horizontal Alignment: center
         Vertical Alignment  : center
         Input Type          : character
-        Text                : BP 01 DEPAN
+        Text                : BP DEPAN
         Max. Text Size      : 30
         Word wrap           : disabled
         Horizontal Spacing  : 0
@@ -854,7 +945,7 @@ Text t10
             
         Touch Release Event
             
-Text t11
+Text tBStat
     Attributes
         ID                  : 23
         Scope               : local
@@ -866,13 +957,13 @@ Text t11
         Fill                : solid color
         Style               : flat
         Associated Keyboard : none
-        Font ID             : 3
+        Font ID             : 2
         Back. Color         : 50712
         Font Color          : 0
         Horizontal Alignment: center
         Vertical Alignment  : center
         Input Type          : character
-        Text                : BP 01 BELAKANG
+        Text                : BP BELAKANG
         Max. Text Size      : 30
         Word wrap           : disabled
         Horizontal Spacing  : 0
@@ -1386,7 +1477,7 @@ Text t17
             
         Touch Release Event
             
-Text indikator
+Text tILock
     Attributes
         ID                  : 44
         Scope               : global
@@ -1818,3 +1909,37 @@ Button iconSwitch
             
         Touch Release Event
             
+Button bSim
+    Attributes
+        ID                               : 58
+        Scope                            : global
+        Send Component ID                : on release
+        x coordinate                     : 68
+        y coordinate                     : 5
+        Width                            : 28
+        Height                           : 28
+        Fill                             : image
+        Font ID                          : 0
+        Background Picture ID (Unpressed): 11
+        Back. Picture ID (Pressed)       : 10
+        Horizontal Alignment             : center
+        Vertical Alignment               : center
+        State                            : unpressed
+        Text                             : 
+        Max. Text Size                   : 10
+        Word wrap                        : disabled
+        Horizontal Spacing               : 0
+        Vertical Spacing                 : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            if(pageSys.nMReady.val==1)
+            {
+                page pageSim
+            }else
+            {
+                tILock.bco=63488
+            }
+        

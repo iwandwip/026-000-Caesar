@@ -72,7 +72,7 @@
         "Attributes": {
             "ID": 8,
             "Scope": "global",
-            "Text": "newtxt",
+            "Text": "",
             "Max. Text Size": 30
         }
     },
@@ -95,8 +95,8 @@
         "Attributes": {
             "ID": 11,
             "Scope": "global",
-            "Text": "newtxt",
-            "Max. Text Size": 10
+            "Text": "",
+            "Max. Text Size": 30
         }
     },
     "Variable (int32) nFCav": {
@@ -117,8 +117,8 @@
         "Attributes": {
             "ID": 14,
             "Scope": "global",
-            "Text": "newtxt",
-            "Max. Text Size": 10
+            "Text": "",
+            "Max. Text Size": 30
         }
     },
     "Variable (int32) nBCav": {
@@ -131,6 +131,83 @@
     "Variable (int32) nBIsi": {
         "Attributes": {
             "ID": 16,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (int32) nFCyc": {
+        "Attributes": {
+            "ID": 17,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (int32) nFOut": {
+        "Attributes": {
+            "ID": 18,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (int32) nFOK": {
+        "Attributes": {
+            "ID": 19,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (int32) nFNG": {
+        "Attributes": {
+            "ID": 20,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (int32) nBCyc": {
+        "Attributes": {
+            "ID": 21,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (int32) nBOut": {
+        "Attributes": {
+            "ID": 22,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (int32) nBOK": {
+        "Attributes": {
+            "ID": 23,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (int32) nBNG": {
+        "Attributes": {
+            "ID": 24,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (int32) nFReady": {
+        "Attributes": {
+            "ID": 25,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (int32) nBReady": {
+        "Attributes": {
+            "ID": 26,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (int32) nMReady": {
+        "Attributes": {
+            "ID": 27,
             "Scope": "global",
             "Value": 0
         }
