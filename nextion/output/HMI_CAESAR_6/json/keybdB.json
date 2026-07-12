@@ -1,0 +1,694 @@
+{
+    "Page keybdB": {
+        "Attributes": {
+            "ID": 0,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "Width": 480,
+            "Locked": "no",
+            "Fill": "no background (white)"
+        },
+        "Events": {
+            "Preinitialize Event": "//Assign loadpageid.val  and loadcmpid.val before call this page.\n//loadpageid.val is the caller page id, loadcmpid.val is the caller component id.\nif(p[loadpageid.val].b[loadcmpid.val].type==54)\n{\n  covx p[loadpageid.val].b[loadcmpid.val].val,input.txt,0,0\n  inputlenth.val=input.txt_maxl\n}else if(p[loadpageid.val].b[loadcmpid.val].type==59)\n{\n  inputlenth.val=p[loadpageid.val].b[loadcmpid.val].val\n  if(inputlenth.val<0)\n  {\n    inputlenth.val*=-1\n    input.txt=\"-\"\n  }else\n  {\n    input.txt=\"\"\n  }\n  temp.val=1\n  for(temp2.val=0;temp2.val<p[loadpageid.val].b[loadcmpid.val].vvs1;temp2.val++)\n  {\n    temp.val*=10\n  }\n  temp2.val=inputlenth.val/temp.val\n  cov temp2.val,tempstr.txt,0\n  input.txt+=tempstr.txt+\".\"\n  temp2.val=temp2.val*temp.val-inputlenth.val\n  if(temp2.val<0)\n  {\n    temp2.val*=-1\n  }\n  covx temp2.val,tempstr.txt,p[loadpageid.val].b[loadcmpid.val].vvs1,0\n  input.txt+=tempstr.txt\n  inputlenth.val=24\n}else\n{\n  input.txt=p[loadpageid.val].b[loadcmpid.val].txt\n  inputlenth.val=p[loadpageid.val].b[loadcmpid.val].txt_maxl\n  if(p[loadpageid.val].b[loadcmpid.val].type==116)\n  {\n    show.pw=p[loadpageid.val].b[loadcmpid.val].pw\n  }\n}\nshow.txt=input.txt",
+            "Postinitialize Event": "",
+            "Touch Press Event": "",
+            "Touch Release Event": "",
+            "Page Exit Event": ""
+        }
+    },
+    "Text t0": {
+        "Attributes": {
+            "ID": 1,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 131,
+            "y coordinate": 15,
+            "Width": 210,
+            "Height": 288,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 7583,
+            "Border Width": 2,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "",
+            "Max. Text Size": 0,
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Button b0": {
+        "Attributes": {
+            "ID": 2,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 142,
+            "y coordinate": 212,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "0",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b0.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Text show": {
+        "Attributes": {
+            "ID": 3,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 141,
+            "y coordinate": 49,
+            "Width": 189,
+            "Height": 32,
+            "Fill": "solid color",
+            "Style": "3D down",
+            "Associated Keyboard": "none",
+            "Font ID": 10,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "left",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "show",
+            "Max. Text Size": 24,
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Button b210": {
+        "Attributes": {
+            "ID": 4,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 206,
+            "y coordinate": 254,
+            "Width": 124,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "OK",
+            "Max. Text Size": 6,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "//Assign loadpageid.val  and loadcmpid.val before call this page.\n//loadpageid.val is the caller page id, loadcmpid.val is the caller component id.\nif(p[loadpageid.val].b[loadcmpid.val].type==54)\n{\n  covx input.txt,p[loadpageid.val].b[loadcmpid.val].val,0,0\n}else if(p[loadpageid.val].b[loadcmpid.val].type==59)\n{\n  covx input.txt,temp.val,0,0\n  if(temp.val<0)\n  {\n    temp.val*=-1\n  }\n  for(temp2.val=0;temp2.val<p[loadpageid.val].b[loadcmpid.val].vvs1;temp2.val++)\n  {\n    temp.val*=10\n  }\n  p[loadpageid.val].b[loadcmpid.val].val=temp.val\n  strlen input.txt,temp.val\n  temp.val--\n  while(temp.val>=0)\n  {\n    substr input.txt,tempstr.txt,temp.val,1\n    if(tempstr.txt==\".\")\n    {\n      substr input.txt,tempstr.txt,temp.val+1,p[loadpageid.val].b[loadcmpid.val].vvs1\n      covx tempstr.txt,temp2.val,0,0\n      strlen tempstr.txt,temp.val\n      while(temp.val<p[loadpageid.val].b[loadcmpid.val].vvs1)\n      {\n        temp2.val*=10\n        temp.val++\n      }\n      p[loadpageid.val].b[loadcmpid.val].val+=temp2.val\n      temp.val=-1\n    }\n    temp.val--\n  }\n  substr input.txt,tempstr.txt,0,1\n  if(tempstr.txt==\"-\")\n  {\n    p[loadpageid.val].b[loadcmpid.val].val*=-1\n  }\n}else\n{\n  p[loadpageid.val].b[loadcmpid.val].txt=input.txt\n}\npage loadpageid.val"
+        }
+    },
+    "Button b1": {
+        "Attributes": {
+            "ID": 5,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 142,
+            "y coordinate": 86,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "1",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b1.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Button b2": {
+        "Attributes": {
+            "ID": 6,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 206,
+            "y coordinate": 86,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "2",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b2.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Button b3": {
+        "Attributes": {
+            "ID": 7,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 270,
+            "y coordinate": 86,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "3",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b3.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Button b4": {
+        "Attributes": {
+            "ID": 8,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 142,
+            "y coordinate": 128,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "4",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b4.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Button b5": {
+        "Attributes": {
+            "ID": 9,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 206,
+            "y coordinate": 128,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "5",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b5.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Button b6": {
+        "Attributes": {
+            "ID": 10,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 270,
+            "y coordinate": 128,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "6",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b6.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Button b7": {
+        "Attributes": {
+            "ID": 11,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 142,
+            "y coordinate": 170,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "7",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b7.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Button b8": {
+        "Attributes": {
+            "ID": 12,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 206,
+            "y coordinate": 170,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "8",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b8.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Button b200": {
+        "Attributes": {
+            "ID": 13,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 142,
+            "y coordinate": 254,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "DEL",
+            "Max. Text Size": 6,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "input.txt-=1\nshow.txt=input.txt"
+        }
+    },
+    "Button b9": {
+        "Attributes": {
+            "ID": 14,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 270,
+            "y coordinate": 170,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "9",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b9.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Button b99": {
+        "Attributes": {
+            "ID": 15,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 206,
+            "y coordinate": 212,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": ".",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b99.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Variable (int32) loadpageid": {
+        "Attributes": {
+            "ID": 16,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Timer tm0": {
+        "Attributes": {
+            "ID": 17,
+            "Scope": "local",
+            "Period (ms)": 500,
+            "Enabled": "yes"
+        },
+        "Events": {
+            "Timer Event": "if(tm0.tim==500)\n{\n  tm0.tim=450\n  show.txt=input.txt+\"|\"\n}else\n{\n  tm0.tim=500\n  show.txt=input.txt\n}"
+        }
+    },
+    "Variable (int32) loadcmpid": {
+        "Attributes": {
+            "ID": 18,
+            "Scope": "global",
+            "Value": 0
+        }
+    },
+    "Variable (string) input": {
+        "Attributes": {
+            "ID": 19,
+            "Scope": "local",
+            "Text": "",
+            "Max. Text Size": 14
+        }
+    },
+    "Variable (int32) temp": {
+        "Attributes": {
+            "ID": 20,
+            "Scope": "local",
+            "Value": 0
+        }
+    },
+    "Variable (int32) inputlenth": {
+        "Attributes": {
+            "ID": 21,
+            "Scope": "local",
+            "Value": 0
+        }
+    },
+    "Button b10": {
+        "Attributes": {
+            "ID": 22,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 270,
+            "y coordinate": 212,
+            "Width": 60,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 7583,
+            "Border Width": 1,
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 32799,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "-",
+            "Max. Text Size": 1,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "btlen input.txt,temp.val\nif(temp.val<inputlenth.val)\n{\n  input.txt+=b10.txt\n  show.txt=input.txt\n}"
+        }
+    },
+    "Text t2": {
+        "Attributes": {
+            "ID": 23,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 132,
+            "y coordinate": 41,
+            "Width": 207,
+            "Height": 2,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 11,
+            "Back. Color": 7583,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "",
+            "Max. Text Size": 0,
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Button b251": {
+        "Attributes": {
+            "ID": 24,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 315,
+            "y coordinate": 17,
+            "Width": 24,
+            "Height": 24,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Font ID": 10,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 63488,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "X",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "page loadpageid.val"
+        }
+    },
+    "Button b249": {
+        "Attributes": {
+            "ID": 25,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 133,
+            "y coordinate": 17,
+            "Width": 24,
+            "Height": 24,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Font ID": 11,
+            "Back. Color": 14823,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 1055,
+            "Font Color (Unpressed)": 65535,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "^_^",
+            "Max. Text Size": 5,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "if(show.pw==0)\n{\n  show.pw=1\n}else\n{\n  show.pw=0\n}"
+        }
+    },
+    "Variable (int32) temp2": {
+        "Attributes": {
+            "ID": 26,
+            "Scope": "local",
+            "Value": 0
+        }
+    },
+    "Variable (string) tempstr": {
+        "Attributes": {
+            "ID": 27,
+            "Scope": "local",
+            "Text": "newtxt",
+            "Max. Text Size": 24
+        }
+    }
+}

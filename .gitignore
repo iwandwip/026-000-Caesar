@@ -28,5 +28,5 @@ Thumbs.db
 opencode.json
 
 # Nextion generated output/tools
-nextion/output/
-nextion/Nextion2Text/
+# nextion/output/
+# nextion/Nextion2Text/
