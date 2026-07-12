@@ -1,0 +1,1748 @@
+{
+    "Page pageDashboard": {
+        "Attributes": {
+            "ID": 0,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "Width": 480,
+            "Locked": "no",
+            "Fill": "solid color",
+            "Back. Color": 65535
+        },
+        "Events": {
+            "Preinitialize Event": "",
+            "Postinitialize Event": "//======================================================================\n// OPERATOR NAME DISPLAY\n//======================================================================\nif(pageSys.frontLogin.val==1)\n{\n  if(pageSys.tFOpName.txt!=\"\")\n  {\n    tFOpD.txt=pageSys.tFOpName.txt\n  }else\n  {\n    tFOpD.txt=\"OPERATOR DEPAN\"\n  }\n}else\n{\n  tFOpD.txt=\"Silahkan Login\"\n}\nif(pageSys.backLogin.val==1)\n{\n  if(pageSys.tBOpName.txt!=\"\")\n  {\n    tBOpD.txt=pageSys.tBOpName.txt\n  }else\n  {\n    tBOpD.txt=\"OPERATOR BELAKANG\"\n  }\n}else\n{\n  tBOpD.txt=\"Silahkan Login\"\n}\n//======================================================================\n// LOT BUTTON DISPLAY\n//======================================================================\nif(pageSys.frontLogin.val==1)\n{\n  if(pageSys.tFModel.txt!=\"\")\n  {\n    bFLot.txt=pageSys.tFModel.txt\n  }else\n  {\n    bFLot.txt=\"Input LOT\"\n  }\n}else\n{\n  bFLot.txt=\"Login dulu\"\n}\nif(pageSys.backLogin.val==1)\n{\n  if(pageSys.tBModel.txt!=\"\")\n  {\n    bBLot.txt=pageSys.tBModel.txt\n  }else\n  {\n    bBLot.txt=\"Input LOT\"\n  }\n}else\n{\n  bBLot.txt=\"Login dulu\"\n}\n//======================================================================\n// CAVITY DISPLAY\n//======================================================================\nif(pageSys.frontLogin.val==1)\n{\n  nFCavD.val=pageSys.nFCav.val\n}else\n{\n  nFCavD.val=0\n}\nif(pageSys.backLogin.val==1)\n{\n  nBCavD.val=pageSys.nBCav.val\n}else\n{\n  nBCavD.val=0\n}\n//======================================================================\n// ISI DISPLAY\n//======================================================================\nif(pageSys.frontLogin.val==1)\n{\n  nFIsiD.val=pageSys.nFIsi.val\n}else\n{\n  nFIsiD.val=0\n}\nif(pageSys.backLogin.val==1)\n{\n  nBIsiD.val=pageSys.nBIsi.val\n}else\n{\n  nBIsiD.val=0\n}\n//======================================================================\n// STATUS BP DEPAN\n//======================================================================\nif(pageSys.frontLogin.val==0)\n{\n  tFStat.txt=\"BP DEPAN LOCKED\"\n}else if(pageSys.tFModel.txt==\"\")\n{\n  tFStat.txt=\"BP DEPAN NO LOT\"\n}else if(pageSys.nFQuota.val==0)\n{\n  tFStat.txt=\"BP DEPAN NO LOT\"\n}else if(pageSys.tFMld.txt==\"\")\n{\n  tFStat.txt=\"BP DEPAN NO MOULD\"\n}else if(pageSys.nFCav.val==0)\n{\n  tFStat.txt=\"BP DEPAN NO MOULD\"\n}else if(pageSys.nFIsi.val==0)\n{\n  tFStat.txt=\"BP DEPAN ISI 0\"\n}else\n{\n  tFStat.txt=\"BP DEPAN READY\"\n}\n//======================================================================\n// STATUS BP BELAKANG\n//======================================================================\nif(pageSys.backLogin.val==0)\n{\n  tBStat.txt=\"BP BELAKANG LOCKED\"\n}else if(pageSys.tBModel.txt==\"\")\n{\n  tBStat.txt=\"BP BELAKANG NO LOT\"\n}else if(pageSys.nBQuota.val==0)\n{\n  tBStat.txt=\"BP BELAKANG NO LOT\"\n}else if(pageSys.tBMld.txt==\"\")\n{\n  tBStat.txt=\"BP BELAKANG NO MOULD\"\n}else if(pageSys.nBCav.val==0)\n{\n  tBStat.txt=\"BP BELAKANG NO MOULD\"\n}else if(pageSys.nBIsi.val==0)\n{\n  tBStat.txt=\"BP BELAKANG ISI 0\"\n}else\n{\n  tBStat.txt=\"BP BELAKANG READY\"\n}\n//======================================================================\n// READY FLAG PER BP\n//======================================================================\nif(tFStat.txt==\"BP DEPAN READY\")\n{\n  pageSys.nFReady.val=1\n}else\n{\n  pageSys.nFReady.val=0\n}\nif(tBStat.txt==\"BP BELAKANG READY\")\n{\n  pageSys.nBReady.val=1\n}else\n{\n  pageSys.nBReady.val=0\n}\n//======================================================================\n// GLOBAL INTERLOCK INDICATOR\n// Hijau = 2024\n// Merah = 63488\n//======================================================================\nif(pageSys.nFReady.val==1)\n{\n  if(pageSys.nBReady.val==1)\n  {\n    pageSys.nMReady.val=1\n    tILock.bco=2024\n    tILock.txt=\"\"\n  }else\n  {\n    pageSys.nMReady.val=0\n    tILock.bco=63488\n    tILock.txt=\"\"\n  }\n}else\n{\n  pageSys.nMReady.val=0\n  tILock.bco=63488\n  tILock.txt=\"\"\n}\n//======================================================================\n// OUTPUT DISPLAY\n//======================================================================\nif(pageSys.frontLogin.val==1)\n{\n  nFOutD.val=pageSys.nFOut.val\n}else\n{\n  nFOutD.val=0\n}\nif(pageSys.backLogin.val==1)\n{\n  nBOutD.val=pageSys.nBOut.val\n}else\n{\n  nBOutD.val=0\n}\n//----------------------//\nif(pageSys.frontLogin.val==1)\n{\n  nFTgtD.val=pageSys.nFTarget.val\n}else\n{\n  nFTgtD.val=0\n}\nif(pageSys.backLogin.val==1)\n{\n  nBTgtD.val=pageSys.nBTarget.val\n}else\n{\n  nBTgtD.val=0\n}",
+            "Touch Press Event": "",
+            "Touch Release Event": "",
+            "Page Exit Event": ""
+        }
+    },
+    "Text t12": {
+        "Attributes": {
+            "ID": 1,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 0,
+            "y coordinate": 123,
+            "Width": 480,
+            "Height": 50,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 5,
+            "Back. Color": 11287,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t0": {
+        "Attributes": {
+            "ID": 2,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 0,
+            "y coordinate": 95,
+            "Width": 480,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 5,
+            "Back. Color": 50712,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Button aLayer": {
+        "Attributes": {
+            "ID": 3,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 6,
+            "y coordinate": 290,
+            "Width": 225,
+            "Height": 26,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 2,
+            "Back. Color": 65535,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 396,
+            "Font Color (Unpressed)": 396,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "DOWNTIME LAYER",
+            "Max. Text Size": 20,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Button bFLot": {
+        "Attributes": {
+            "ID": 4,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 5,
+            "y coordinate": 188,
+            "Width": 226,
+            "Height": 45,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 2,
+            "Back. Color": 65535,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 396,
+            "Font Color (Unpressed)": 396,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "left",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "GENIO/VARIO ESP 125 150 160",
+            "Max. Text Size": 80,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "if(pageSys.frontLogin.val==1)\n{\n  page pageLotF\n}else\n{\n  bFLot.txt=\"Login dulu\"\n}"
+        }
+    },
+    "Button bLayer": {
+        "Attributes": {
+            "ID": 5,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 247,
+            "y coordinate": 290,
+            "Width": 228,
+            "Height": 26,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 2,
+            "Back. Color": 65535,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 14944,
+            "Font Color (Unpressed)": 14944,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "DOWNTIME LAYER",
+            "Max. Text Size": 20,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Button bBLot": {
+        "Attributes": {
+            "ID": 6,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 247,
+            "y coordinate": 187,
+            "Width": 226,
+            "Height": 45,
+            "Fill": "solid color",
+            "Style": "border",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 2,
+            "Back. Color": 65535,
+            "Back. Picture ID (Pressed)": 65535,
+            "Back. Color (Pressed)": 14944,
+            "Font Color (Unpressed)": 14944,
+            "Font Color (Pressed)": 65535,
+            "Horizontal Alignment": "left",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "GENIO/VARIO ESP 125 150 160",
+            "Max. Text Size": 80,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "if(pageSys.backLogin.val==1)\n{\n  page pageLotB\n}else\n{\n  bBLot.txt=\"Login dulu\"\n}"
+        }
+    },
+    "Text t38": {
+        "Attributes": {
+            "ID": 7,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 2,
+            "y coordinate": 172,
+            "Width": 50,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "MODEL",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Button bLoginF": {
+        "Attributes": {
+            "ID": 8,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 202,
+            "y coordinate": 140,
+            "Width": 27,
+            "Height": 27,
+            "Fill": "image",
+            "Font ID": 1,
+            "Background Picture ID (Unpressed)": 7,
+            "Back. Picture ID (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "page pageLoginF"
+        }
+    },
+    "Text t39": {
+        "Attributes": {
+            "ID": 9,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 5,
+            "y coordinate": 236,
+            "Width": 44,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "CAVITY",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t40": {
+        "Attributes": {
+            "ID": 10,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 67,
+            "y coordinate": 236,
+            "Width": 30,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "ISI",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t46": {
+        "Attributes": {
+            "ID": 11,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 116,
+            "y coordinate": 236,
+            "Width": 52,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "OUTPUT",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Number nFCavD": {
+        "Attributes": {
+            "ID": 12,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 5,
+            "y coordinate": 252,
+            "Width": 44,
+            "Height": 30,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 4,
+            "Back. Color": 65535,
+            "Font Color": 396,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 16,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "if(pageSys.frontLogin.val==1)\n{\n  page pageMldF\n}else\n{\n  nFCavD.val=0\n}"
+        }
+    },
+    "Number nFIsiD": {
+        "Attributes": {
+            "ID": 13,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 59,
+            "y coordinate": 253,
+            "Width": 48,
+            "Height": 30,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 4,
+            "Back. Color": 65535,
+            "Font Color": 396,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 16,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "if(pageSys.frontLogin.val==1)\n{\n  page pageMldF\n}else\n{\n  nFIsiD.val=0\n}"
+        }
+    },
+    "Number nFOutD": {
+        "Attributes": {
+            "ID": 14,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 116,
+            "y coordinate": 252,
+            "Width": 52,
+            "Height": 30,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 4,
+            "Back. Color": 65535,
+            "Font Color": 396,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 48,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Number nBCavD": {
+        "Attributes": {
+            "ID": 15,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 246,
+            "y coordinate": 252,
+            "Width": 46,
+            "Height": 30,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 4,
+            "Back. Color": 65535,
+            "Font Color": 14944,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 16,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "if(pageSys.backLogin.val==1)\n{\n  page pageMldB\n}else\n{\n  nBCavD.val=0\n}"
+        }
+    },
+    "Number nBIsiD": {
+        "Attributes": {
+            "ID": 16,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 302,
+            "y coordinate": 253,
+            "Width": 51,
+            "Height": 30,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 4,
+            "Back. Color": 65535,
+            "Font Color": 14944,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 16,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "if(pageSys.backLogin.val==1)\n{\n  page pageMldB\n}else\n{\n  nBIsiD.val=0\n}"
+        }
+    },
+    "Number nBOutD": {
+        "Attributes": {
+            "ID": 17,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 360,
+            "y coordinate": 253,
+            "Width": 52,
+            "Height": 30,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 4,
+            "Back. Color": 65535,
+            "Font Color": 14944,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 48,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t1": {
+        "Attributes": {
+            "ID": 18,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 238,
+            "y coordinate": 94,
+            "Width": 2,
+            "Height": 225,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 5,
+            "Back. Color": 0,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t3": {
+        "Attributes": {
+            "ID": 19,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 247,
+            "y coordinate": 172,
+            "Width": 50,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "MODEL",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t4": {
+        "Attributes": {
+            "ID": 20,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 3,
+            "y coordinate": 133,
+            "Width": 87,
+            "Height": 15,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 11287,
+            "Font Color": 65504,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "MAN POWER 1",
+            "Max. Text Size": 20,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t5": {
+        "Attributes": {
+            "ID": 21,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 248,
+            "y coordinate": 133,
+            "Width": 87,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 11287,
+            "Font Color": 65504,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "MAN POWER 2",
+            "Max. Text Size": 20,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text tFStat": {
+        "Attributes": {
+            "ID": 22,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 5,
+            "y coordinate": 107,
+            "Width": 225,
+            "Height": 26,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 2,
+            "Back. Color": 50712,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "BP DEPAN",
+            "Max. Text Size": 30,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text tBStat": {
+        "Attributes": {
+            "ID": 23,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 237,
+            "y coordinate": 107,
+            "Width": 240,
+            "Height": 26,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 2,
+            "Back. Color": 50712,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "BP BELAKANG",
+            "Max. Text Size": 30,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Number n0": {
+        "Attributes": {
+            "ID": 24,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 178,
+            "y coordinate": 253,
+            "Width": 52,
+            "Height": 30,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 4,
+            "Back. Color": 65535,
+            "Font Color": 396,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 0,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t18": {
+        "Attributes": {
+            "ID": 25,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 177,
+            "y coordinate": 236,
+            "Width": 52,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "NG",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Number n1": {
+        "Attributes": {
+            "ID": 26,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 419,
+            "y coordinate": 252,
+            "Width": 55,
+            "Height": 30,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 0,
+            "Border Width": 2,
+            "Font ID": 4,
+            "Back. Color": 65535,
+            "Font Color": 14944,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 0,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t19": {
+        "Attributes": {
+            "ID": 27,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 247,
+            "y coordinate": 236,
+            "Width": 44,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "CAVITY",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t20": {
+        "Attributes": {
+            "ID": 28,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 311,
+            "y coordinate": 236,
+            "Width": 30,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "ISI",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t21": {
+        "Attributes": {
+            "ID": 29,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 360,
+            "y coordinate": 236,
+            "Width": 52,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "OUTPUT",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t22": {
+        "Attributes": {
+            "ID": 30,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 423,
+            "y coordinate": 236,
+            "Width": 52,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "NG",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text tFOpD": {
+        "Attributes": {
+            "ID": 31,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 3,
+            "y coordinate": 146,
+            "Width": 197,
+            "Height": 26,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 1,
+            "Back. Color": 11287,
+            "Font Color": 65535,
+            "Horizontal Alignment": "left",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "Dio Rama Anugrah",
+            "Max. Text Size": 30,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text tBOpD": {
+        "Attributes": {
+            "ID": 32,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 247,
+            "y coordinate": 146,
+            "Width": 197,
+            "Height": 26,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 1,
+            "Back. Color": 11287,
+            "Font Color": 65535,
+            "Horizontal Alignment": "left",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "Febrian Robbani Hidayat",
+            "Max. Text Size": 30,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Button bLoginB": {
+        "Attributes": {
+            "ID": 33,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 448,
+            "y coordinate": 140,
+            "Width": 27,
+            "Height": 27,
+            "Fill": "image",
+            "Font ID": 1,
+            "Background Picture ID (Unpressed)": 7,
+            "Back. Picture ID (Pressed)": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "page pageLoginB"
+        }
+    },
+    "Text t2": {
+        "Attributes": {
+            "ID": 34,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 0,
+            "y coordinate": 0,
+            "Width": 480,
+            "Height": 107,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 5,
+            "Back. Color": 0,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t9": {
+        "Attributes": {
+            "ID": 35,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 179,
+            "y coordinate": 35,
+            "Width": 125,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 1,
+            "Back. Color": 0,
+            "Font Color": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "HANDLING TIME",
+            "Max. Text Size": 25,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text tJam": {
+        "Attributes": {
+            "ID": 36,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 159,
+            "y coordinate": 50,
+            "Width": 42,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 63488,
+            "Border Width": 1,
+            "Font ID": 5,
+            "Back. Color": 65504,
+            "Font Color": 63488,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "00",
+            "Max. Text Size": 2,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text tMenit": {
+        "Attributes": {
+            "ID": 37,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 218,
+            "y coordinate": 50,
+            "Width": 42,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 63488,
+            "Border Width": 1,
+            "Font ID": 5,
+            "Back. Color": 65504,
+            "Font Color": 63488,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "00",
+            "Max. Text Size": 2,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text tDetik": {
+        "Attributes": {
+            "ID": 38,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 276,
+            "y coordinate": 50,
+            "Width": 42,
+            "Height": 38,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 63488,
+            "Border Width": 1,
+            "Font ID": 5,
+            "Back. Color": 65504,
+            "Font Color": 63488,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "00",
+            "Max. Text Size": 3,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t13": {
+        "Attributes": {
+            "ID": 39,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 261,
+            "y coordinate": 48,
+            "Width": 12,
+            "Height": 40,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 0,
+            "Border Width": 1,
+            "Font ID": 5,
+            "Back. Color": 0,
+            "Font Color": 63488,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": ":",
+            "Max. Text Size": 20,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t14": {
+        "Attributes": {
+            "ID": 40,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 202,
+            "y coordinate": 48,
+            "Width": 12,
+            "Height": 40,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 0,
+            "Border Width": 1,
+            "Font ID": 5,
+            "Back. Color": 0,
+            "Font Color": 63488,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": ":",
+            "Max. Text Size": 20,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t15": {
+        "Attributes": {
+            "ID": 41,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 162,
+            "y coordinate": 88,
+            "Width": 35,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 0,
+            "Font Color": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "JAM",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t16": {
+        "Attributes": {
+            "ID": 42,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 221,
+            "y coordinate": 88,
+            "Width": 35,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 0,
+            "Font Color": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "MENIT",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t17": {
+        "Attributes": {
+            "ID": 43,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 279,
+            "y coordinate": 88,
+            "Width": 35,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 0,
+            "Font Color": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "DETIK",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text tILock": {
+        "Attributes": {
+            "ID": 44,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 167,
+            "y coordinate": 5,
+            "Width": 143,
+            "Height": 29,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 5,
+            "Back. Color": 2024,
+            "Font Color": 63488,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Button iconSwitch": {
+        "Attributes": {
+            "ID": 45,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 452,
+            "y coordinate": 0,
+            "Width": 28,
+            "Height": 28,
+            "Fill": "image",
+            "Font ID": 0,
+            "Background Picture ID (Unpressed)": 11,
+            "Back. Picture ID (Pressed)": 10,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t8": {
+        "Attributes": {
+            "ID": 46,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 415,
+            "y coordinate": 43,
+            "Width": 62,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 0,
+            "Font Color": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "OUTPUT ",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Number output": {
+        "Attributes": {
+            "ID": 47,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 409,
+            "y coordinate": 57,
+            "Width": 69,
+            "Height": 43,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 65535,
+            "Border Width": 1,
+            "Font ID": 5,
+            "Back. Color": 0,
+            "Font Color": 13926,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 0,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 11,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t7": {
+        "Attributes": {
+            "ID": 48,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 365,
+            "y coordinate": 43,
+            "Width": 47,
+            "Height": 14,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 0,
+            "Font Color": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "AKTUAL",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Number aktual": {
+        "Attributes": {
+            "ID": 49,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 365,
+            "y coordinate": 57,
+            "Width": 42,
+            "Height": 43,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 65535,
+            "Border Width": 1,
+            "Font ID": 5,
+            "Back. Color": 0,
+            "Font Color": 1055,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 0,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t6": {
+        "Attributes": {
+            "ID": 50,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 317,
+            "y coordinate": 42,
+            "Width": 48,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 0,
+            "Font Color": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "TARGET",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Number nBTgtD": {
+        "Attributes": {
+            "ID": 51,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 322,
+            "y coordinate": 57,
+            "Width": 41,
+            "Height": 43,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 65535,
+            "Border Width": 1,
+            "Font ID": 5,
+            "Back. Color": 0,
+            "Font Color": 63488,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 0,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t25": {
+        "Attributes": {
+            "ID": 52,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 95,
+            "y coordinate": 43,
+            "Width": 62,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 0,
+            "Font Color": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "OUTPUT ",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Number n2": {
+        "Attributes": {
+            "ID": 53,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 89,
+            "y coordinate": 57,
+            "Width": 67,
+            "Height": 43,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 65535,
+            "Border Width": 1,
+            "Font ID": 5,
+            "Back. Color": 0,
+            "Font Color": 13926,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 0,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 11,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t27": {
+        "Attributes": {
+            "ID": 54,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 47,
+            "y coordinate": 43,
+            "Width": 47,
+            "Height": 14,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 0,
+            "Font Color": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "AKTUAL",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Number n3": {
+        "Attributes": {
+            "ID": 55,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 45,
+            "y coordinate": 57,
+            "Width": 42,
+            "Height": 43,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 65535,
+            "Border Width": 1,
+            "Font ID": 5,
+            "Back. Color": 0,
+            "Font Color": 1055,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 0,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t28": {
+        "Attributes": {
+            "ID": 56,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 1,
+            "y coordinate": 43,
+            "Width": 48,
+            "Height": 16,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 0,
+            "Back. Color": 0,
+            "Font Color": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "TARGET",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Number nFTgtD": {
+        "Attributes": {
+            "ID": 57,
+            "Scope": "global",
+            "Send Component ID": "disabled",
+            "x coordinate": 2,
+            "y coordinate": 57,
+            "Width": 41,
+            "Height": 43,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 65535,
+            "Border Width": 1,
+            "Font ID": 5,
+            "Back. Color": 0,
+            "Font Color": 63488,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Value": 0,
+            "Significant digits shown": "all",
+            "Format": "decimal",
+            "Word wrap": "enabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Button bSim": {
+        "Attributes": {
+            "ID": 58,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 68,
+            "y coordinate": 5,
+            "Width": 28,
+            "Height": 28,
+            "Fill": "image",
+            "Font ID": 0,
+            "Background Picture ID (Unpressed)": 11,
+            "Back. Picture ID (Pressed)": 10,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "if(pageSys.nMReady.val==1)\n{\n  page pageSim\n}else\n{\n  tILock.bco=63488\n}"
+        }
+    }
+}

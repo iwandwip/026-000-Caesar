@@ -1,0 +1,54 @@
+Program.s
+	0    Component(s)
+	6    Line(s) of event code
+	6    Unique line(s) of event code
+pageLoginB
+	10   Component(s)
+	37   Line(s) of event code
+	25   Unique line(s) of event code
+pageLoginF
+	10   Component(s)
+	37   Line(s) of event code
+	25   Unique line(s) of event code
+pageSys
+	36   Component(s)
+	0    Line(s) of event code
+	0    Unique line(s) of event code
+keybdB
+	28   Component(s)
+	177  Line(s) of event code
+	83   Unique line(s) of event code
+pageSim
+	35   Component(s)
+	126  Line(s) of event code
+	95   Unique line(s) of event code
+pageLotF
+	16   Component(s)
+	55   Line(s) of event code
+	44   Unique line(s) of event code
+pageLotB
+	16   Component(s)
+	55   Line(s) of event code
+	44   Unique line(s) of event code
+keybdA
+	51   Component(s)
+	416  Line(s) of event code
+	193  Unique line(s) of event code
+pageMldB
+	14   Component(s)
+	40   Line(s) of event code
+	32   Unique line(s) of event code
+pageMldF
+	14   Component(s)
+	40   Line(s) of event code
+	32   Unique line(s) of event code
+pageDashboard
+	59   Component(s)
+	236  Line(s) of event code
+	86   Unique line(s) of event code
+
+Total
+	11   Page(s)
+	289  Component(s)
+	1225 Line(s) of event code
+	540  Unique line(s) of event code
