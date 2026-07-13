@@ -13,7 +13,17 @@ void sendRtcText(const char* value) {
 
 void initRtc() {
   Wire.begin();
-  rtcReady = rtc.begin();
+
+  if (!rtc.begin()) {
+    rtcReady = false;
+    return;
+  }
+
+  if (rtc.lostPower()) {
+    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  }
+
+  rtcReady = true;
 }
 
 void getRtcTimestamp(char* buffer, size_t length) {
