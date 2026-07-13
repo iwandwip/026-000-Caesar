@@ -104,10 +104,13 @@ NexTouch* nex_listen_list[] = {
 void registerLoginCallbacks();
 void registerDowntimeCallbacks();
 void handleScanner();
+void initRtc();
+void updateTnow();
 
 void setup() {
   Serial.begin(115200);
   SCANNER_SERIAL.begin(SCANNER_BAUD, SERIAL_8N1, SCANNER_RX_PIN, SCANNER_TX_PIN);
+  initRtc();
   registerLoginCallbacks();
   registerDowntimeCallbacks();
 }
@@ -115,4 +118,5 @@ void setup() {
 void loop() {
   nexLoop(nex_listen_list);
   handleScanner();
+  updateTnow();
 }

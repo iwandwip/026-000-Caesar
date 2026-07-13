@@ -109,3 +109,27 @@ pageDashboard: remove AUTO OPEN DOWNTIME INFO WITH DASHBOARD BACKGROUND block th
 ```
 
 Keep `Send Component ID: on release` enabled for all downtime buttons above.
+
+## RTC Time
+
+V1 firmware uses DS3231 with Adafruit `RTClib`.
+
+`firmware/CaesarFirmwareV1/rtc.ino` reads RTC once per second and writes current time to `pageSys.tNow.txt`.
+
+Format:
+
+```text
+YYYY-MM-DD HH:MM:SS
+```
+
+Example:
+
+```text
+2026-07-14 12:30:00
+```
+
+Default ESP32 I2C pins are SDA `GPIO21` and SCL `GPIO22` when using `Wire.begin()`.
+
+`tmDash` remains HMI uptime timer only. Downtime start time uses `pageSys.tNow.txt`.
+
+Set DS3231 time separately before production use. Firmware only reads RTC time; it does not adjust RTC time on upload.

@@ -3,6 +3,8 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <Wire.h>
+#include <RTClib.h>
 
 #define SCANNER_SERIAL Serial2
 #define SCANNER_RX_PIN 16
