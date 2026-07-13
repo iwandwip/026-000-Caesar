@@ -4,7 +4,7 @@ char scannerBuffer[32];
 uint8_t scannerIdx = 0;
 
 void processScannerInput(const char* input) {
-  uint16_t id = (uint16_t)atoi(input);
+  uint32_t id = strtoul(input, NULL, 10);
   const Operator* op = findOperator(id);
 
   if (currentPageId == PAGE_LOGIN_F_ID) {
@@ -28,7 +28,13 @@ void processScannerInput(const char* input) {
     }
 
     setBackLogin(id, op->name);
+    return;
   }
+
+  nIdF.setValue(id);
+  nIdB.setValue(id);
+  tNameF.setText("PAGE?");
+  tNameB.setText("PAGE?");
 }
 
 void handleScanner() {

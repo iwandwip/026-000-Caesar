@@ -49,7 +49,7 @@ void clearBackLogin() {
 void handleFrontLogin() {
   uint32_t id = 0;
   nIdF.getValue(&id);
-  const Operator* op = findOperator((uint16_t)id);
+  const Operator* op = findOperator(id);
 
   if (op == nullptr) {
     tNameF.setText("ID SALAH");
@@ -62,7 +62,7 @@ void handleFrontLogin() {
 void handleBackLogin() {
   uint32_t id = 0;
   nIdB.getValue(&id);
-  const Operator* op = findOperator((uint16_t)id);
+  const Operator* op = findOperator(id);
 
   if (op == nullptr) {
     tNameB.setText("ID SALAH");

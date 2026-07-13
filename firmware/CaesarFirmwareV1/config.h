@@ -10,7 +10,7 @@
 #define SCANNER_BAUD 9600
 
 struct Operator {
-  uint16_t id;
+  uint32_t id;
   const char* name;
 };
 
@@ -22,7 +22,7 @@ static const Operator OPERATORS[] = {
 
 static const size_t OPERATOR_COUNT = sizeof(OPERATORS) / sizeof(OPERATORS[0]);
 
-inline const Operator* findOperator(uint16_t id) {
+inline const Operator* findOperator(uint32_t id) {
   for (size_t i = 0; i < OPERATOR_COUNT; i++) {
     if (OPERATORS[i].id == id) {
       return &OPERATORS[i];
