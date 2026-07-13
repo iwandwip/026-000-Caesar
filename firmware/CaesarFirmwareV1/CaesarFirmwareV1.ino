@@ -1,7 +1,7 @@
-void setup () {
+#include "Nextion.h"
 
+void setup() {
 }
 
-void loop () {
-  
+void loop() {
 }
