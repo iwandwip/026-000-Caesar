@@ -10,7 +10,8 @@ Page pageSim
     
     Events
         Preinitialize Event
-            
+            printh 65 16 00 00 FF FF FF
+        
         Postinitialize Event
             //======================================================================
             // LOAD DATA FRONT

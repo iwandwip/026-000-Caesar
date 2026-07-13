@@ -10,7 +10,8 @@ Page pageDashboard
     
     Events
         Preinitialize Event
-            
+            printh 65 00 00 00 FF FF FF
+        
         Postinitialize Event
             //======================================================================
             // OPERATOR NAME DISPLAY

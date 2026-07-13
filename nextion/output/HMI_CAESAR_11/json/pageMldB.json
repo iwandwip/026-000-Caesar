@@ -9,7 +9,7 @@
             "Fill": "no background (white)"
         },
         "Events": {
-            "Preinitialize Event": "",
+            "Preinitialize Event": "printh 65 04 00 00 FF FF FF",
             "Postinitialize Event": "tModMB.txt=pageSys.tBMldModel.txt\nnCavB.val=pageSys.nBCav.val\nnIsiB.val=pageSys.nBIsi.val",
             "Touch Press Event": "",
             "Touch Release Event": "",

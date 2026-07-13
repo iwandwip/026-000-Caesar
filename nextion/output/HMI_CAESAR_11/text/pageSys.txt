@@ -10,7 +10,8 @@ Page pageSys
     
     Events
         Preinitialize Event
-            
+            printh 65 17 00 00 FF FF FF
+        
         Postinitialize Event
             
         Touch Press Event

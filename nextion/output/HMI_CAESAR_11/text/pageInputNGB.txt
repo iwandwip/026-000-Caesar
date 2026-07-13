@@ -9,7 +9,6 @@ Page pageInputNGB
     
     Events
         Preinitialize Event
-            //65 page id press
             printh 65 09 00 00 FF FF FF
         
         Postinitialize Event

@@ -9,7 +9,7 @@
             "Fill": "no background (white)"
         },
         "Events": {
-            "Preinitialize Event": "//65 page id press\nprinth 65 0A 00 00 FF FF FF",
+            "Preinitialize Event": "printh 65 13 00 00 FF FF FF",
             "Postinitialize Event": "tDtInfoB.txt=pageSys.tBDtType.txt\ntDtStartB.txt=pageSys.tBDtStart.txt",
             "Touch Press Event": "",
             "Touch Release Event": "",

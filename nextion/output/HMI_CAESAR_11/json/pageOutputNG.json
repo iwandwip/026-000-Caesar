@@ -9,7 +9,7 @@
             "Fill": "no background (white)"
         },
         "Events": {
-            "Preinitialize Event": "//65 page id press\nprinth 65 06 00 00 FF FF FF",
+            "Preinitialize Event": "printh 65 07 00 00 FF FF FF",
             "Postinitialize Event": "//======================================================================\n// LOAD DATA FRONT\n//======================================================================\nnFTotalD.val=pageSys.nFOut.val\nnFNgD.val=pageSys.nFNG.val\nnFOkD.val=pageSys.nFOK.val\nif(pageSys.tFNgType.txt!=\"\")\n{\n  tNgTypeF.txt=pageSys.tFNgType.txt\n}else\n{\n  tNgTypeF.txt=\"Pilih Jenis\"\n}\n//======================================================================\n// LOAD DATA BACK\n//======================================================================\nnBTotalD.val=pageSys.nBOut.val\nnBNgD.val=pageSys.nBNG.val\nnBOkD.val=pageSys.nBOK.val\nif(pageSys.tBNgType.txt!=\"\")\n{\n  tNgTypeB.txt=pageSys.tBNgType.txt\n}else\n{\n  tNgTypeB.txt=\"Pilih Jenis\"\n}",
             "Touch Press Event": "",
             "Touch Release Event": "",

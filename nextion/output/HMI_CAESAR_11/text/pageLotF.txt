@@ -9,7 +9,8 @@ Page pageLotF
     
     Events
         Preinitialize Event
-            
+            printh 65 05 00 00 FF FF FF
+        
         Postinitialize Event
             tModF.txt=pageSys.tFModel.txt
             nTgtF.val=pageSys.nFTarget.val

@@ -9,8 +9,7 @@ Page pageDtInfoB
     
     Events
         Preinitialize Event
-            //65 page id press
-            printh 65 0A 00 00 FF FF FF
+            printh 65 13 00 00 FF FF FF
         
         Postinitialize Event
             tDtInfoB.txt=pageSys.tBDtType.txt

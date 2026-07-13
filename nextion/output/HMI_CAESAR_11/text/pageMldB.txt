@@ -9,7 +9,8 @@ Page pageMldB
     
     Events
         Preinitialize Event
-            
+            printh 65 04 00 00 FF FF FF
+        
         Postinitialize Event
             tModMB.txt=pageSys.tBMldModel.txt
             nCavB.val=pageSys.nBCav.val

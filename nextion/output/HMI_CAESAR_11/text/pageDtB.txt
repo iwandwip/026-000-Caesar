@@ -9,8 +9,7 @@ Page pageDtB
     
     Events
         Preinitialize Event
-            //65 page id press
-            printh 65 08 00 00 FF FF FF
+            printh 65 11 00 00 FF FF FF
         
         Postinitialize Event
             

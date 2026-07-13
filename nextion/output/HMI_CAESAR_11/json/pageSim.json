@@ -10,7 +10,7 @@
             "Back. Color": 65535
         },
         "Events": {
-            "Preinitialize Event": "",
+            "Preinitialize Event": "printh 65 16 00 00 FF FF FF",
             "Postinitialize Event": "//======================================================================\n// LOAD DATA FRONT\n//======================================================================\nnSCycF.val=pageSys.nFCyc.val\nnSOutF.val=pageSys.nFOut.val\nnSQuotaF.val=pageSys.nFQuota.val\nnSIsiF.val=pageSys.nFIsi.val\nnSNGF.val=pageSys.nFNG.val\nnSOKF.val=pageSys.nFOK.val\n//======================================================================\n// LOAD DATA BACK\n//======================================================================\nnSCycB.val=pageSys.nBCyc.val\nnSOutB.val=pageSys.nBOut.val\nnSQuotaB.val=pageSys.nBQuota.val\nnSIsiB.val=pageSys.nBIsi.val\nnSNGB.val=pageSys.nBNG.val\nnSOKB.val=pageSys.nBOK.val\n//======================================================================\n// CEK MESIN READY\n//======================================================================\nif(pageSys.nMReady.val==1)\n{\n  tSimInfo.txt=\"MESIN READY\"\n  tsw bCycleF,1\n  tsw bCycleB,1\n  tsw bCycleAll,1\n}else\n{\n  tSimInfo.txt=\"MESIN LOCK\"\n  tsw bCycleF,0\n  tsw bCycleB,0\n  tsw bCycleAll,0\n}",
             "Touch Press Event": "",
             "Touch Release Event": "",
