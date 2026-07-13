@@ -1,8 +1,8 @@
 #include "Nextion.h"
 #include "config.h"
 
-const uint8_t PAGE_LOGIN_F_ID = 2;
-const uint8_t PAGE_LOGIN_B_ID = 3;
+const uint8_t PAGE_LOGIN_F_ID = 1;
+const uint8_t PAGE_LOGIN_B_ID = 2;
 
 NexPage pageLoginF = NexPage(PAGE_LOGIN_F_ID, 0, "pageLoginF");
 NexButton bOkF = NexButton(PAGE_LOGIN_F_ID, 2, "bOkF");
