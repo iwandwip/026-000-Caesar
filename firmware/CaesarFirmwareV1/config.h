@@ -15,9 +15,9 @@ struct Operator {
 };
 
 static const Operator OPERATORS[] = {
-  { 1111, "BUDI" },
-  { 2222, "ANDI" },
-  { 3333, "SITI" }
+  { 1111, "Budi Andianto" },
+  { 2222, "Andi Saputra" },
+  { 3333, "Siti Nurhaliza" }
 };
 
 static const size_t OPERATOR_COUNT = sizeof(OPERATORS) / sizeof(OPERATORS[0]);

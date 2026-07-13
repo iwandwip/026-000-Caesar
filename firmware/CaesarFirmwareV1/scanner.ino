@@ -8,6 +8,8 @@ void processScannerInput(const char* input) {
   const Operator* op = findOperator(id);
 
   if (currentPageId == PAGE_LOGIN_F_ID) {
+    nIdF.setValue(id);
+
     if (op == nullptr) {
       tNameF.setText("ID SALAH");
       return;
@@ -18,6 +20,8 @@ void processScannerInput(const char* input) {
   }
 
   if (currentPageId == PAGE_LOGIN_B_ID) {
+    nIdB.setValue(id);
+
     if (op == nullptr) {
       tNameB.setText("ID SALAH");
       return;

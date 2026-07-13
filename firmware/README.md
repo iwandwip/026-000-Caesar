@@ -43,7 +43,7 @@ Nextion serial is selected in `firmware/libraries/ITEADLIB_Arduino_Nextion/NexCo
 
 Use `Serial`, `Serial1`, or `Serial2` based on wiring. Current setup uses `Serial` for both Nextion Editor simulator and real Nextion display.
 
-GM67 scanner serial is selected in `firmware/CaesarFirmwareV1/config.h`:
+GM66 scanner serial is selected in `firmware/CaesarFirmwareV1/config.h`:
 
 ```cpp
 #define SCANNER_SERIAL Serial2
@@ -58,11 +58,11 @@ Do not open Arduino Serial Monitor on the ESP32 USB COM port while Nextion Edito
 
 ITEADLIB debug serial is disabled in `NexConfig.h` because debug text would share the same serial channel as Nextion protocol when `nexSerial` is `Serial`.
 
-## GM67 Scanner
+## GM66 Scanner
 
-GM67 uses ESP32 `Serial2` at `9600` baud, `SERIAL_8N1`.
+GM66 uses ESP32 `Serial2` at `9600` baud, `SERIAL_8N1`.
 
-| GM67 Wire | ESP32 Pin |
+| GM66 Wire | ESP32 Pin |
 | --- | --- |
 | TX | GPIO16 / Serial2 RX |
 | RX | GPIO17 / Serial2 TX |
