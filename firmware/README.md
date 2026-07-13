@@ -81,3 +81,27 @@ Hardware device mode in `firmware/libraries/ITEADLIB_Arduino_Nextion/NexConfig.h
 Keep `config.h` and `NexConfig.h` modes matched.
 
 Simulator mode disables ITEADLIB debug serial because debug text and Nextion protocol share the same ESP32 USB serial port.
+
+## GM67 Scanner
+
+GM67 uses ESP32 `Serial1` at `9600` baud, `SERIAL_8N1`.
+
+| GM67 Wire | ESP32 Pin |
+| --- | --- |
+| TX | GPIO2 / Serial1 RX |
+| RX | GPIO4 / Serial1 TX |
+| VCC | 5V |
+| GND | GND |
+
+Open `pageLoginF` or `pageLoginB`, then scan operator ID. Firmware uses current login page to choose front or back login, validates ID from `OPERATORS[]`, updates `pageSys`, and writes operator name to `tNameF` or `tNameB`.
+
+Scanner stays on physical ESP32 `Serial1` in both simulator mode and device mode. Nextion simulator only changes display serial to ESP32 USB `Serial`.
+
+For page tracking, set these Nextion Preinitialize events:
+
+```text
+pageLoginF: printh 65 01 00 00 FF FF FF
+pageLoginB: printh 65 02 00 00 FF FF FF
+```
+
+Keep `bBackF` and `bBackB` Send Component ID on release so firmware clears current login-page state when leaving login page.

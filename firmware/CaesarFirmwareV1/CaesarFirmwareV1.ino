@@ -4,6 +4,8 @@
 const uint8_t PAGE_LOGIN_F_ID = 1;
 const uint8_t PAGE_LOGIN_B_ID = 2;
 
+uint8_t currentPageId = 0;
+
 NexPage pageLoginF = NexPage(PAGE_LOGIN_F_ID, 0, "pageLoginF");
 NexButton bOkF = NexButton(PAGE_LOGIN_F_ID, 2, "bOkF");
 NexButton bLogoutF = NexButton(PAGE_LOGIN_F_ID, 3, "bLogoutF");
@@ -25,9 +27,11 @@ NexTouch* nex_listen_list[] = {
 };
 
 void registerLoginCallbacks();
+void handleScanner();
 
 void setup() {
   Serial.begin(115200);
+  Serial1.begin(SCANNER_BAUD, SERIAL_8N1, SCANNER_RX_PIN, SCANNER_TX_PIN);
 #if NEXTION_MODE_DEVICE
   Serial2.begin(115200);
 #endif
@@ -36,4 +40,5 @@ void setup() {
 
 void loop() {
   nexLoop(nex_listen_list);
+  handleScanner();
 }

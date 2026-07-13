@@ -27,6 +27,7 @@ void setBackLogin(uint32_t id, const char* name) {
 }
 
 void clearFrontLogin() {
+  currentPageId = 0;
   sendCommand("pageSys.frontLogin.val=0");
   sendCommand("pageSys.nFOpId.val=0");
   sendCommand("pageSys.tFOpName.txt=\"\"");
@@ -36,6 +37,7 @@ void clearFrontLogin() {
 }
 
 void clearBackLogin() {
+  currentPageId = 0;
   sendCommand("pageSys.backLogin.val=0");
   sendCommand("pageSys.nBOpId.val=0");
   sendCommand("pageSys.tBOpName.txt=\"\"");
@@ -86,9 +88,29 @@ void bLogoutBCallback(void* ptr) {
   clearBackLogin();
 }
 
+void pageLoginFCallback(void* ptr) {
+  currentPageId = PAGE_LOGIN_F_ID;
+}
+
+void pageLoginBCallback(void* ptr) {
+  currentPageId = PAGE_LOGIN_B_ID;
+}
+
+void bBackFCallback(void* ptr) {
+  currentPageId = 0;
+}
+
+void bBackBCallback(void* ptr) {
+  currentPageId = 0;
+}
+
 void registerLoginCallbacks() {
+  pageLoginF.attachPush(pageLoginFCallback);
+  pageLoginB.attachPush(pageLoginBCallback);
   bOkF.attachPop(bOkFCallback);
   bOkB.attachPop(bOkBCallback);
   bLogoutF.attachPop(bLogoutFCallback);
   bLogoutB.attachPop(bLogoutBCallback);
+  bBackF.attachPop(bBackFCallback);
+  bBackB.attachPop(bBackBCallback);
 }
