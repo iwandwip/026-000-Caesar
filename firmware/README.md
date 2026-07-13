@@ -86,3 +86,26 @@ keybdB:       printh 65 19 00 00 FF FF FF
 ```
 
 The fourth byte is `00`, so firmware tracks page changes with `attachPop()` on page objects.
+
+## Downtime Firmware Flow
+
+Downtime button logic lives in `firmware/CaesarFirmwareV1/downtime.ino`.
+
+Front downtime buttons set `pageSys.nFDtAct`, `pageSys.tFDtType`, and `pageSys.tFDtStart`, then navigate to `pageDashboard`, wait briefly, and navigate to `pageDtInfoF`.
+
+Back downtime buttons use `pageSys.nBDtAct`, `pageSys.tBDtType`, and `pageSys.tBDtStart`, then navigate to `pageDtInfoB`.
+
+Machine downtime buttons use `pageSys.nMDtAct`, `pageSys.tMDtType`, and `pageSys.tMDtStart`, then navigate to `pageDtMcInfo`.
+
+RUNNING buttons clear the matching downtime state and return to `pageDashboard`.
+
+HMI changes required in Nextion Editor:
+
+```text
+pageDtF: clear Touch Release code for bBackDtF, bBhnF, bTggPnsF, bMoffF, bLbhPnsF, bKrgPnsF, bRunF, bTrialF
+pageDtB: clear Touch Release code for bBackDtB, bBhnB, bTggPnsB, bMoffB, bLbhPnsB, bKrgPnsB, bRunB, bTrialB
+pageDtMc: clear Touch Release code for bBackMc, bGMldMc, bCMldMc, bTrMc, bTrTlMc, bSetMc, bPrevMc, bOffMc, bRunMc, bOrisolMc
+pageDashboard: remove AUTO OPEN DOWNTIME INFO WITH DASHBOARD BACKGROUND block that checks pageSys.nDtPop.val
+```
+
+Keep `Send Component ID: on release` enabled for all downtime buttons above.
