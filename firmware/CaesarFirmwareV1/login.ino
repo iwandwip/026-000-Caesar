@@ -88,12 +88,8 @@ void bLogoutBCallback(void* ptr) {
   clearBackLogin();
 }
 
-void pageLoginFCallback(void* ptr) {
-  currentPageId = PAGE_LOGIN_F_ID;
-}
-
-void pageLoginBCallback(void* ptr) {
-  currentPageId = PAGE_LOGIN_B_ID;
+void pageCallback(void* ptr) {
+  currentPageId = *((const uint8_t*)ptr);
 }
 
 void bBackFCallback(void* ptr) {
@@ -105,8 +101,26 @@ void bBackBCallback(void* ptr) {
 }
 
 void registerLoginCallbacks() {
-  pageLoginF.attachPush(pageLoginFCallback);
-  pageLoginB.attachPush(pageLoginBCallback);
+  pageDashboard.attachPop(pageCallback, (void*)&PAGE_DASHBOARD_ID);
+  pageLoginF.attachPop(pageCallback, (void*)&PAGE_LOGIN_F_ID);
+  pageLoginB.attachPop(pageCallback, (void*)&PAGE_LOGIN_B_ID);
+  pageMldF.attachPop(pageCallback, (void*)&PAGE_MLD_F_ID);
+  pageMldB.attachPop(pageCallback, (void*)&PAGE_MLD_B_ID);
+  pageLotF.attachPop(pageCallback, (void*)&PAGE_LOT_F_ID);
+  pageLotB.attachPop(pageCallback, (void*)&PAGE_LOT_B_ID);
+  pageOutputNG.attachPop(pageCallback, (void*)&PAGE_OUTPUT_NG_ID);
+  pageInputNGF.attachPop(pageCallback, (void*)&PAGE_INPUT_NG_F_ID);
+  pageInputNGB.attachPop(pageCallback, (void*)&PAGE_INPUT_NG_B_ID);
+  pageDtF.attachPop(pageCallback, (void*)&PAGE_DT_F_ID);
+  pageDtB.attachPop(pageCallback, (void*)&PAGE_DT_B_ID);
+  pageDtInfoF.attachPop(pageCallback, (void*)&PAGE_DT_INFO_F_ID);
+  pageDtInfoB.attachPop(pageCallback, (void*)&PAGE_DT_INFO_B_ID);
+  pageDtMc.attachPop(pageCallback, (void*)&PAGE_DT_MC_ID);
+  pageDtMcInfo.attachPop(pageCallback, (void*)&PAGE_DT_MC_INFO_ID);
+  pageSim.attachPop(pageCallback, (void*)&PAGE_SIM_ID);
+  pageSys.attachPop(pageCallback, (void*)&PAGE_SYS_ID);
+  keybdA.attachPop(pageCallback, (void*)&PAGE_KEYBD_A_ID);
+  keybdB.attachPop(pageCallback, (void*)&PAGE_KEYBD_B_ID);
   bOkF.attachPop(bOkFCallback);
   bOkB.attachPop(bOkBCallback);
   bLogoutF.attachPop(bLogoutFCallback);

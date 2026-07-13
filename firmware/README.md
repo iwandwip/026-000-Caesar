@@ -73,11 +73,16 @@ Open `pageLoginF` or `pageLoginB`, then scan operator ID. Firmware uses current 
 
 Scanner stays on physical ESP32 `Serial2`. Nextion stays on ESP32 `Serial` for both simulator and real mode in current setup.
 
-For page tracking, set these Nextion Preinitialize events:
+For page tracking, set each Nextion page Preinitialize event to its page ID:
 
 ```text
-pageLoginF: printh 65 01 00 00 FF FF FF
-pageLoginB: printh 65 02 00 00 FF FF FF
+pageDashboard: printh 65 00 00 00 FF FF FF
+pageLoginF:   printh 65 01 00 00 FF FF FF
+pageLoginB:   printh 65 02 00 00 FF FF FF
+...
+pageSys:      printh 65 17 00 00 FF FF FF
+keybdA:       printh 65 18 00 00 FF FF FF
+keybdB:       printh 65 19 00 00 FF FF FF
 ```
 
-Keep `bBackF` and `bBackB` Send Component ID on release so firmware clears current login-page state when leaving login page.
+The fourth byte is `00`, so firmware tracks page changes with `attachPop()` on page objects.
