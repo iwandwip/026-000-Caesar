@@ -19,21 +19,21 @@ NexText tNameB = NexText(PAGE_LOGIN_B_ID, 7, "tNameB");
 NexNumber nIdB = NexNumber(PAGE_LOGIN_B_ID, 9, "nIdB");
 
 NexTouch* nex_listen_list[] = {
-    &pageLoginF, &bOkF, &bLogoutF, &bBackF, &tNameF, &nIdF,
-    &pageLoginB, &bOkB, &bLogoutB, &bBackB, &tNameB, &nIdB,
-    NULL
+  &pageLoginF, &bOkF, &bLogoutF, &bBackF, &tNameF, &nIdF,
+  &pageLoginB, &bOkB, &bLogoutB, &bBackB, &tNameB, &nIdB,
+  NULL
 };
 
 void registerLoginCallbacks();
 
 void setup() {
-    Serial.begin(115200);
+  Serial.begin(115200);
 #if NEXTION_MODE_DEVICE
-    Serial2.begin(115200);
+  Serial2.begin(115200);
 #endif
-    registerLoginCallbacks();
+  registerLoginCallbacks();
 }
 
 void loop() {
-    nexLoop(nex_listen_list);
+  nexLoop(nex_listen_list);
 }
