@@ -11,14 +11,6 @@
 #error Select one Nextion mode
 #endif
 
-#if NEXTION_MODE_SIMULATOR
-#define nexSerial Serial
-#endif
-
-#if NEXTION_MODE_DEVICE
-#define nexSerial Serial2
-#endif
-
 struct Operator {
   uint16_t id;
   const char* name;

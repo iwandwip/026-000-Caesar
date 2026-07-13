@@ -35,7 +35,7 @@ Page ID follows page order in Nextion Editor. Use these IDs when declaring `NexP
 
 ## Nextion Serial Mode
 
-Select mode in `firmware/CaesarFirmwareV1/config.h`.
+Select sketch mode in `firmware/CaesarFirmwareV1/config.h`.
 
 Windows simulator mode:
 
@@ -59,3 +59,25 @@ Hardware device mode:
 Simulator mode uses ESP32 USB serial. Do not open Arduino Serial Monitor on the same COM port while Nextion Editor Debug uses it.
 
 Device mode uses ESP32 `Serial2.begin(115200)` with default ESP32 pins: RX2 GPIO16 and TX2 GPIO17.
+
+## ITEADLIB Nextion Serial Mode
+
+The library under `firmware/libraries/ITEADLIB_Arduino_Nextion/` is modified for V1 simulator support. Library `.cpp` files do not read `firmware/CaesarFirmwareV1/config.h`, so `NexConfig.h` has its own mode selector.
+
+Simulator mode in `firmware/libraries/ITEADLIB_Arduino_Nextion/NexConfig.h`:
+
+```cpp
+#define NEXTION_LIBRARY_MODE_SIMULATOR 1
+#define NEXTION_LIBRARY_MODE_DEVICE 0
+```
+
+Hardware device mode in `firmware/libraries/ITEADLIB_Arduino_Nextion/NexConfig.h`:
+
+```cpp
+#define NEXTION_LIBRARY_MODE_SIMULATOR 0
+#define NEXTION_LIBRARY_MODE_DEVICE 1
+```
+
+Keep `config.h` and `NexConfig.h` modes matched.
+
+Simulator mode disables ITEADLIB debug serial because debug text and Nextion protocol share the same ESP32 USB serial port.
