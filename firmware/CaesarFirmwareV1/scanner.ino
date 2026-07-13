@@ -31,10 +31,6 @@ void processScannerInput(const char* input) {
     return;
   }
 
-  nIdF.setValue(id);
-  nIdB.setValue(id);
-  tNameF.setText("PAGE?");
-  tNameB.setText("PAGE?");
 }
 
 void handleScanner() {
