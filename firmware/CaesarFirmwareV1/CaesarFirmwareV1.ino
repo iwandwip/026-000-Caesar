@@ -1,5 +1,5 @@
-#include "Nextion.h"
 #include "config.h"
+#include "Nextion.h"
 
 const uint8_t PAGE_LOGIN_F_ID = 1;
 const uint8_t PAGE_LOGIN_B_ID = 2;
@@ -28,7 +28,9 @@ void registerLoginCallbacks();
 
 void setup() {
     Serial.begin(115200);
+#if NEXTION_MODE_DEVICE
     Serial2.begin(115200);
+#endif
     registerLoginCallbacks();
 }
 

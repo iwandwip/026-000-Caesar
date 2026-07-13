@@ -4,6 +4,21 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#define NEXTION_MODE_SIMULATOR 1
+#define NEXTION_MODE_DEVICE 0
+
+#if NEXTION_MODE_SIMULATOR == NEXTION_MODE_DEVICE
+#error Select one Nextion mode
+#endif
+
+#if NEXTION_MODE_SIMULATOR
+#define nexSerial Serial
+#endif
+
+#if NEXTION_MODE_DEVICE
+#define nexSerial Serial2
+#endif
+
 struct Operator {
     uint16_t id;
     const char* name;

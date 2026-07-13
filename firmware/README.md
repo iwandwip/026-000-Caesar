@@ -32,3 +32,30 @@ Page ID follows page order in Nextion Editor. Use these IDs when declaring `NexP
 `pageLoginF` uses Page ID `1`.
 
 `pageLoginB` uses Page ID `2`.
+
+## Nextion Serial Mode
+
+Select mode in `firmware/CaesarFirmwareV1/config.h`.
+
+Windows simulator mode:
+
+```cpp
+#define NEXTION_MODE_SIMULATOR 1
+#define NEXTION_MODE_DEVICE 0
+```
+
+Hardware device mode:
+
+```cpp
+#define NEXTION_MODE_SIMULATOR 0
+#define NEXTION_MODE_DEVICE 1
+```
+
+| Mode | `nexSerial` | Use Case |
+| --- | --- | --- |
+| Simulator | `Serial` | Nextion Editor Debug -> User MCU Input via ESP32 USB COM port |
+| Device | `Serial2` | Real Nextion display wired to ESP32 RX2/TX2 |
+
+Simulator mode uses ESP32 USB serial. Do not open Arduino Serial Monitor on the same COM port while Nextion Editor Debug uses it.
+
+Device mode uses ESP32 `Serial2.begin(115200)` with default ESP32 pins: RX2 GPIO16 and TX2 GPIO17.
