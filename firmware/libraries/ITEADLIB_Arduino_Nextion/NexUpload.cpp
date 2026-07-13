@@ -14,10 +14,10 @@
  */
 
 #include "NexUpload.h"
-#include <SoftwareSerial.h>
 
 //#define USE_SOFTWARE_SERIAL
-#ifdef USE_SOFTWARE_SERIAL
+#if defined(USE_SOFTWARE_SERIAL) && !defined(ARDUINO_ARCH_ESP32)
+#include <SoftwareSerial.h>
 SoftwareSerial dbSerial(3, 2); /* RX:D3, TX:D2 */
 #define DEBUG_SERIAL_ENABLE
 #endif
@@ -237,4 +237,3 @@ bool NexUpload::_downloadTftFile(void)
          --send_timer;
     }  
 }
-
