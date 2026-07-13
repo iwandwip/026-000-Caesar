@@ -4,16 +4,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#define NEXTION_MODE_SIMULATOR 1
-#define NEXTION_MODE_DEVICE 0
-
-#define SCANNER_RX_PIN 2
-#define SCANNER_TX_PIN 4
+#define SCANNER_SERIAL Serial2
+#define SCANNER_RX_PIN 16
+#define SCANNER_TX_PIN 17
 #define SCANNER_BAUD 9600
-
-#if NEXTION_MODE_SIMULATOR == NEXTION_MODE_DEVICE
-#error Select one Nextion mode
-#endif
 
 struct Operator {
   uint16_t id;

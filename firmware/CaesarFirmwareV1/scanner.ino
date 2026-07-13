@@ -28,8 +28,8 @@ void processScannerInput(const char* input) {
 }
 
 void handleScanner() {
-  while (Serial1.available()) {
-    char c = (char)Serial1.read();
+  while (SCANNER_SERIAL.available()) {
+    char c = (char)SCANNER_SERIAL.read();
 
     if (c == '\n' || c == '\r') {
       if (scannerIdx > 0) {

@@ -20,20 +20,11 @@
  * @{ 
  */
 
-#define NEXTION_LIBRARY_MODE_SIMULATOR 1
-#define NEXTION_LIBRARY_MODE_DEVICE 0
-
-#if NEXTION_LIBRARY_MODE_SIMULATOR == NEXTION_LIBRARY_MODE_DEVICE
-#error Select one Nextion library serial mode
-#endif
-
 /**
  * Define DEBUG_SERIAL_ENABLE to enable debug serial.
  * Comment it to disable debug serial.
  */
-#if NEXTION_LIBRARY_MODE_DEVICE
-#define DEBUG_SERIAL_ENABLE
-#endif
+/* #define DEBUG_SERIAL_ENABLE */
 
 /**
  * Define dbSerial for the output of debug messages. 
@@ -43,13 +34,7 @@
 /**
  * Define nexSerial for communicate with Nextion touch panel.
  */
-#if NEXTION_LIBRARY_MODE_SIMULATOR
 #define nexSerial Serial
-#endif
-
-#if NEXTION_LIBRARY_MODE_DEVICE
-#define nexSerial Serial2
-#endif
 
 
 #ifdef DEBUG_SERIAL_ENABLE

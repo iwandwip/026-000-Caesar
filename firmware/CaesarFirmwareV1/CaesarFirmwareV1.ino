@@ -31,10 +31,7 @@ void handleScanner();
 
 void setup() {
   Serial.begin(115200);
-  Serial1.begin(SCANNER_BAUD, SERIAL_8N1, SCANNER_RX_PIN, SCANNER_TX_PIN);
-#if NEXTION_MODE_DEVICE
-  Serial2.begin(115200);
-#endif
+  SCANNER_SERIAL.begin(SCANNER_BAUD, SERIAL_8N1, SCANNER_RX_PIN, SCANNER_TX_PIN);
   registerLoginCallbacks();
 }
 

@@ -33,69 +33,45 @@ Page ID follows page order in Nextion Editor. Use these IDs when declaring `NexP
 
 `pageLoginB` uses Page ID `2`.
 
-## Nextion Serial Mode
+## Serial Selection
 
-Select sketch mode in `firmware/CaesarFirmwareV1/config.h`.
-
-Windows simulator mode:
+Nextion serial is selected in `firmware/libraries/ITEADLIB_Arduino_Nextion/NexConfig.h`:
 
 ```cpp
-#define NEXTION_MODE_SIMULATOR 1
-#define NEXTION_MODE_DEVICE 0
+#define nexSerial Serial
 ```
 
-Hardware device mode:
+Use `Serial`, `Serial1`, or `Serial2` based on wiring. Current setup uses `Serial` for both Nextion Editor simulator and real Nextion display.
+
+GM67 scanner serial is selected in `firmware/CaesarFirmwareV1/config.h`:
 
 ```cpp
-#define NEXTION_MODE_SIMULATOR 0
-#define NEXTION_MODE_DEVICE 1
+#define SCANNER_SERIAL Serial2
+#define SCANNER_RX_PIN 16
+#define SCANNER_TX_PIN 17
+#define SCANNER_BAUD 9600
 ```
 
-| Mode | `nexSerial` | Use Case |
-| --- | --- | --- |
-| Simulator | `Serial` | Nextion Editor Debug -> User MCU Input via ESP32 USB COM port |
-| Device | `Serial2` | Real Nextion display wired to ESP32 RX2/TX2 |
+Use `Serial`, `Serial1`, or `Serial2` for `SCANNER_SERIAL`. Current setup uses `Serial2` with ESP32 default RX2/TX2 pins.
 
-Simulator mode uses ESP32 USB serial. Do not open Arduino Serial Monitor on the same COM port while Nextion Editor Debug uses it.
+Do not open Arduino Serial Monitor on the ESP32 USB COM port while Nextion Editor Debug uses `Serial`.
 
-Device mode uses ESP32 `Serial2.begin(115200)` with default ESP32 pins: RX2 GPIO16 and TX2 GPIO17.
-
-## ITEADLIB Nextion Serial Mode
-
-The library under `firmware/libraries/ITEADLIB_Arduino_Nextion/` is modified for V1 simulator support. Library `.cpp` files do not read `firmware/CaesarFirmwareV1/config.h`, so `NexConfig.h` has its own mode selector.
-
-Simulator mode in `firmware/libraries/ITEADLIB_Arduino_Nextion/NexConfig.h`:
-
-```cpp
-#define NEXTION_LIBRARY_MODE_SIMULATOR 1
-#define NEXTION_LIBRARY_MODE_DEVICE 0
-```
-
-Hardware device mode in `firmware/libraries/ITEADLIB_Arduino_Nextion/NexConfig.h`:
-
-```cpp
-#define NEXTION_LIBRARY_MODE_SIMULATOR 0
-#define NEXTION_LIBRARY_MODE_DEVICE 1
-```
-
-Keep `config.h` and `NexConfig.h` modes matched.
-
-Simulator mode disables ITEADLIB debug serial because debug text and Nextion protocol share the same ESP32 USB serial port.
+ITEADLIB debug serial is disabled in `NexConfig.h` because debug text would share the same serial channel as Nextion protocol when `nexSerial` is `Serial`.
 
 ## GM67 Scanner
 
-GM67 uses ESP32 `Serial1` at `9600` baud, `SERIAL_8N1`.
+GM67 uses ESP32 `Serial2` at `9600` baud, `SERIAL_8N1`.
 
 | GM67 Wire | ESP32 Pin |
 | --- | --- |
-| TX | GPIO2 / Serial1 RX |
-| RX | GPIO4 / Serial1 TX |
+| TX | GPIO16 / Serial2 RX |
+| RX | GPIO17 / Serial2 TX |
 | VCC | 5V |
 | GND | GND |
 
 Open `pageLoginF` or `pageLoginB`, then scan operator ID. Firmware uses current login page to choose front or back login, validates ID from `OPERATORS[]`, updates `pageSys`, and writes operator name to `tNameF` or `tNameB`.
 
-Scanner stays on physical ESP32 `Serial1` in both simulator mode and device mode. Nextion simulator only changes display serial to ESP32 USB `Serial`.
+Scanner stays on physical ESP32 `Serial2`. Nextion stays on ESP32 `Serial` for both simulator and real mode in current setup.
 
 For page tracking, set these Nextion Preinitialize events:
 
