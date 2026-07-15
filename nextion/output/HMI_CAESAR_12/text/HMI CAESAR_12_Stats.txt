@@ -1,0 +1,90 @@
+Program.s
+	0    Component(s)
+	7    Line(s) of event code
+	7    Unique line(s) of event code
+pageDtMcInfo
+	5    Component(s)
+	4    Line(s) of event code
+	4    Unique line(s) of event code
+pageLoginB
+	10   Component(s)
+	9    Line(s) of event code
+	8    Unique line(s) of event code
+keybdB
+	28   Component(s)
+	177  Line(s) of event code
+	83   Unique line(s) of event code
+pageMldF
+	14   Component(s)
+	5    Line(s) of event code
+	5    Unique line(s) of event code
+pageDtInfoF
+	6    Component(s)
+	4    Line(s) of event code
+	4    Unique line(s) of event code
+pageDtInfoB
+	6    Component(s)
+	4    Line(s) of event code
+	4    Unique line(s) of event code
+keybdA
+	51   Component(s)
+	416  Line(s) of event code
+	193  Unique line(s) of event code
+pageLoginF
+	10   Component(s)
+	9    Line(s) of event code
+	8    Unique line(s) of event code
+pageDtF
+	10   Component(s)
+	5    Line(s) of event code
+	5    Unique line(s) of event code
+pageSys
+	59   Component(s)
+	1    Line(s) of event code
+	1    Unique line(s) of event code
+pageDtB
+	10   Component(s)
+	5    Line(s) of event code
+	5    Unique line(s) of event code
+pageInputNGB
+	12   Component(s)
+	17   Line(s) of event code
+	15   Unique line(s) of event code
+pageMldB
+	14   Component(s)
+	5    Line(s) of event code
+	5    Unique line(s) of event code
+pageDtMc
+	15   Component(s)
+	5    Line(s) of event code
+	5    Unique line(s) of event code
+pageLotF
+	16   Component(s)
+	5    Line(s) of event code
+	5    Unique line(s) of event code
+pageInputNGF
+	12   Component(s)
+	17   Line(s) of event code
+	15   Unique line(s) of event code
+pageLotB
+	16   Component(s)
+	5    Line(s) of event code
+	5    Unique line(s) of event code
+pageSim
+	35   Component(s)
+	137  Line(s) of event code
+	94   Unique line(s) of event code
+pageOutputNG
+	28   Component(s)
+	83   Line(s) of event code
+	56   Unique line(s) of event code
+pageDashboard
+	60   Component(s)
+	338  Line(s) of event code
+	129  Unique line(s) of event code
+
+Total
+	20   Page(s)
+	417  Component(s)
+	1258 Line(s) of event code
+	524  Unique line(s) of event code
