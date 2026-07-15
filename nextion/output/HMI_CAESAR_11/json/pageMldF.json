@@ -131,7 +131,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "tInMF.txt=\"\"\ntModMF.txt=\"\"\nnCavF.val=0\nnIsiF.val=0\npageSys.tFMld.txt=\"\"\npageSys.tFMldModel.txt=\"\"\npageSys.nFCav.val=0\npageSys.nFIsi.val=0"
+            "Touch Release Event": ""
         }
     },
     "Button bOkMF": {
@@ -162,7 +162,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "if(tInMF.txt==\"A008A\")\n{\n  tModMF.txt=\"MOULD A\"\n  nCavF.val=8\n}else if(tInMF.txt==\"B006B\")\n{\n  tModMF.txt=\"MOULD B\"\n  nCavF.val=6\n}else if(tInMF.txt==\"C004C\")\n{\n  tModMF.txt=\"MOULD C\"\n  nCavF.val=4\n}else\n{\n  tModMF.txt=\"MOULD NG\"\n  nCavF.val=0\n}\nif(nCavF.val==0)\n{\n  tModMF.txt=\"MOULD NG\"\n}else\n{\n  nIsiF.val=nCavF.val\n  pageSys.tFMld.txt=tInMF.txt\n  pageSys.tFMldModel.txt=tModMF.txt\n  pageSys.nFCav.val=nCavF.val\n  pageSys.nFIsi.val=nIsiF.val\n}"
+            "Touch Release Event": ""
         }
     },
     "Button bBackMF": {

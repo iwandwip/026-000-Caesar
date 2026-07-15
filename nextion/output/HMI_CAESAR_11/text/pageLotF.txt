@@ -410,17 +410,7 @@ Button bClearF
         Touch Press Event
             
         Touch Release Event
-            tInF.txt=""
-            tModF.txt=""
-            nTgtF.val=0
-            nQuoF.val=0
-            nIsiLotF.val=pageSys.nFCav.val
-            pageSys.tFLot.txt=""
-            pageSys.tFModel.txt=""
-            pageSys.nFTarget.val=0
-            pageSys.nFQuota.val=0
-            pageSys.nFIsi.val=pageSys.nFCav.val
-        
+            
 Button bOkF
     Attributes
         ID                        : 6
@@ -451,48 +441,7 @@ Button bOkF
         Touch Press Event
             
         Touch Release Event
-            if(tInF.txt=="1111")
-            {
-                tModF.txt="DEP FUSO"
-                nTgtF.val=108
-                nQuoF.val=108
-            }else if(tInF.txt=="2222")
-            {
-                tModF.txt="VARIO125"
-                nTgtF.val=120
-                nQuoF.val=120
-            }else if(tInF.txt=="3333")
-            {
-                tModF.txt="GENIO"
-                nTgtF.val=96
-                nQuoF.val=96
-            }else
-            {
-                tModF.txt="LOT NG"
-                nTgtF.val=0
-                nQuoF.val=0
-            }
-            if(nTgtF.val==0)
-            {
-                tModF.txt="LOT NG"
-            }else if(pageSys.nFCav.val==0)
-            {
-                tModF.txt="NO MOULD"
-            }else if(nIsiLotF.val==0)
-            {
-                tModF.txt="ISI 0"
-            }else if(nIsiLotF.val>pageSys.nFCav.val)
-            {
-                tModF.txt="ISI > CAV"
-            }else
-            {
-                pageSys.tFLot.txt=tInF.txt
-                pageSys.tFModel.txt=tModF.txt
-                pageSys.nFTarget.val=nTgtF.val
-                pageSys.nFQuota.val=nQuoF.val
-                pageSys.nFIsi.val=nIsiLotF.val
-            }
-        
+            
 Button bBackF
     Attributes
         ID                        : 7

@@ -350,15 +350,7 @@ Button bClearMB
         Touch Press Event
             
         Touch Release Event
-            tInMB.txt=""
-            tModMB.txt=""
-            nCavB.val=0
-            nIsiB.val=0
-            pageSys.tBMld.txt=""
-            pageSys.tBMldModel.txt=""
-            pageSys.nBCav.val=0
-            pageSys.nBIsi.val=0
-        
+            
 Button bOkMB
     Attributes
         ID                        : 5
@@ -389,35 +381,7 @@ Button bOkMB
         Touch Press Event
             
         Touch Release Event
-            if(tInMB.txt=="A008A")
-            {
-                tModMB.txt="MOULD A"
-                nCavB.val=8
-            }else if(tInMB.txt=="B006B")
-            {
-                tModMB.txt="MOULD B"
-                nCavB.val=6
-            }else if(tInMB.txt=="C004C")
-            {
-                tModMB.txt="MOULD C"
-                nCavB.val=4
-            }else
-            {
-                tModMB.txt="MOULD NG"
-                nCavB.val=0
-            }
-            if(nCavB.val==0)
-            {
-                tModMB.txt="MOULD NG"
-            }else
-            {
-                nIsiB.val=nCavB.val
-                pageSys.tBMld.txt=tInMB.txt
-                pageSys.tBMldModel.txt=tModMB.txt
-                pageSys.nBCav.val=nCavB.val
-                pageSys.nBIsi.val=nIsiB.val
-            }
-        
+            
 Button bBackMB
     Attributes
         ID                        : 6

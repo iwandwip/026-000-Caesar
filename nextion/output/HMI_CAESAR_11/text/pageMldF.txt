@@ -350,15 +350,7 @@ Button bClearMF
         Touch Press Event
             
         Touch Release Event
-            tInMF.txt=""
-            tModMF.txt=""
-            nCavF.val=0
-            nIsiF.val=0
-            pageSys.tFMld.txt=""
-            pageSys.tFMldModel.txt=""
-            pageSys.nFCav.val=0
-            pageSys.nFIsi.val=0
-        
+            
 Button bOkMF
     Attributes
         ID                        : 5
@@ -389,35 +381,7 @@ Button bOkMF
         Touch Press Event
             
         Touch Release Event
-            if(tInMF.txt=="A008A")
-            {
-                tModMF.txt="MOULD A"
-                nCavF.val=8
-            }else if(tInMF.txt=="B006B")
-            {
-                tModMF.txt="MOULD B"
-                nCavF.val=6
-            }else if(tInMF.txt=="C004C")
-            {
-                tModMF.txt="MOULD C"
-                nCavF.val=4
-            }else
-            {
-                tModMF.txt="MOULD NG"
-                nCavF.val=0
-            }
-            if(nCavF.val==0)
-            {
-                tModMF.txt="MOULD NG"
-            }else
-            {
-                nIsiF.val=nCavF.val
-                pageSys.tFMld.txt=tInMF.txt
-                pageSys.tFMldModel.txt=tModMF.txt
-                pageSys.nFCav.val=nCavF.val
-                pageSys.nFIsi.val=nIsiF.val
-            }
-        
+            
 Button bBackMF
     Attributes
         ID                        : 6

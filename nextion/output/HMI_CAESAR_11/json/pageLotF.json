@@ -162,7 +162,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "tInF.txt=\"\"\ntModF.txt=\"\"\nnTgtF.val=0\nnQuoF.val=0\nnIsiLotF.val=pageSys.nFCav.val\npageSys.tFLot.txt=\"\"\npageSys.tFModel.txt=\"\"\npageSys.nFTarget.val=0\npageSys.nFQuota.val=0\npageSys.nFIsi.val=pageSys.nFCav.val"
+            "Touch Release Event": ""
         }
     },
     "Button bOkF": {
@@ -193,7 +193,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "if(tInF.txt==\"1111\")\n{\n  tModF.txt=\"DEP FUSO\"\n  nTgtF.val=108\n  nQuoF.val=108\n}else if(tInF.txt==\"2222\")\n{\n  tModF.txt=\"VARIO125\"\n  nTgtF.val=120\n  nQuoF.val=120\n}else if(tInF.txt==\"3333\")\n{\n  tModF.txt=\"GENIO\"\n  nTgtF.val=96\n  nQuoF.val=96\n}else\n{\n  tModF.txt=\"LOT NG\"\n  nTgtF.val=0\n  nQuoF.val=0\n}\nif(nTgtF.val==0)\n{\n  tModF.txt=\"LOT NG\"\n}else if(pageSys.nFCav.val==0)\n{\n  tModF.txt=\"NO MOULD\"\n}else if(nIsiLotF.val==0)\n{\n  tModF.txt=\"ISI 0\"\n}else if(nIsiLotF.val>pageSys.nFCav.val)\n{\n  tModF.txt=\"ISI > CAV\"\n}else\n{\n  pageSys.tFLot.txt=tInF.txt\n  pageSys.tFModel.txt=tModF.txt\n  pageSys.nFTarget.val=nTgtF.val\n  pageSys.nFQuota.val=nQuoF.val\n  pageSys.nFIsi.val=nIsiLotF.val\n}"
+            "Touch Release Event": ""
         }
     },
     "Button bBackF": {

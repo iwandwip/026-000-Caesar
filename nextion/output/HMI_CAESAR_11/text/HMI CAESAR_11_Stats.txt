@@ -16,8 +16,8 @@ keybdB
 	83   Unique line(s) of event code
 pageLotF
 	16   Component(s)
-	56   Line(s) of event code
-	45   Unique line(s) of event code
+	5    Line(s) of event code
+	5    Unique line(s) of event code
 pageDtInfoF
 	6    Component(s)
 	4    Line(s) of event code
@@ -52,20 +52,20 @@ pageInputNGB
 	15   Unique line(s) of event code
 pageMldF
 	14   Component(s)
-	41   Line(s) of event code
-	33   Unique line(s) of event code
+	5    Line(s) of event code
+	5    Unique line(s) of event code
 pageMldB
 	14   Component(s)
-	41   Line(s) of event code
-	33   Unique line(s) of event code
+	5    Line(s) of event code
+	5    Unique line(s) of event code
 pageDtMc
 	15   Component(s)
 	5    Line(s) of event code
 	5    Unique line(s) of event code
 pageLotB
 	16   Component(s)
-	56   Line(s) of event code
-	45   Unique line(s) of event code
+	5    Line(s) of event code
+	5    Unique line(s) of event code
 pageInputNGF
 	12   Component(s)
 	17   Line(s) of event code
@@ -86,5 +86,5 @@ pageDashboard
 Total
 	20   Page(s)
 	417  Component(s)
-	1434 Line(s) of event code
-	647  Unique line(s) of event code
+	1260 Line(s) of event code
+	525  Unique line(s) of event code
