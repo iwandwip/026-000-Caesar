@@ -1,0 +1,168 @@
+{
+    "Page pageDtInfoB": {
+        "Attributes": {
+            "ID": 0,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "Width": 480,
+            "Locked": "no",
+            "Fill": "no background (white)"
+        },
+        "Events": {
+            "Preinitialize Event": "printh 65 13 00 00 FF FF FF",
+            "Postinitialize Event": "tDtInfoB.txt=pageSys.tBDtType.txt\ntDtStartB.txt=pageSys.tBDtStart.txt",
+            "Touch Press Event": "",
+            "Touch Release Event": "",
+            "Page Exit Event": ""
+        }
+    },
+    "Text tDtStartB": {
+        "Attributes": {
+            "ID": 1,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 261,
+            "y coordinate": 248,
+            "Width": 194,
+            "Height": 58,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 63488,
+            "Border Width": 3,
+            "Font ID": 2,
+            "Back. Color": 65504,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "",
+            "Max. Text Size": 30,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t2": {
+        "Attributes": {
+            "ID": 2,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 291,
+            "y coordinate": 215,
+            "Width": 134,
+            "Height": 28,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 63488,
+            "Border Width": 2,
+            "Font ID": 3,
+            "Back. Color": 0,
+            "Font Color": 65535,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "START TIME",
+            "Max. Text Size": 30,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Text t3": {
+        "Attributes": {
+            "ID": 3,
+            "Scope": "local",
+            "Send Component ID": "disabled",
+            "x coordinate": 234,
+            "y coordinate": 94,
+            "Width": 2,
+            "Height": 225,
+            "Fill": "solid color",
+            "Style": "flat",
+            "Associated Keyboard": "none",
+            "Font ID": 5,
+            "Back. Color": 0,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    },
+    "Button bBackInfoB": {
+        "Attributes": {
+            "ID": 4,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 254,
+            "y coordinate": 93,
+            "Width": 38,
+            "Height": 38,
+            "Fill": "image",
+            "Font ID": 0,
+            "Background Picture ID (Unpressed)": 9,
+            "Back. Picture ID (Pressed)": 10,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "State": "unpressed",
+            "Text": "",
+            "Max. Text Size": 10,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": "page pageDtB"
+        }
+    },
+    "Text tDtInfoB": {
+        "Attributes": {
+            "ID": 5,
+            "Scope": "global",
+            "Send Component ID": "on release",
+            "x coordinate": 255,
+            "y coordinate": 136,
+            "Width": 202,
+            "Height": 57,
+            "Fill": "solid color",
+            "Style": "border",
+            "Associated Keyboard": "none",
+            "Border Color": 63488,
+            "Border Width": 6,
+            "Font ID": 3,
+            "Back. Color": 65535,
+            "Font Color": 0,
+            "Horizontal Alignment": "center",
+            "Vertical Alignment": "center",
+            "Input Type": "character",
+            "Text": "",
+            "Max. Text Size": 30,
+            "Word wrap": "disabled",
+            "Horizontal Spacing": 0,
+            "Vertical Spacing": 0
+        },
+        "Events": {
+            "Touch Press Event": "",
+            "Touch Release Event": ""
+        }
+    }
+}
