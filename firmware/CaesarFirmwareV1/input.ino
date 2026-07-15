@@ -12,6 +12,65 @@ void sendInputValue(const char* component, uint32_t value) {
   sendCommand(command);
 }
 
+bool readNextionText(const char* component, char* buffer, size_t bufferSize) {
+  if (bufferSize == 0) {
+    return false;
+  }
+
+  buffer[0] = '\0';
+
+  char command[64];
+  snprintf(command, sizeof(command), "get %s.txt", component);
+
+  while (nexSerial.available()) {
+    nexSerial.read();
+  }
+
+  sendCommand(command);
+
+  size_t index = 0;
+  uint8_t terminatorCount = 0;
+  bool receivedHeader = false;
+  unsigned long start = millis();
+
+  while (millis() - start < 200) {
+    if (!nexSerial.available()) {
+      continue;
+    }
+
+    uint8_t value = nexSerial.read();
+    if (!receivedHeader) {
+      if (value == 0x70) {
+        receivedHeader = true;
+      }
+      continue;
+    }
+
+    if (value == 0xFF) {
+      terminatorCount++;
+      if (terminatorCount == 3) {
+        buffer[index] = '\0';
+        return index > 0;
+      }
+      continue;
+    }
+
+    while (terminatorCount > 0) {
+      if (index < bufferSize - 1) {
+        buffer[index++] = 0xFF;
+      }
+      terminatorCount--;
+    }
+
+    if (index < bufferSize - 1) {
+      buffer[index++] = value;
+    }
+  }
+
+  buffer[0] = '\0';
+  return false;
+}
+
 void fillFrontMouldInput(const char* code) {
   tInMF.setText(code);
 }
@@ -38,7 +97,7 @@ void fillBackLotInput(const char* code) {
 
 void handleFrontMould() {
   char code[32];
-  tInMF.getText(code, sizeof(code));
+  readNextionText("tInMF", code, sizeof(code));
   const Mould* mould = findMould(code);
 
   if (mould == nullptr) {
@@ -59,7 +118,7 @@ void handleFrontMould() {
 
 void handleBackMould() {
   char code[32];
-  tInMB.getText(code, sizeof(code));
+  readNextionText("tInMB", code, sizeof(code));
   const Mould* mould = findMould(code);
 
   if (mould == nullptr) {
@@ -80,7 +139,7 @@ void handleBackMould() {
 
 void handleFrontLot() {
   char code[32];
-  tInLotF.getText(code, sizeof(code));
+  readNextionText("tInF", code, sizeof(code));
   const Lot* lot = findLot(code);
 
   if (lot == nullptr) {
@@ -123,7 +182,7 @@ void handleFrontLot() {
 
 void handleBackLot() {
   char code[32];
-  tInLotB.getText(code, sizeof(code));
+  readNextionText("tInB", code, sizeof(code));
   const Lot* lot = findLot(code);
 
   if (lot == nullptr) {
