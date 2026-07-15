@@ -91,11 +91,11 @@ The fourth byte is `00`, so firmware tracks page changes with `attachPop()` on p
 
 Downtime button logic lives in `firmware/CaesarFirmwareV1/downtime.ino`.
 
-Front downtime buttons set `pageSys.nFDtAct`, `pageSys.tFDtType`, and `pageSys.tFDtStart`, then navigate to `pageDashboard`, wait briefly, and navigate to `pageDtInfoF`.
+Front downtime buttons set `pageSys.nFDtAct`, `pageSys.tFDtType`, and `pageSys.tFDtStart`, lock `pageSys.nMReady`, set `tILock` red, then navigate directly to `pageDtInfoF`.
 
-Back downtime buttons use `pageSys.nBDtAct`, `pageSys.tBDtType`, and `pageSys.tBDtStart`, then navigate to `pageDtInfoB`.
+Back downtime buttons use `pageSys.nBDtAct`, `pageSys.tBDtType`, and `pageSys.tBDtStart`, lock interlock, then navigate directly to `pageDtInfoB`.
 
-Machine downtime buttons use `pageSys.nMDtAct`, `pageSys.tMDtType`, and `pageSys.tMDtStart`, then navigate to `pageDtMcInfo`.
+Machine downtime buttons use `pageSys.nMDtAct`, `pageSys.tMDtType`, and `pageSys.tMDtStart`, lock interlock, then navigate directly to `pageDtMcInfo`.
 
 RUNNING buttons clear the matching downtime state and return to `pageDashboard`.
 

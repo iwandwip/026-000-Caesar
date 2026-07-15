@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-const uint16_t DOWNTIME_INFO_DELAY_MS = 200;
-
 void sendDowntimeText(const char* format, const char* value) {
   char command[96];
   snprintf(command, sizeof(command), format, value);
@@ -9,16 +7,20 @@ void sendDowntimeText(const char* format, const char* value) {
 }
 
 void showDowntimeInfo(const char* pageName) {
-  sendCommand("pageSys.nDtPop.val=0");
-  sendCommand("page pageDashboard");
-  delay(DOWNTIME_INFO_DELAY_MS);
   sendDowntimeText("page %s", pageName);
+}
+
+void lockInterlock() {
+  sendCommand("pageSys.nMReady.val=0");
+  sendCommand("tILock.bco=63488");
+  sendCommand("tILock.txt=\"\"");
 }
 
 void startFrontDowntime(const char* reason) {
   sendCommand("pageSys.nFDtAct.val=1");
   sendDowntimeText("pageSys.tFDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tFDtStart.txt=pageSys.tNow.txt");
+  lockInterlock();
   showDowntimeInfo("pageDtInfoF");
 }
 
@@ -26,6 +28,7 @@ void startBackDowntime(const char* reason) {
   sendCommand("pageSys.nBDtAct.val=1");
   sendDowntimeText("pageSys.tBDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tBDtStart.txt=pageSys.tNow.txt");
+  lockInterlock();
   showDowntimeInfo("pageDtInfoB");
 }
 
@@ -33,6 +36,7 @@ void startMachineDowntime(const char* reason) {
   sendCommand("pageSys.nMDtAct.val=1");
   sendDowntimeText("pageSys.tMDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tMDtStart.txt=pageSys.tNow.txt");
+  lockInterlock();
   showDowntimeInfo("pageDtMcInfo");
 }
 
