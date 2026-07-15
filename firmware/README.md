@@ -69,7 +69,7 @@ GM66 uses ESP32 `Serial2` at `9600` baud, `SERIAL_8N1`.
 | VCC | 5V |
 | GND | GND |
 
-Open `pageLoginF` or `pageLoginB`, then scan operator ID. Firmware uses current login page to choose front or back login, validates ID from `OPERATORS[]`, updates `pageSys`, and writes operator name to `tNameF` or `tNameB`.
+Open `pageLoginF` or `pageLoginB`, then scan operator ID. Scanner fills `nIdF` or `nIdB`. User presses OK and firmware validates `OPERATORS[]`, updates `pageSys`, and writes operator name.
 
 Scanner stays on physical ESP32 `Serial2`. Nextion stays on ESP32 `Serial` for both simulator and real mode in current setup.
 
@@ -79,14 +79,25 @@ Scanner also processes input from these pages:
 
 | Page | Barcode | Result |
 | --- | --- | --- |
-| `pageMldF` | `1111`, `2222`, `3333` | Auto-fill and save front mould code, model, cavity, and isi. |
-| `pageMldB` | `1111`, `2222`, `3333` | Auto-fill and save back mould code, model, cavity, and isi. |
-| `pageLotF` | `1111`, `2222`, `3333` | Auto-fill and save front lot, model, target, quota, and isi. |
-| `pageLotB` | `1111`, `2222`, `3333` | Auto-fill and save back lot, model, target, quota, and isi. |
+| `pageMldF` | `1111`, `2222`, `3333` | Fill front mould code field. User presses OK to validate and save. |
+| `pageMldB` | `1111`, `2222`, `3333` | Fill back mould code field. User presses OK to validate and save. |
+| `pageLotF` | `1111`, `2222`, `3333` | Fill front lot code and default isi from cavity. User presses OK to validate and save. |
+| `pageLotB` | `1111`, `2222`, `3333` | Fill back lot code and default isi from cavity. User presses OK to validate and save. |
 
 Lot scanning requires mould data on same side. Scanner reads `pageSys.nFCav` or `pageSys.nBCav` and uses cavity count as default isi.
 
-Valid scans auto-save. Manual input remains available through existing HMI keyboard and OK button logic.
+Scanner and manual keyboard use same flow: fill input field, then press OK. Firmware owns validation and save logic.
+
+HMI changes required in Nextion Editor:
+
+```text
+pageMldF: clear Touch Release code for bClearMF and bOkMF
+pageMldB: clear Touch Release code for bClearMB and bOkMB
+pageLotF: clear Touch Release code for bClearF and bOkF
+pageLotB: clear Touch Release code for bClearB and bOkB
+```
+
+Keep `Send Component ID: on release` enabled for all eight buttons. Keep Back button Touch Release code unchanged.
 
 For page tracking, set each Nextion page Preinitialize event to its page ID:
 

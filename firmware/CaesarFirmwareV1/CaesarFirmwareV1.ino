@@ -40,9 +40,23 @@ NexText tNameB = NexText(PAGE_LOGIN_B_ID, 7, "tNameB");
 NexNumber nIdB = NexNumber(PAGE_LOGIN_B_ID, 9, "nIdB");
 
 NexPage pageMldF = NexPage(PAGE_MLD_F_ID, 0, "pageMldF");
+NexButton bClearMF = NexButton(PAGE_MLD_F_ID, 4, "bClearMF");
+NexButton bOkMF = NexButton(PAGE_MLD_F_ID, 5, "bOkMF");
+NexText tInMF = NexText(PAGE_MLD_F_ID, 10, "tInMF");
 NexPage pageMldB = NexPage(PAGE_MLD_B_ID, 0, "pageMldB");
+NexButton bClearMB = NexButton(PAGE_MLD_B_ID, 4, "bClearMB");
+NexButton bOkMB = NexButton(PAGE_MLD_B_ID, 5, "bOkMB");
+NexText tInMB = NexText(PAGE_MLD_B_ID, 10, "tInMB");
 NexPage pageLotF = NexPage(PAGE_LOT_F_ID, 0, "pageLotF");
+NexButton bClearLotF = NexButton(PAGE_LOT_F_ID, 5, "bClearF");
+NexButton bOkLotF = NexButton(PAGE_LOT_F_ID, 6, "bOkF");
+NexText tInLotF = NexText(PAGE_LOT_F_ID, 11, "tInF");
+NexNumber nIsiLotF = NexNumber(PAGE_LOT_F_ID, 12, "nIsiLotF");
 NexPage pageLotB = NexPage(PAGE_LOT_B_ID, 0, "pageLotB");
+NexButton bClearLotB = NexButton(PAGE_LOT_B_ID, 5, "bClearB");
+NexButton bOkLotB = NexButton(PAGE_LOT_B_ID, 6, "bOkB");
+NexText tInLotB = NexText(PAGE_LOT_B_ID, 11, "tInB");
+NexNumber nIsiLotB = NexNumber(PAGE_LOT_B_ID, 12, "nIsiLotB");
 NexPage pageOutputNG = NexPage(PAGE_OUTPUT_NG_ID, 0, "pageOutputNG");
 NexPage pageInputNGF = NexPage(PAGE_INPUT_NG_F_ID, 0, "pageInputNGF");
 NexPage pageInputNGB = NexPage(PAGE_INPUT_NG_B_ID, 0, "pageInputNGB");
@@ -92,7 +106,10 @@ NexTouch* nex_listen_list[] = {
   &pageDashboard,
   &pageLoginF, &bOkF, &bLogoutF, &bBackF, &tNameF, &nIdF,
   &pageLoginB, &bOkB, &bLogoutB, &bBackB, &tNameB, &nIdB,
-  &pageMldF, &pageMldB, &pageLotF, &pageLotB,
+  &pageMldF, &bClearMF, &bOkMF, &tInMF,
+  &pageMldB, &bClearMB, &bOkMB, &tInMB,
+  &pageLotF, &bClearLotF, &bOkLotF, &tInLotF, &nIsiLotF,
+  &pageLotB, &bClearLotB, &bOkLotB, &tInLotB, &nIsiLotB,
   &pageOutputNG, &pageInputNGF, &pageInputNGB,
   &pageDtF, &bBackDtF, &bBhnF, &bTggPnsF, &bMoffF, &bLbhPnsF, &bKrgPnsF, &bRunF, &bTrialF,
   &pageDtB, &bBackDtB, &bBhnB, &bTggPnsB, &bMoffB, &bLbhPnsB, &bKrgPnsB, &bRunB, &bTrialB,
@@ -104,6 +121,7 @@ NexTouch* nex_listen_list[] = {
 };
 
 void registerLoginCallbacks();
+void registerInputCallbacks();
 void registerDowntimeCallbacks();
 void handleScanner();
 void initRtc();
@@ -114,6 +132,7 @@ void setup() {
   SCANNER_SERIAL.begin(SCANNER_BAUD, SERIAL_8N1, SCANNER_RX_PIN, SCANNER_TX_PIN);
   initRtc();
   registerLoginCallbacks();
+  registerInputCallbacks();
   registerDowntimeCallbacks();
 }
 
