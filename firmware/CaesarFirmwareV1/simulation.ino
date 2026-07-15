@@ -19,6 +19,13 @@ void updateFrontSimulationDisplay(uint32_t cycle, uint32_t output, uint32_t quot
   sendInputValue("pageSim.nSOKF", ok);
 }
 
+void updateFrontDashboardDisplay(uint32_t cycle, uint32_t output, uint32_t isi) {
+  sendInputValue("pageDashboard.nFCycD", cycle);
+  sendInputValue("pageDashboard.nFOutD", output);
+  sendInputValue("pageDashboard.nFOutD2", output);
+  sendInputValue("pageDashboard.nFIsiD", isi);
+}
+
 void updateBackSimulationDisplay(uint32_t cycle, uint32_t output, uint32_t quota,
                                  uint32_t isi, uint32_t ng, uint32_t ok) {
   sendInputValue("pageSim.nSCycB", cycle);
@@ -27,6 +34,13 @@ void updateBackSimulationDisplay(uint32_t cycle, uint32_t output, uint32_t quota
   sendInputValue("pageSim.nSIsiB", isi);
   sendInputValue("pageSim.nSNGB", ng);
   sendInputValue("pageSim.nSOKB", ok);
+}
+
+void updateBackDashboardDisplay(uint32_t cycle, uint32_t output, uint32_t isi) {
+  sendInputValue("pageDashboard.nBCycD", cycle);
+  sendInputValue("pageDashboard.nBOutD", output);
+  sendInputValue("pageDashboard.nBOutD2", output);
+  sendInputValue("pageDashboard.nBIsiD", isi);
 }
 
 void runAutoFrontCycle() {
@@ -76,6 +90,7 @@ void runAutoFrontCycle() {
   sendInputValue("pageSys.nFQuota", quota);
   sendInputValue("pageSys.nFOK", ok);
   updateFrontSimulationDisplay(cycle, output, quota, isi, ng, ok);
+  updateFrontDashboardDisplay(cycle, output, isi);
   setSimulationInfo("AUTO CYCLE F OK");
 }
 
@@ -126,6 +141,7 @@ void runAutoBackCycle() {
   sendInputValue("pageSys.nBQuota", quota);
   sendInputValue("pageSys.nBOK", ok);
   updateBackSimulationDisplay(cycle, output, quota, isi, ng, ok);
+  updateBackDashboardDisplay(cycle, output, isi);
   setSimulationInfo("AUTO CYCLE B OK");
 }
 
