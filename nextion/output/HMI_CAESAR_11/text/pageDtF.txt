@@ -78,11 +78,7 @@ Button bBackDtF
         Touch Press Event
             
         Touch Release Event
-            if(pageSys.nFDtAct.val==0)
-            {
-                page pageDashboard
-            }
-        
+            
 Button bBhnF
     Attributes
         ID                        : 3
@@ -113,12 +109,7 @@ Button bBhnF
         Touch Press Event
             
         Touch Release Event
-            pageSys.nFDtAct.val=1
-            pageSys.tFDtType.txt="BAHAN TELAT"
-            pageSys.tFDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=1
-            page pageDashboard
-        
+            
 Button bTggPnsF
     Attributes
         ID                        : 4
@@ -149,12 +140,7 @@ Button bTggPnsF
         Touch Press Event
             
         Touch Release Event
-            pageSys.nFDtAct.val=1
-            pageSys.tFDtType.txt="TUNGGU PANAS"
-            pageSys.tFDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=1
-            page pageDashboard
-        
+            
 Button bMoffF
     Attributes
         ID                        : 5
@@ -185,12 +171,7 @@ Button bMoffF
         Touch Press Event
             
         Touch Release Event
-            pageSys.nFDtAct.val=1
-            pageSys.tFDtType.txt="MOULD OFF"
-            pageSys.tFDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=1
-            page pageDashboard
-        
+            
 Button bLbhPnsF
     Attributes
         ID                        : 6
@@ -221,12 +202,7 @@ Button bLbhPnsF
         Touch Press Event
             
         Touch Release Event
-            pageSys.nFDtAct.val=1
-            pageSys.tFDtType.txt="LEBIH PANAS"
-            pageSys.tFDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=1
-            page pageDashboard
-        
+            
 Button bKrgPnsF
     Attributes
         ID                        : 7
@@ -257,12 +233,7 @@ Button bKrgPnsF
         Touch Press Event
             
         Touch Release Event
-            pageSys.nFDtAct.val=1
-            pageSys.tFDtType.txt="KURANG PANAS"
-            pageSys.tFDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=1
-            page pageDashboard
-        
+            
 Button bRunF
     Attributes
         ID                        : 8
@@ -328,9 +299,4 @@ Button bTrialF
         Touch Press Event
             
         Touch Release Event
-            pageSys.nFDtAct.val=1
-            pageSys.tFDtType.txt="TRIAL"
-            pageSys.tFDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=1
-            page pageDashboard
-        
+            

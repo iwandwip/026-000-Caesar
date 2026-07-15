@@ -66,7 +66,7 @@ Text tDtMcStart
         Associated Keyboard : none
         Border Color        : 63488
         Border Width        : 3
-        Font ID             : 4
+        Font ID             : 2
         Back. Color         : 65504
         Font Color          : 0
         Horizontal Alignment: center

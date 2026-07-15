@@ -287,22 +287,6 @@ Page pageDashboard
             covx pageSys.nMM.val,tMM.txt,2,0
             covx pageSys.nSS.val,tSS.txt,2,0
             tmDash.en=1
-            //======================================================================
-            // AUTO OPEN DOWNTIME INFO WITH DASHBOARD BACKGROUND
-            //======================================================================
-            if(pageSys.nDtPop.val==1)
-            {
-                pageSys.nDtPop.val=0
-                page pageDtInfoF
-            }else if(pageSys.nDtPop.val==2)
-            {
-                pageSys.nDtPop.val=0
-                page pageDtInfoB
-            }else if(pageSys.nDtPop.val==3)
-            {
-                pageSys.nDtPop.val=0
-                page pageDtMcInfo
-            }
         
         Touch Press Event
             

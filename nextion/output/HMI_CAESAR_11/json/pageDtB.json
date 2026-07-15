@@ -73,7 +73,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "if(pageSys.nBDtAct.val==0)\n{\n  page pageDashboard\n}"
+            "Touch Release Event": ""
         }
     },
     "Button bBhnB": {
@@ -104,7 +104,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nBDtAct.val=1\npageSys.tBDtType.txt=\"BAHAN TELAT\"\npageSys.tBDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=2\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bTggPnsB": {
@@ -135,7 +135,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nBDtAct.val=1\npageSys.tBDtType.txt=\"TUNGGU PANAS\"\npageSys.tBDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=2\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bMoffB": {
@@ -166,7 +166,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nBDtAct.val=1\npageSys.tBDtType.txt=\"MOULD OFF\"\npageSys.tBDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=2\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bLbhPnsB": {
@@ -197,7 +197,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nBDtAct.val=1\npageSys.tBDtType.txt=\"LEBIH PANAS\"\npageSys.tBDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=2\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bKrgPnsB": {
@@ -228,7 +228,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nBDtAct.val=1\npageSys.tBDtType.txt=\"KURANG PANAS\"\npageSys.tBDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=2\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bRunB": {
@@ -290,7 +290,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nBDtAct.val=1\npageSys.tBDtType.txt=\"TRIAL\"\npageSys.tBDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=2\npage pageDashboard"
+            "Touch Release Event": ""
         }
     }
 }

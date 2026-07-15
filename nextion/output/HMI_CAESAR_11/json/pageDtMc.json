@@ -73,7 +73,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "if(pageSys.nMDtAct.val==0)\n{\n  page pageDashboard\n}"
+            "Touch Release Event": ""
         }
     },
     "Button bGMldMc": {
@@ -104,7 +104,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nMDtAct.val=1\npageSys.tMDtType.txt=\"GANTI MOULD\"\npageSys.tMDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=3\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bCMldMc": {
@@ -135,7 +135,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nMDtAct.val=1\npageSys.tMDtType.txt=\"CLEANING MOULD\"\npageSys.tMDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=3\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bTrMc": {
@@ -166,7 +166,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nMDtAct.val=1\npageSys.tMDtType.txt=\"TROUBLE MC\"\npageSys.tMDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=3\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bTrTlMc": {
@@ -197,7 +197,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nMDtAct.val=1\npageSys.tMDtType.txt=\"TROUBLE TL\"\npageSys.tMDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=3\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bSetMc": {
@@ -228,7 +228,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nMDtAct.val=1\npageSys.tMDtType.txt=\"SETTING MC\"\npageSys.tMDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=3\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bPrevMc": {
@@ -259,7 +259,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nMDtAct.val=1\npageSys.tMDtType.txt=\"PREVENTIVE MC\"\npageSys.tMDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=3\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bOffMc": {
@@ -290,7 +290,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nMDtAct.val=1\npageSys.tMDtType.txt=\"MC OFF\"\npageSys.tMDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=3\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Button bRunMc": {
@@ -352,7 +352,7 @@
         },
         "Events": {
             "Touch Press Event": "",
-            "Touch Release Event": "pageSys.nMDtAct.val=1\npageSys.tMDtType.txt=\"ORISOL MAMPET\"\npageSys.tMDtStart.txt=pageSys.tNow.txt\npageSys.nDtPop.val=3\npage pageDashboard"
+            "Touch Release Event": ""
         }
     },
     "Variable (string) dtReason": {

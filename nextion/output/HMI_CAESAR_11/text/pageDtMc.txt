@@ -97,11 +97,7 @@ Button bBackMc
         Touch Press Event
             
         Touch Release Event
-            if(pageSys.nMDtAct.val==0)
-            {
-                page pageDashboard
-            }
-        
+            
 Button bGMldMc
     Attributes
         ID                        : 3
@@ -132,12 +128,7 @@ Button bGMldMc
         Touch Press Event
             
         Touch Release Event
-            pageSys.nMDtAct.val=1
-            pageSys.tMDtType.txt="GANTI MOULD"
-            pageSys.tMDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=3
-            page pageDashboard
-        
+            
 Button bCMldMc
     Attributes
         ID                        : 4
@@ -168,12 +159,7 @@ Button bCMldMc
         Touch Press Event
             
         Touch Release Event
-            pageSys.nMDtAct.val=1
-            pageSys.tMDtType.txt="CLEANING MOULD"
-            pageSys.tMDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=3
-            page pageDashboard
-        
+            
 Button bTrMc
     Attributes
         ID                        : 5
@@ -204,12 +190,7 @@ Button bTrMc
         Touch Press Event
             
         Touch Release Event
-            pageSys.nMDtAct.val=1
-            pageSys.tMDtType.txt="TROUBLE MC"
-            pageSys.tMDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=3
-            page pageDashboard
-        
+            
 Button bTrTlMc
     Attributes
         ID                        : 6
@@ -240,12 +221,7 @@ Button bTrTlMc
         Touch Press Event
             
         Touch Release Event
-            pageSys.nMDtAct.val=1
-            pageSys.tMDtType.txt="TROUBLE TL"
-            pageSys.tMDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=3
-            page pageDashboard
-        
+            
 Button bSetMc
     Attributes
         ID                        : 7
@@ -276,12 +252,7 @@ Button bSetMc
         Touch Press Event
             
         Touch Release Event
-            pageSys.nMDtAct.val=1
-            pageSys.tMDtType.txt="SETTING MC"
-            pageSys.tMDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=3
-            page pageDashboard
-        
+            
 Button bPrevMc
     Attributes
         ID                        : 8
@@ -312,12 +283,7 @@ Button bPrevMc
         Touch Press Event
             
         Touch Release Event
-            pageSys.nMDtAct.val=1
-            pageSys.tMDtType.txt="PREVENTIVE MC"
-            pageSys.tMDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=3
-            page pageDashboard
-        
+            
 Button bOffMc
     Attributes
         ID                        : 9
@@ -348,12 +314,7 @@ Button bOffMc
         Touch Press Event
             
         Touch Release Event
-            pageSys.nMDtAct.val=1
-            pageSys.tMDtType.txt="MC OFF"
-            pageSys.tMDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=3
-            page pageDashboard
-        
+            
 Button bRunMc
     Attributes
         ID                        : 10
@@ -419,9 +380,4 @@ Button bOrisolMc
         Touch Press Event
             
         Touch Release Event
-            pageSys.nMDtAct.val=1
-            pageSys.tMDtType.txt="ORISOL MAMPET"
-            pageSys.tMDtStart.txt=pageSys.tNow.txt
-            pageSys.nDtPop.val=3
-            page pageDashboard
-        
+            

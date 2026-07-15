@@ -216,7 +216,7 @@ Text tModF
         Associated Keyboard : none
         Border Color        : 0
         Border Width        : 2
-        Font ID             : 4
+        Font ID             : 3
         Back. Color         : 65535
         Font Color          : 396
         Horizontal Alignment: center
