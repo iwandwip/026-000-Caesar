@@ -135,16 +135,18 @@ void fillFrontLotInput(const char* code) {
   tInLotF.setText(code);
 
   uint32_t cavity = 0;
-  nFCavSys.getValue(&cavity);
-  nIsiLotF.setValue(cavity);
+  if (readNextionValue("pageSys.nFCav", &cavity)) {
+    nIsiLotF.setValue(cavity);
+  }
 }
 
 void fillBackLotInput(const char* code) {
   tInLotB.setText(code);
 
   uint32_t cavity = 0;
-  nBCavSys.getValue(&cavity);
-  nIsiLotB.setValue(cavity);
+  if (readNextionValue("pageSys.nBCav", &cavity)) {
+    nIsiLotB.setValue(cavity);
+  }
 }
 
 void handleFrontMould() {
@@ -166,6 +168,7 @@ void handleFrontMould() {
   sendInputText("pageSys.tFMldModel", mould->model);
   sendInputValue("pageSys.nFCav", mould->cavity);
   sendInputValue("pageSys.nFIsi", mould->cavity);
+  sendInputValue("pageLotF.nIsiLotF", mould->cavity);
 }
 
 void handleBackMould() {
@@ -187,6 +190,7 @@ void handleBackMould() {
   sendInputText("pageSys.tBMldModel", mould->model);
   sendInputValue("pageSys.nBCav", mould->cavity);
   sendInputValue("pageSys.nBIsi", mould->cavity);
+  sendInputValue("pageLotB.nIsiLotB", mould->cavity);
 }
 
 void handleFrontLot() {
@@ -296,6 +300,7 @@ void clearFrontMould() {
   sendInputText("pageSys.tFMldModel", "");
   sendInputValue("pageSys.nFCav", 0);
   sendInputValue("pageSys.nFIsi", 0);
+  sendInputValue("pageLotF.nIsiLotF", 0);
 }
 
 void clearBackMould() {
@@ -307,11 +312,12 @@ void clearBackMould() {
   sendInputText("pageSys.tBMldModel", "");
   sendInputValue("pageSys.nBCav", 0);
   sendInputValue("pageSys.nBIsi", 0);
+  sendInputValue("pageLotB.nIsiLotB", 0);
 }
 
 void clearFrontLot() {
   uint32_t cavity = 0;
-  nFCavSys.getValue(&cavity);
+  readNextionValue("pageSys.nFCav", &cavity);
   tInLotF.setText("");
   sendInputText("tModF", "");
   sendInputValue("nTgtF", 0);
@@ -326,7 +332,7 @@ void clearFrontLot() {
 
 void clearBackLot() {
   uint32_t cavity = 0;
-  nBCavSys.getValue(&cavity);
+  readNextionValue("pageSys.nBCav", &cavity);
   tInLotB.setText("");
   sendInputText("tModB", "");
   sendInputValue("nTgtB", 0);
