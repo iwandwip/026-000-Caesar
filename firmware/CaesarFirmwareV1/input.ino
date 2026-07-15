@@ -71,6 +71,58 @@ bool readNextionText(const char* component, char* buffer, size_t bufferSize) {
   return false;
 }
 
+bool readNextionValue(const char* component, uint32_t* value) {
+  if (value == nullptr) {
+    return false;
+  }
+
+  *value = 0;
+
+  char command[64];
+  snprintf(command, sizeof(command), "get %s.val", component);
+  sendCommand(command);
+
+  uint8_t bytes[4];
+  uint8_t index = 0;
+  uint8_t terminatorCount = 0;
+  bool receivedHeader = false;
+  unsigned long start = millis();
+
+  while (millis() - start < 200) {
+    if (!nexSerial.available()) {
+      continue;
+    }
+
+    uint8_t byte = nexSerial.read();
+    if (!receivedHeader) {
+      if (byte == 0x71) {
+        receivedHeader = true;
+      }
+      continue;
+    }
+
+    if (index < sizeof(bytes)) {
+      bytes[index++] = byte;
+      continue;
+    }
+
+    if (byte != 0xFF) {
+      return false;
+    }
+
+    terminatorCount++;
+    if (terminatorCount == 3) {
+      *value = ((uint32_t)bytes[3] << 24) |
+               ((uint32_t)bytes[2] << 16) |
+               ((uint32_t)bytes[1] << 8) |
+               bytes[0];
+      return true;
+    }
+  }
+
+  return false;
+}
+
 void fillFrontMouldInput(const char* code) {
   tInMF.setText(code);
 }
@@ -149,14 +201,17 @@ void handleFrontLot() {
     return;
   }
 
-  sendInputText("tModF", lot->model);
-  sendInputValue("nTgtF", lot->target);
-  sendInputValue("nQuoF", lot->target);
-
   uint32_t cavity = 0;
   uint32_t isi = 0;
-  nFCavSys.getValue(&cavity);
-  nIsiLotF.getValue(&isi);
+  if (!readNextionValue("pageSys.nFCav", &cavity)) {
+    sendInputText("tModF", "CAV READ NG");
+    return;
+  }
+
+  if (!readNextionValue("nIsiLotF", &isi)) {
+    sendInputText("tModF", "ISI READ NG");
+    return;
+  }
 
   if (cavity == 0) {
     sendInputText("tModF", "NO MOULD");
@@ -173,6 +228,9 @@ void handleFrontLot() {
     return;
   }
 
+  sendInputText("tModF", lot->model);
+  sendInputValue("nTgtF", lot->target);
+  sendInputValue("nQuoF", lot->target);
   sendInputText("pageSys.tFLot", code);
   sendInputText("pageSys.tFModel", lot->model);
   sendInputValue("pageSys.nFTarget", lot->target);
@@ -192,14 +250,17 @@ void handleBackLot() {
     return;
   }
 
-  sendInputText("tModB", lot->model);
-  sendInputValue("nTgtB", lot->target);
-  sendInputValue("nQuoB", lot->target);
-
   uint32_t cavity = 0;
   uint32_t isi = 0;
-  nBCavSys.getValue(&cavity);
-  nIsiLotB.getValue(&isi);
+  if (!readNextionValue("pageSys.nBCav", &cavity)) {
+    sendInputText("tModB", "CAV READ NG");
+    return;
+  }
+
+  if (!readNextionValue("nIsiLotB", &isi)) {
+    sendInputText("tModB", "ISI READ NG");
+    return;
+  }
 
   if (cavity == 0) {
     sendInputText("tModB", "NO MOULD");
@@ -216,6 +277,9 @@ void handleBackLot() {
     return;
   }
 
+  sendInputText("tModB", lot->model);
+  sendInputValue("nTgtB", lot->target);
+  sendInputValue("nQuoB", lot->target);
   sendInputText("pageSys.tBLot", code);
   sendInputText("pageSys.tBModel", lot->model);
   sendInputValue("pageSys.nBTarget", lot->target);
