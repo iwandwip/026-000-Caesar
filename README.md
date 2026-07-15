@@ -1,217 +1,127 @@
-# 026-000-Caesar
+# Caesar Control System
 
-Project Caesar untuk menyimpan file Nextion HMI dan mengekstrak file `.HMI` menjadi format teks dan JSON yang bisa dibaca manusia, Git, dan AI.
+Caesar is an ESP32 control project for a two-side production process. It combines a Nextion HMI, a GM66 barcode scanner, and a DS3231 RTC. The firmware owns validation and process state; the HMI presents data and sends user actions.
 
-## Struktur Folder
+## Repository Layout
 
 ```text
 026-000-Caesar/
-├── nextion/
-│   ├── HMI CAESAR_6.HMI          # File source Nextion HMI
-│   ├── Nextion2Text/             # Auto-clone, tidak masuk Git
-│   └── output/                   # Hasil extract, tidak masuk Git
-│       └── HMI_CAESAR_6/
-│           ├── text/             # TXT per page
-│           └── json/             # JSON per page
-├── src/
-│   ├── nextion2text.sh           # Script utama extract HMI
-│   └── run_nextion2text.py       # Wrapper codec untuk Linux
-├── .venv/                        # Python virtual environment, tidak masuk Git
-├── .gitignore
+├── firmware/                         ESP32 firmware, local Arduino libraries, and setup notes
+│   ├── CaesarFirmwareV1/             Main Arduino sketch
+│   └── README.md                     Firmware architecture, wiring, and HMI contract
+├── HMI/                              Versioned Nextion .HMI source files
+├── nextion/                          HMI file used by extractor and extracted source views
+│   ├── HMI CAESAR_12.HMI             Current extraction input
+│   ├── Nextion2Text/                 Nextion2Text checkout
+│   └── output/                       Extracted text and JSON per HMI revision
+├── src/                              HMI extraction scripts
+├── pcb/                              PCB design archive and extracted design files
+├── assets/                           Manual, work instruction, and reference documents
+├── docs/                             Design specifications and implementation plans
 └── README.md
 ```
 
-## Kebutuhan
+`HMI/` stores HMI revision history. Copy the revision you want to inspect into `nextion/` before running the extractor. The current extractor input is `nextion/HMI CAESAR_12.HMI`.
 
-- Linux shell atau Bash
+## System Overview
+
+| Component | Responsibility |
+| --- | --- |
+| ESP32 | Validates operators, moulds, lots, downtime state, scanner input, and RTC data. |
+| Nextion HMI | Displays process state, accepts manual input, and sends page and button events. |
+| GM66 scanner | Sends barcode data to ESP32 through `Serial2`. |
+| DS3231 RTC | Supplies timestamps for `pageSys.tNow` and downtime start records. |
+
+The firmware stores shared process state in `pageSys` on the HMI. Firmware callbacks validate process actions.
+
+See [`firmware/README.md`](firmware/README.md) for wiring, firmware modules, supported input flows, and HMI integration requirements.
+
+## HMI Extraction
+
+The extraction workflow converts a Nextion `.HMI` file into text and JSON for review, Git diffs, and firmware work. It only reads `.HMI` files. It cannot rebuild an `.HMI` file from extracted output.
+
+### Requirements
+
+- Linux shell or Bash
 - Git
-- Python 3.8 atau lebih baru
-- File `.HMI` di folder `nextion/`
+- Python 3.8 or newer
+- A `.HMI` file directly inside `nextion/`
 
-Cek versi Python:
+Check Python:
 
 ```bash
 python3 --version
 ```
 
-Project ini sudah pernah dites dengan Python 3.12.3.
-
-## Virtual Environment
-
-Virtual environment memakai folder `.venv`.
-
-Buat venv jika belum ada:
+Create a virtual environment when needed:
 
 ```bash
 python3 -m venv .venv
-```
-
-Aktifkan venv:
-
-```bash
 source .venv/bin/activate
 ```
 
-Catatan: script extract memakai Python standard library dan Nextion2Text juga tidak butuh package tambahan.
+The extraction scripts use Python standard-library modules only.
 
-## Cara Extract File HMI
+### Run Extraction
 
-Jalankan dari root project:
+From repository root:
 
 ```bash
 ./src/nextion2text.sh
 ```
 
-Script akan:
+The script:
 
-1. Mencari semua file `.HMI` dan `.hmi` di folder `nextion/`.
-2. Clone `https://github.com/MMMZZZZ/Nextion2Text.git` ke `nextion/Nextion2Text/` jika folder itu belum ada.
-3. Menghapus output lama untuk file HMI yang sedang diproses.
-4. Menjalankan Nextion2Text dengan output TXT dan JSON.
-5. Menaruh hasil extract di `nextion/output/<nama_file_hmi>/`.
+1. Finds `.HMI` and `.hmi` files directly under `nextion/`.
+2. Clones [Nextion2Text](https://github.com/MMMZZZZ/Nextion2Text) into `nextion/Nextion2Text/` when absent.
+3. Replaces previous output for each processed HMI file.
+4. Writes text and JSON output to `nextion/output/<hmi-name>/`.
 
-Contoh file input:
-
-```text
-nextion/HMI CAESAR_6.HMI
-```
-
-Output yang dibuat:
+For `nextion/HMI CAESAR_12.HMI`, output appears under:
 
 ```text
-nextion/output/HMI_CAESAR_6/
+nextion/output/HMI_CAESAR_12/
 ├── text/
-│   ├── HMI CAESAR_6_Stats.txt
-│   ├── Program.s.txt
-│   ├── keybdA.txt
-│   ├── keybdB.txt
-│   ├── pageDashboard.txt
-│   ├── pageLogin.txt
-│   ├── pageLotB.txt
-│   ├── pageLotF.txt
-│   ├── pageMldB.txt
-│   ├── pageMldF.txt
-│   └── pageSys.txt
 └── json/
-    ├── Program.s.json
-    ├── keybdA.json
-    ├── keybdB.json
-    ├── pageDashboard.json
-    ├── pageLogin.json
-    ├── pageLotB.json
-    ├── pageLotF.json
-    ├── pageMldB.json
-    ├── pageMldF.json
-    └── pageSys.json
 ```
 
-## Multi File HMI
-
-Script memproses semua file HMI di folder `nextion/`.
-
-Contoh:
-
-```text
-nextion/HMI CAESAR_6.HMI
-nextion/HMI CAESAR_5.HMI
-```
-
-Output:
-
-```text
-nextion/output/HMI_CAESAR_6/
-nextion/output/HMI_CAESAR_5/
-```
-
-Spasi pada nama file diganti menjadi underscore untuk nama folder output.
-
-## Flag Nextion2Text Yang Dipakai
-
-Script menjalankan Nextion2Text dengan flag berikut:
+The script calls Nextion2Text with:
 
 ```bash
 -e -s -j -p visual
 ```
 
-Artinya:
+| Flag | Purpose |
+| --- | --- |
+| `-e` | Includes empty events. |
+| `-s` | Produces page, component, and event statistics. |
+| `-j` | Produces JSON output. |
+| `-p visual` | Includes visual properties such as coordinates, colors, fonts, and images. |
 
-| Flag | Fungsi |
-|------|--------|
-| `-e` | Sertakan event kosong. |
-| `-s` | Buat stats file berisi jumlah page, component, dan event code. |
-| `-j` | Buat output JSON. |
-| `-p visual` | Sertakan properti visual seperti posisi, ukuran, warna, gambar, dan font. |
+### Linux `ansi` Codec Error
 
-## File Yang Masuk Git
+Nextion2Text requests the Windows `ansi` codec. Linux Python does not provide that name. `src/run_nextion2text.py` registers `ansi` as `latin-1` before it starts Nextion2Text.
 
-Masuk Git:
+Run `./src/nextion2text.sh`; do not run `Nextion2Text.py` directly on Linux.
 
-```text
-README.md
-.gitignore
-src/nextion2text.sh
-src/run_nextion2text.py
-nextion/*.HMI
+### Common Errors
+
+`ERROR: no .HMI files found` means no `.HMI` file exists directly in `nextion/`. Copy the desired source file from `HMI/` first.
+
+```bash
+cp "HMI/HMI CAESAR_12.HMI" "nextion/HMI CAESAR_12.HMI"
+./src/nextion2text.sh
 ```
 
-Tidak masuk Git:
-
-```text
-.venv/
-nextion/Nextion2Text/
-nextion/output/
-opencode.json
-```
-
-## Troubleshooting
-
-### Permission denied saat menjalankan script
-
-Jalankan:
+If the script lacks execute permission:
 
 ```bash
 chmod +x src/nextion2text.sh
-./src/nextion2text.sh
 ```
 
-### `ERROR: no .HMI files found`
+## Project Documents
 
-Pastikan file `.HMI` berada langsung di folder `nextion/`.
-
-Contoh benar:
-
-```text
-nextion/HMI CAESAR_6.HMI
-```
-
-### Nextion2Text gagal karena codec `ansi`
-
-Nextion2Text memakai codec `ansi`, tetapi Linux Python tidak mengenal codec itu. Project ini memakai `src/run_nextion2text.py` untuk mendaftarkan alias `ansi -> latin-1` sebelum menjalankan Nextion2Text.
-
-Jalankan lewat script ini:
-
-```bash
-./src/nextion2text.sh
-```
-
-Jangan jalankan `Nextion2Text.py` langsung jika memakai Linux.
-
-### Ingin extract ulang dari awal
-
-Jalankan command yang sama:
-
-```bash
-./src/nextion2text.sh
-```
-
-Script akan menghapus folder output lama untuk setiap file HMI yang diproses, lalu membuat output baru.
-
-## Batasan
-
-Nextion2Text bersifat satu arah:
-
-```text
-.HMI -> TXT/JSON
-```
-
-Tool ini tidak bisa membuat ulang file `.HMI` dari TXT atau JSON. Resource gambar juga tidak otomatis diekspor sebagai file gambar terpisah.
+- `assets/MANUAL BOOK_CAESAR.docx`: Caesar manual.
+- `assets/WORK INSTRUCTION_CAESAR.pdf`: work instruction.
+- `assets/SKRIPSI_CAESAR.docx`: project thesis.
+- `pcb/`: PCB source archive and extracted project files.
