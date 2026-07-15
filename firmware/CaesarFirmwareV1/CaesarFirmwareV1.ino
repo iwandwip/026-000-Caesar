@@ -96,6 +96,10 @@ NexButton bOrisolMc = NexButton(PAGE_DT_MC_ID, 11, "bOrisolMc");
 
 NexPage pageDtMcInfo = NexPage(PAGE_DT_MC_INFO_ID, 0, "pageDtMcInfo");
 NexPage pageSim = NexPage(PAGE_SIM_ID, 0, "pageSim");
+NexButton bAutoEnF = NexButton(PAGE_SIM_ID, 35, "bAutoEnF");
+NexButton bAutoDisF = NexButton(PAGE_SIM_ID, 36, "bAutoDisF");
+NexButton bAutoEnB = NexButton(PAGE_SIM_ID, 37, "bAutoEnB");
+NexButton bAutoDisB = NexButton(PAGE_SIM_ID, 38, "bAutoDisB");
 NexPage pageSys = NexPage(PAGE_SYS_ID, 0, "pageSys");
 NexVariable nFCavSys = NexVariable(PAGE_SYS_ID, 12, "nFCav");
 NexVariable nBCavSys = NexVariable(PAGE_SYS_ID, 15, "nBCav");
@@ -115,7 +119,7 @@ NexTouch* nex_listen_list[] = {
   &pageDtB, &bBackDtB, &bBhnB, &bTggPnsB, &bMoffB, &bLbhPnsB, &bKrgPnsB, &bRunB, &bTrialB,
   &pageDtInfoF, &pageDtInfoB,
   &pageDtMc, &bBackMc, &bGMldMc, &bCMldMc, &bTrMc, &bTrTlMc, &bSetMc, &bPrevMc, &bOffMc, &bRunMc, &bOrisolMc,
-  &pageDtMcInfo, &pageSim, &pageSys,
+  &pageDtMcInfo, &pageSim, &bAutoEnF, &bAutoDisF, &bAutoEnB, &bAutoDisB, &pageSys,
   &keybdA, &keybdB,
   NULL
 };
@@ -123,7 +127,9 @@ NexTouch* nex_listen_list[] = {
 void registerLoginCallbacks();
 void registerInputCallbacks();
 void registerDowntimeCallbacks();
+void registerSimulationCallbacks();
 void handleScanner();
+void updateSimulation();
 void initRtc();
 void updateTnow();
 
@@ -134,10 +140,12 @@ void setup() {
   registerLoginCallbacks();
   registerInputCallbacks();
   registerDowntimeCallbacks();
+  registerSimulationCallbacks();
 }
 
 void loop() {
   nexLoop(nex_listen_list);
   handleScanner();
   updateTnow();
+  updateSimulation();
 }
