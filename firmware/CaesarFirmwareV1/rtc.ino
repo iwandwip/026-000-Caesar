@@ -42,8 +42,7 @@ void getRtcTimestamp(char* buffer, size_t length) {
     now.day(),
     now.hour(),
     now.minute(),
-    now.second()
-  );
+    now.second());
 }
 
 void updateTnow() {

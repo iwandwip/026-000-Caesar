@@ -167,7 +167,6 @@ void processScannerInput(const char* input) {
     setBackLogin(id, op->name);
     return;
   }
-
 }
 
 void handleScanner() {
