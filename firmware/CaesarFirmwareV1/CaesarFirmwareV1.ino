@@ -83,6 +83,8 @@ NexButton bOrisolMc = NexButton(PAGE_DT_MC_ID, 11, "bOrisolMc");
 NexPage pageDtMcInfo = NexPage(PAGE_DT_MC_INFO_ID, 0, "pageDtMcInfo");
 NexPage pageSim = NexPage(PAGE_SIM_ID, 0, "pageSim");
 NexPage pageSys = NexPage(PAGE_SYS_ID, 0, "pageSys");
+NexVariable nFCavSys = NexVariable(PAGE_SYS_ID, 12, "nFCav");
+NexVariable nBCavSys = NexVariable(PAGE_SYS_ID, 15, "nBCav");
 NexPage keybdA = NexPage(PAGE_KEYBD_A_ID, 0, "keybdA");
 NexPage keybdB = NexPage(PAGE_KEYBD_B_ID, 0, "keybdB");
 
