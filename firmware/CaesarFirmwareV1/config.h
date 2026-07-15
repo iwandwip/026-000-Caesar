@@ -41,9 +41,9 @@ struct Mould {
 };
 
 static const Mould MOULDS[] = {
-  { "A008A", "MOULD A", 8 },
-  { "B006B", "MOULD B", 6 },
-  { "C004C", "MOULD C", 4 }
+  { "1111", "MOULD A", 8 },
+  { "2222", "MOULD B", 6 },
+  { "3333", "MOULD C", 4 }
 };
 
 static const size_t MOULD_COUNT = sizeof(MOULDS) / sizeof(MOULDS[0]);

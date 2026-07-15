@@ -79,8 +79,8 @@ Scanner also processes input from these pages:
 
 | Page | Barcode | Result |
 | --- | --- | --- |
-| `pageMldF` | `A008A`, `B006B`, `C004C` | Auto-fill and save front mould code, model, cavity, and isi. |
-| `pageMldB` | `A008A`, `B006B`, `C004C` | Auto-fill and save back mould code, model, cavity, and isi. |
+| `pageMldF` | `1111`, `2222`, `3333` | Auto-fill and save front mould code, model, cavity, and isi. |
+| `pageMldB` | `1111`, `2222`, `3333` | Auto-fill and save back mould code, model, cavity, and isi. |
 | `pageLotF` | `1111`, `2222`, `3333` | Auto-fill and save front lot, model, target, quota, and isi. |
 | `pageLotB` | `1111`, `2222`, `3333` | Auto-fill and save back lot, model, target, quota, and isi. |
 
