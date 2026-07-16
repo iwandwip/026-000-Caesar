@@ -35,24 +35,14 @@ void updateDashboardStatus() {
   uint32_t frontIsi = 0;
   uint32_t backIsi = 0;
 
-  if (!readNextionValue("pageSys.frontLogin", &frontLogin) ||
-      !readNextionValue("pageSys.backLogin", &backLogin) ||
-      !readNextionValue("pageSys.nMDtAct", &machineDowntime) ||
-      !readNextionValue("pageSys.nFDtAct", &frontDowntime) ||
-      !readNextionValue("pageSys.nBDtAct", &backDowntime) ||
-      !readNextionValue("pageSys.nFQuota", &frontQuota) ||
-      !readNextionValue("pageSys.nBQuota", &backQuota) ||
-      !readNextionValue("pageSys.nFCav", &frontCavity) ||
-      !readNextionValue("pageSys.nBCav", &backCavity) ||
-      !readNextionValue("pageSys.nFIsi", &frontIsi) ||
-      !readNextionValue("pageSys.nBIsi", &backIsi)) {
+  if (!readNextionValue("pageSys.frontLogin", &frontLogin) || !readNextionValue("pageSys.backLogin", &backLogin) || !readNextionValue("pageSys.nMDtAct", &machineDowntime) || !readNextionValue("pageSys.nFDtAct", &frontDowntime) || !readNextionValue("pageSys.nBDtAct", &backDowntime) || !readNextionValue("pageSys.nFQuota", &frontQuota) || !readNextionValue("pageSys.nBQuota", &backQuota) || !readNextionValue("pageSys.nFCav", &frontCavity) || !readNextionValue("pageSys.nBCav", &backCavity) || !readNextionValue("pageSys.nFIsi", &frontIsi) || !readNextionValue("pageSys.nBIsi", &backIsi)) {
     return;
   }
 
   const char* frontStatus = getFrontDashboardStatus(frontLogin, machineDowntime, frontDowntime,
-                                                     frontQuota, frontCavity, frontIsi);
+                                                    frontQuota, frontCavity, frontIsi);
   const char* backStatus = getBackDashboardStatus(backLogin, machineDowntime, backDowntime,
-                                                   backQuota, backCavity, backIsi);
+                                                  backQuota, backCavity, backIsi);
   uint32_t frontReady = strcmp(frontStatus, "BP DEPAN READY") == 0;
   uint32_t backReady = strcmp(backStatus, "BP BELAKANG READY") == 0;
   uint32_t machineReady = frontReady && backReady;

@@ -15,18 +15,7 @@ void handleMqttCycle() {
   uint32_t frontNg = 0;
   uint32_t backNg = 0;
 
-  if (readNextionValue("pageSys.nFCyc", &frontCycle) &&
-      readNextionValue("pageSys.nBCyc", &backCycle) &&
-      readNextionValue("pageSys.nFOut", &frontOutput) &&
-      readNextionValue("pageSys.nBOut", &backOutput) &&
-      readNextionValue("pageSys.nFQuota", &frontQuota) &&
-      readNextionValue("pageSys.nBQuota", &backQuota) &&
-      readNextionValue("pageSys.nFIsi", &frontIsi) &&
-      readNextionValue("pageSys.nBIsi", &backIsi) &&
-      readNextionValue("pageSys.nFNG", &frontNg) &&
-      readNextionValue("pageSys.nBNG", &backNg) &&
-      frontIsi > 0 && backIsi > 0 &&
-      frontQuota >= frontIsi && backQuota >= backIsi) {
+  if (readNextionValue("pageSys.nFCyc", &frontCycle) && readNextionValue("pageSys.nBCyc", &backCycle) && readNextionValue("pageSys.nFOut", &frontOutput) && readNextionValue("pageSys.nBOut", &backOutput) && readNextionValue("pageSys.nFQuota", &frontQuota) && readNextionValue("pageSys.nBQuota", &backQuota) && readNextionValue("pageSys.nFIsi", &frontIsi) && readNextionValue("pageSys.nBIsi", &backIsi) && readNextionValue("pageSys.nFNG", &frontNg) && readNextionValue("pageSys.nBNG", &backNg) && frontIsi > 0 && backIsi > 0 && frontQuota >= frontIsi && backQuota >= backIsi) {
     frontCycle++;
     backCycle++;
     frontOutput += frontIsi;
