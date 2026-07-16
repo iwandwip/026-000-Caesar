@@ -1,9 +1,9 @@
 const mqtt = require("mqtt");
 
-const client = mqtt.connect("mqtt://localhost:1883");
-const startTopic = "start/IOTHP-BP/1";
-const finishTopic = "finish/IOTHP-BP/1";
-const cycleIntervalMs = 2000;
+const client = mqtt.connect("mqtt://broker.hivemq.com:1883");
+const startTopic = "start/IOTHP-BP/be57077be216";
+const finishTopic = "finish/IOTHP-BP/be57077be216";
+const cycleIntervalMs = 10000;
 let cycleRunning = false;
 
 function publish(topic, payload) {
@@ -27,7 +27,7 @@ function runCycle() {
 }
 
 client.on("connect", () => {
-  console.log("Connected to mqtt://localhost:1883");
+  console.log("Connected to mqtt://broker.hivemq.com:1883");
 
   if (!cycleRunning) {
     cycleRunning = true;

@@ -14,9 +14,9 @@
 
 #define WIFI_SSID "S22 5"
 #define WIFI_PASS "55555555"
-#define MQTT_SERVER "10.94.153.7"
+#define MQTT_SERVER "broker.hivemq.com"
 #define MQTT_PORT 1883
-#define MQTT_ADDR "1"
+#define MQTT_ADDR "be57077be216"
 #define MQTT_CLIENT_ID "IOTHP-BP/" MQTT_ADDR
 #define CONTROL_TOPIC "CONTROL/IOTHP-BP/" MQTT_ADDR
 #define FINISH_TOPIC "finish/IOTHP-BP/" MQTT_ADDR
