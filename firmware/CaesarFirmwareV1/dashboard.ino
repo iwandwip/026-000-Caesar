@@ -4,7 +4,7 @@ const char* getFrontDashboardStatus(uint32_t login, uint32_t machineDowntime,
   if (login == 0) return "BP DEPAN LOCKED";
   if (machineDowntime != 0) return "BP DEPAN MC DOWNTIME";
   if (downtime != 0) return "BP DEPAN DOWNTIME";
-  if (quota == 0) return "BP DEPAN NO LOT";
+  if (quota < isi) return "BP DEPAN NO LOT";
   if (cavity == 0) return "BP DEPAN NO MOULD";
   if (isi == 0) return "BP DEPAN ISI 0";
   return "BP DEPAN READY";
@@ -16,7 +16,7 @@ const char* getBackDashboardStatus(uint32_t login, uint32_t machineDowntime,
   if (login == 0) return "BP BELAKANG LOCKED";
   if (machineDowntime != 0) return "BP BELAKANG MC DOWNTIME";
   if (downtime != 0) return "BP BELAKANG DOWNTIME";
-  if (quota == 0) return "BP BELAKANG NO LOT";
+  if (quota < isi) return "BP BELAKANG NO LOT";
   if (cavity == 0) return "BP BELAKANG NO MOULD";
   if (isi == 0) return "BP BELAKANG ISI 0";
   return "BP BELAKANG READY";
