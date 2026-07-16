@@ -34,19 +34,25 @@ db.exec(`
     model TEXT,
     lot TEXT,
     operator_name TEXT,
+    operator_id INTEGER,
     start_time TEXT,
     finish_time TEXT,
     received_at TEXT NOT NULL
   )
 `);
 
+const columns = db.prepare("PRAGMA table_info(cycle_data)").all();
+if (!columns.some((column) => column.name === "operator_id")) {
+  db.exec("ALTER TABLE cycle_data ADD COLUMN operator_id INTEGER");
+}
+
 const insertCycleData = db.prepare(`
   INSERT INTO cycle_data (
     layer, cycle, output, ok, ng, quota, isi, target, model, lot,
-    operator_name, start_time, finish_time, received_at
+    operator_name, operator_id, start_time, finish_time, received_at
   ) VALUES (
     @layer, @cycle, @output, @ok, @ng, @quota, @isi, @target, @model, @lot,
-    @operator_name, @start_time, @finish_time, @received_at
+    @operator_name, @operator_id, @start_time, @finish_time, @received_at
   )
 `);
 
@@ -84,6 +90,7 @@ client.on("message", (topic, payload) => {
       model: data.model ?? null,
       lot: data.lot ?? null,
       operator_name: data.operator ?? null,
+      operator_id: data.operator_id ?? null,
       start_time: data.startTime ?? null,
       finish_time: data.finishTime ?? null,
       received_at: timestamp,

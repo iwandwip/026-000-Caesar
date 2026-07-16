@@ -1,19 +1,19 @@
 const LayerComponents FRONT_COMPONENTS = {
   "pageSys.nFCyc", "pageSys.nFOut", "pageSys.nFOK", "pageSys.nFNG",
   "pageSys.nFQuota", "pageSys.nFIsi", "pageSys.nFTarget",
-  "pageSys.tFModel", "pageSys.tFLot", "pageSys.tFOpName"
+  "pageSys.tFModel", "pageSys.tFLot", "pageSys.tFOpName", "pageSys.nFOpId"
 };
 
 const LayerComponents BACK_COMPONENTS = {
   "pageSys.nBCyc", "pageSys.nBOut", "pageSys.nBOK", "pageSys.nBNG",
   "pageSys.nBQuota", "pageSys.nBIsi", "pageSys.nBTarget",
-  "pageSys.tBModel", "pageSys.tBLot", "pageSys.tBOpName"
+  "pageSys.tBModel", "pageSys.tBLot", "pageSys.tBOpName", "pageSys.nBOpId"
 };
 
 bool readLayerState(const LayerComponents& components, LayerState* state) {
   memset(state, 0, sizeof(*state));
 
-  if (!readNextionValue(components.cycle, &state->cycle) || !readNextionValue(components.output, &state->output) || !readNextionValue(components.ok, &state->ok) || !readNextionValue(components.ng, &state->ng) || !readNextionValue(components.quota, &state->quota) || !readNextionValue(components.isi, &state->isi) || !readNextionValue(components.target, &state->target)) {
+  if (!readNextionValue(components.cycle, &state->cycle) || !readNextionValue(components.output, &state->output) || !readNextionValue(components.ok, &state->ok) || !readNextionValue(components.ng, &state->ng) || !readNextionValue(components.quota, &state->quota) || !readNextionValue(components.isi, &state->isi) || !readNextionValue(components.target, &state->target) || !readNextionValue(components.operatorId, &state->operatorId)) {
     return false;
   }
 
@@ -44,6 +44,7 @@ void publishLayerState(const char* topic, const LayerComponents& components) {
   doc["model"] = state.model;
   doc["lot"] = state.lot;
   doc["operator"] = state.operatorName;
+  doc["operator_id"] = state.operatorId;
   doc["startTime"] = cycleStartTime;
   doc["finishTime"] = cycleFinishTime;
 

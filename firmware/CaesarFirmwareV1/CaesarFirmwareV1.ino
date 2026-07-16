@@ -20,6 +20,7 @@ struct LayerComponents {
   const char* model;
   const char* lot;
   const char* operatorName;
+  const char* operatorId;
 };
 
 struct LayerState {
@@ -33,6 +34,7 @@ struct LayerState {
   char model[32];
   char lot[32];
   char operatorName[32];
+  uint32_t operatorId;
 };
 
 const uint8_t PAGE_DASHBOARD_ID = 0;
