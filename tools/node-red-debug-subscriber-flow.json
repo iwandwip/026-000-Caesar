@@ -230,7 +230,7 @@
   {
     "id": "caesar-debug-db",
     "type": "sqlitedb",
-    "db": "caesar.db",
+    "db": "C:\\Users\\Brainless\\.node-red\\caesar.db",
     "mode": "RWC"
   },
   {

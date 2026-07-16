@@ -106,7 +106,7 @@ cd $env:USERPROFILE\.node-red
 npm install node-red-node-sqlite
 ```
 
-Import `tools/node-red-simulator-flow.json` for the machine simulator. Import `tools/node-red-debug-subscriber-flow.json` for the subscriber and SQLite writer. Deploy both flows after import. The debug flow uses `caesar.db`. Start Node-RED from `$env:USERPROFILE\.node-red` to store it at `%USERPROFILE%\.node-red\caesar.db`.
+Import `tools/node-red-simulator-flow.json` for the machine simulator. Import `tools/node-red-debug-subscriber-flow.json` for the subscriber and SQLite writer. Deploy both flows after import. The debug flow writes `C:\Users\Brainless\.node-red\caesar.db`. On another Windows user account, edit the SQLite config node and replace `Brainless` with that account name.
 
 Run one simulator only: JavaScript or Node-RED. Running both publishes duplicate finish events and doubles cycle counts.
 
