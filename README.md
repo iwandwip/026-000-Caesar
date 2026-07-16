@@ -11,7 +11,7 @@ Caesar is an ESP32 control project for a two-side production process. It combine
 │   └── README.md                     Firmware architecture, wiring, and HMI contract
 ├── HMI/                              Versioned Nextion .HMI source files
 ├── nextion/                          HMI file used by extractor and extracted source views
-│   ├── HMI CAESAR_12.HMI             Current extraction input
+│   ├── HMI CAESAR_15.HMI             Current extraction input
 │   ├── Nextion2Text/                 Nextion2Text checkout
 │   └── output/                       Extracted text and JSON per HMI revision
 ├── src/                              HMI extraction scripts
@@ -21,7 +21,7 @@ Caesar is an ESP32 control project for a two-side production process. It combine
 └── README.md
 ```
 
-`HMI/` stores HMI revision history. Copy the revision you want to inspect into `nextion/` before running the extractor. The current extractor input is `nextion/HMI CAESAR_12.HMI`.
+`HMI/` stores HMI revision history. Copy the revision you want to inspect into `nextion/` before running the extractor. The current extractor input is `nextion/HMI CAESAR_15.HMI`.
 
 ## System Overview
 
@@ -35,6 +35,80 @@ Caesar is an ESP32 control project for a two-side production process. It combine
 The firmware stores shared process state in `pageSys` on the HMI. Firmware callbacks validate process actions.
 
 See [`firmware/README.md`](firmware/README.md) for wiring, firmware modules, supported input flows, and HMI integration requirements.
+
+## Windows Setup
+
+Use this sequence after cloning on a Windows laptop.
+
+```powershell
+git clone <repository-url>
+cd 026-000-Caesar
+npm install
+```
+
+Install Arduino IDE, add the ESP32 board package, then open `firmware/CaesarFirmwareV1/CaesarFirmwareV1.ino`. Install or expose the libraries under `firmware/libraries/` to your Arduino environment before compiling.
+
+Set the WiFi network for the target site in `firmware/CaesarFirmwareV1/config.h`:
+
+```cpp
+#define WIFI_SSID "your-wifi-name"
+#define WIFI_PASS "your-wifi-password"
+```
+
+The firmware and tools use HiveMQ public MQTT. Each deployed machine needs its own `MQTT_ADDR`. Update the same address in these files before running multiple machines:
+
+```text
+firmware/CaesarFirmwareV1/config.h
+tools/mqtt-simulator.js
+tools/mqtt-debug-subscriber.js
+tools/node-red-simulator-flow.json
+tools/node-red-debug-subscriber-flow.json
+```
+
+Flash the ESP32 after configuring WiFi and the address.
+
+## MQTT Tools
+
+Install Node.js LTS, then run `npm install` from repository root.
+
+```powershell
+# Terminal 1: simulated machine publishes START and finish events.
+npm run mqtt:simulate
+
+# Terminal 2: receives firmware dataA/dataB messages and writes SQLite rows.
+npm run mqtt:debug
+```
+
+The simulator sends `START`, waits 10 seconds, then sends a `1cycle` event with `startTime` and `finishTime`. Firmware counts the event when both interlocks are ready. It publishes retained Front and Back state after each accepted cycle and process-state change.
+
+`mqtt:debug` creates `data/caesar.db` in the repository. Set `CAESAR_DB_PATH` when you need another database location:
+
+```powershell
+$env:CAESAR_DB_PATH = "D:\CaesarData\caesar.db"
+npm run mqtt:debug
+```
+
+Use [DB Browser for SQLite](https://sqlitebrowser.org/) to inspect table `cycle_data`.
+
+### Node-RED Option
+
+Use Node-RED instead of either JavaScript process when you want a visual flow.
+
+```powershell
+# Run once if node-red is not installed.
+npm install -g --unsafe-perm node-red
+
+# First run creates the Node-RED user directory.
+node-red
+
+# Stop Node-RED, then install the SQLite node.
+cd $env:USERPROFILE\.node-red
+npm install node-red-node-sqlite
+```
+
+Import `tools/node-red-simulator-flow.json` for the machine simulator. Import `tools/node-red-debug-subscriber-flow.json` for the subscriber and SQLite writer. Deploy both flows after import. The debug flow uses `caesar.db`. Start Node-RED from `$env:USERPROFILE\.node-red` to store it at `%USERPROFILE%\.node-red\caesar.db`.
+
+Run one simulator only: JavaScript or Node-RED. Running both publishes duplicate finish events and doubles cycle counts.
 
 ## HMI Extraction
 
@@ -77,10 +151,10 @@ The script:
 3. Replaces previous output for each processed HMI file.
 4. Writes text and JSON output to `nextion/output/<hmi-name>/`.
 
-For `nextion/HMI CAESAR_12.HMI`, output appears under:
+For `nextion/HMI CAESAR_15.HMI`, output appears under:
 
 ```text
-nextion/output/HMI_CAESAR_12/
+nextion/output/HMI_CAESAR_15/
 ├── text/
 └── json/
 ```
@@ -109,7 +183,7 @@ Run `./src/nextion2text.sh`; do not run `Nextion2Text.py` directly on Linux.
 `ERROR: no .HMI files found` means no `.HMI` file exists directly in `nextion/`. Copy the desired source file from `HMI/` first.
 
 ```bash
-cp "HMI/HMI CAESAR_12.HMI" "nextion/HMI CAESAR_12.HMI"
+cp "HMI/HMI CAESAR_15.HMI" "nextion/HMI CAESAR_15.HMI"
 ./src/nextion2text.sh
 ```
 

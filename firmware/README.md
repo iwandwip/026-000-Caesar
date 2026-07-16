@@ -15,6 +15,11 @@ Open `firmware/CaesarFirmwareV1/CaesarFirmwareV1.ino` in Arduino IDE or your ESP
 | `scanner.ino` | GM66 receive buffer and page-specific scanner routing. |
 | `downtime.ino` | Front, back, and machine downtime state transitions. |
 | `rtc.ino` | DS3231 initialization and one-second HMI time updates. |
+| `dashboard.ino` | Dashboard status, readiness, and interlock display synchronization. |
+| `simulation.ino` | Front and back auto-cycle controls on `pageSim`. |
+| `cycle.ino` | MQTT finish-event validation and Front/Back cycle mutation. |
+| `wifi_mqtt.ino` | WiFi connection, MQTT reconnect, subscriptions, and command dispatch. |
+| `publish.ino` | Retained MQTT JSON for Front and Back process state. |
 
 ## Dependencies
 
@@ -24,6 +29,8 @@ The repository includes local Arduino libraries under `firmware/libraries/`.
 - ITEADLIB Arduino Nextion library
 - Adafruit RTClib
 - Adafruit BusIO
+- ArduinoJson 7
+- PubSubClient
 
 Select the ESP32 board that matches the deployed hardware. The repository does not contain an Arduino CLI configuration or a pinned board package version.
 
@@ -117,6 +124,61 @@ Use the page ID in the third byte. `pageCallback()` updates `currentPageId`, whi
 | `3333` | Siti Nurhaliza | MOULD C | 4 | GENIO | 96 |
 
 Change these tables in `config.h` when production master data changes.
+
+## WiFi and MQTT
+
+Set site WiFi credentials and the machine address in `config.h` before flashing:
+
+```cpp
+#define WIFI_SSID "your-wifi-name"
+#define WIFI_PASS "your-wifi-password"
+#define MQTT_ADDR "unique-machine-address"
+```
+
+The current broker is `broker.hivemq.com:1883`. Each machine address must be unique on the public broker.
+
+| Topic | Direction | Payload |
+| --- | --- | --- |
+| `start/IOTHP-BP/<addr>` | Simulator to server | `START` |
+| `finish/IOTHP-BP/<addr>` | Simulator to ESP32 | JSON `1cycle` event with timestamps |
+| `CONTROL/IOTHP-BP/<addr>` | Server to ESP32 | `REBOOT` |
+| `dataA/IOTHP-BP/<addr>` | ESP32 to server | Retained Front state JSON |
+| `dataB/IOTHP-BP/<addr>` | ESP32 to server | Retained Back state JSON |
+
+The firmware accepts a finish event only when its payload has this shape:
+
+```json
+{
+  "event": "1cycle",
+  "startTime": "2026-07-16T07:00:00.000Z",
+  "finishTime": "2026-07-16T07:00:10.000Z"
+}
+```
+
+Firmware ignores the event when either side is not ready, quota cannot cover isi, or required HMI state cannot be read. A valid event increments both layer cycles, updates output and quota, then publishes retained state.
+
+Each `dataA` and `dataB` message contains:
+
+```json
+{
+  "cycle": 42,
+  "output": 336,
+  "ok": 330,
+  "ng": 6,
+  "quota": 72,
+  "isi": 8,
+  "target": 108,
+  "model": "DEP FUSO",
+  "lot": "1111",
+  "operator": "Budi Andianto",
+  "startTime": "2026-07-16T07:00:00.000Z",
+  "finishTime": "2026-07-16T07:00:10.000Z"
+}
+```
+
+Firmware also publishes after valid mould or lot changes, clears, login, and logout. These state-only messages keep the last accepted cycle timestamps.
+
+See the root [MQTT tools section](../README.md#mqtt-tools) for JavaScript and Node-RED simulator, subscriber, and SQLite setup.
 
 ## Login Flow
 
