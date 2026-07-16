@@ -1,0 +1,302 @@
+Page pageDtF
+    Attributes
+        ID               : 0
+        Scope            : local
+        Send Component ID: disabled
+        Width            : 480
+        Locked           : no
+        Fill             : no background (white)
+    
+    Events
+        Preinitialize Event
+            printh 65 10 00 00 FF FF FF
+        
+        Postinitialize Event
+            
+        Touch Press Event
+            
+        Touch Release Event
+            
+        Page Exit Event
+            
+Text t5
+    Attributes
+        ID                  : 1
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 0
+        y coordinate        : 0
+        Width               : 480
+        Height              : 320
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 0
+        Back. Color         : 1040
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : 
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bBackDtF
+    Attributes
+        ID                        : 2
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 440
+        y coordinate              : 0
+        Width                     : 40
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 5
+        Back. Color               : 63488
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 63488
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : X
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bBhnF
+    Attributes
+        ID                        : 3
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 24
+        y coordinate              : 47
+        Width                     : 210
+        Height                    : 55
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64512
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64512
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : BAHAN TELAT
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bTggPnsF
+    Attributes
+        ID                        : 4
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 246
+        y coordinate              : 47
+        Width                     : 210
+        Height                    : 55
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64512
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64512
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : TUNGGU PANAS
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bMoffF
+    Attributes
+        ID                        : 5
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 24
+        y coordinate              : 112
+        Width                     : 210
+        Height                    : 55
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64512
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64512
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : MOULD OFF
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bLbhPnsF
+    Attributes
+        ID                        : 6
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 246
+        y coordinate              : 112
+        Width                     : 210
+        Height                    : 55
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64512
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64512
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : LEBIH PANAS
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bKrgPnsF
+    Attributes
+        ID                        : 7
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 24
+        y coordinate              : 179
+        Width                     : 210
+        Height                    : 55
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64512
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64512
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : KURANG PANAS
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bRunF
+    Attributes
+        ID                        : 8
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 159
+        y coordinate              : 253
+        Width                     : 164
+        Height                    : 48
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 4
+        Back. Color               : 13926
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 13926
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : RUNNING
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            pageSys.nFDtAct.val=0
+            pageSys.tFDtType.txt=""
+            pageSys.tFDtStart.txt=""
+            page pageDashboard
+        
+Button bTrialF
+    Attributes
+        ID                        : 9
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 246
+        y coordinate              : 179
+        Width                     : 210
+        Height                    : 55
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 3
+        Back. Color               : 64512
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 64512
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : TRIAL
+        Max. Text Size            : 20
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
