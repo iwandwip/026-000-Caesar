@@ -8,8 +8,9 @@ void sendDowntimeText(const char* format, const char* value) {
 
 void showDowntimeInfo(const char* pageName) {
   sendCommand("page pageDashboard");
-  delay(100);
+  delay(200);
   lockInterlock();
+  delay(100);
   sendDowntimeText("page %s", pageName);
 }
 
