@@ -37,8 +37,8 @@ void handleMqttCycle(const char* startTime, const char* finishTime) {
     sendInputValue("pageSys.nBOK", backOk);
     updateFrontSimulationDisplay(frontCycle, frontOutput, frontQuota, frontIsi, frontNg, frontOk);
     updateBackSimulationDisplay(backCycle, backOutput, backQuota, backIsi, backNg, backOk);
-    updateFrontDashboardDisplay(frontCycle, frontOutput, frontIsi);
-    updateBackDashboardDisplay(backCycle, backOutput, backIsi);
+    updateFrontDashboardDisplay(frontCycle, frontOutput, frontIsi, frontOk);
+    updateBackDashboardDisplay(backCycle, backOutput, backIsi, backOk);
     sendInputValue("pageDashboard.nFNgD", frontNg);
     sendInputValue("pageDashboard.nBNgD", backNg);
     updateDashboardStatus();
