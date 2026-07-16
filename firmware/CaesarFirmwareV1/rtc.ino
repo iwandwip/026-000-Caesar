@@ -116,52 +116,6 @@ void getCurrentTimestamp(char* buffer, size_t length) {
 #endif
 }
 
-void syncDashboardClock() {
-#if TIME_SOURCE_NTP
-  if (!ntpReady) {
-    return;
-  }
-
-  struct tm timeInfo;
-  if (!getLocalTime(&timeInfo, 10)) {
-    return;
-  }
-
-  char hour[3];
-  char minute[3];
-  char second[3];
-  snprintf(hour, sizeof(hour), "%02u", timeInfo.tm_hour);
-  snprintf(minute, sizeof(minute), "%02u", timeInfo.tm_min);
-  snprintf(second, sizeof(second), "%02u", timeInfo.tm_sec);
-
-  sendInputValue("pageSys.nHH", timeInfo.tm_hour);
-  sendInputValue("pageSys.nMM", timeInfo.tm_min);
-  sendInputValue("pageSys.nSS", timeInfo.tm_sec);
-  sendInputText("pageDashboard.tHH", hour);
-  sendInputText("pageDashboard.tMM", minute);
-  sendInputText("pageDashboard.tSS", second);
-#else
-  if (!rtcReady) {
-    return;
-  }
-
-  DateTime now = rtc.now();
-  char hour[3];
-  char minute[3];
-  char second[3];
-  snprintf(hour, sizeof(hour), "%02u", now.hour());
-  snprintf(minute, sizeof(minute), "%02u", now.minute());
-  snprintf(second, sizeof(second), "%02u", now.second());
-
-  sendInputValue("pageSys.nHH", now.hour());
-  sendInputValue("pageSys.nMM", now.minute());
-  sendInputValue("pageSys.nSS", now.second());
-  sendInputText("pageDashboard.tHH", hour);
-  sendInputText("pageDashboard.tMM", minute);
-  sendInputText("pageDashboard.tSS", second);
-#endif
-}
-
 void updateTnow() {
   unsigned long currentMillis = millis();
 
@@ -174,5 +128,4 @@ void updateTnow() {
   char timestamp[25];
   getCurrentTimestamp(timestamp, sizeof(timestamp));
   sendRtcText(timestamp);
-  syncDashboardClock();
 }
