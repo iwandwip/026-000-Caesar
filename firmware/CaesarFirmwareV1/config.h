@@ -12,12 +12,11 @@
 #define SCANNER_TX_PIN 17
 #define SCANNER_BAUD 9600
 
-#define WIFI_SSID "S22 5"
-#define WIFI_PASS "55555555"
+#define WIFI_SSID "TIMEO"
+#define WIFI_PASS "1234Saja"
 #define MQTT_SERVER "broker.hivemq.com"
 #define MQTT_PORT 1883
 
-// Select exactly one time source. NTP defaults to Asia/Jakarta (WIB).
 #define TIME_SOURCE_NTP 1
 #define TIME_SOURCE_RTC 0
 
