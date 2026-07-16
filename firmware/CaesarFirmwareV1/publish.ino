@@ -1,31 +1,3 @@
-#include <ArduinoJson.h>
-
-struct LayerComponents {
-  const char* cycle;
-  const char* output;
-  const char* ok;
-  const char* ng;
-  const char* quota;
-  const char* isi;
-  const char* target;
-  const char* model;
-  const char* lot;
-  const char* operatorName;
-};
-
-struct LayerState {
-  uint32_t cycle;
-  uint32_t output;
-  uint32_t ok;
-  uint32_t ng;
-  uint32_t quota;
-  uint32_t isi;
-  uint32_t target;
-  char model[32];
-  char lot[32];
-  char operatorName[32];
-};
-
 const LayerComponents FRONT_COMPONENTS = {
   "pageSys.nFCyc", "pageSys.nFOut", "pageSys.nFOK", "pageSys.nFNG",
   "pageSys.nFQuota", "pageSys.nFIsi", "pageSys.nFTarget",

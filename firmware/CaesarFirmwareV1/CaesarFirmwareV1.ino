@@ -1,5 +1,37 @@
 #include "config.h"
 #include "Nextion.h"
+#include <WiFi.h>
+#include <PubSubClient.h>
+#include <ArduinoJson.h>
+
+WiFiClient espClient;
+PubSubClient mqttClient(espClient);
+
+struct LayerComponents {
+  const char* cycle;
+  const char* output;
+  const char* ok;
+  const char* ng;
+  const char* quota;
+  const char* isi;
+  const char* target;
+  const char* model;
+  const char* lot;
+  const char* operatorName;
+};
+
+struct LayerState {
+  uint32_t cycle;
+  uint32_t output;
+  uint32_t ok;
+  uint32_t ng;
+  uint32_t quota;
+  uint32_t isi;
+  uint32_t target;
+  char model[32];
+  char lot[32];
+  char operatorName[32];
+};
 
 const uint8_t PAGE_DASHBOARD_ID = 0;
 const uint8_t PAGE_LOGIN_F_ID = 1;

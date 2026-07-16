@@ -1,9 +1,3 @@
-#include <WiFi.h>
-#include <PubSubClient.h>
-
-WiFiClient espClient;
-PubSubClient mqttClient(espClient);
-
 unsigned long lastWifiAttempt = 0;
 unsigned long lastMqttAttempt = 0;
 
