@@ -25,6 +25,11 @@ void startFrontDowntime(const char* reason) {
   sendDowntimeText("pageSys.tFDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tFDtStart.txt=pageSys.tNow.txt");
   lockInterlock();
+  char timestamp[25];
+  char event[192];
+  getCurrentTimestamp(timestamp, sizeof(timestamp));
+  snprintf(event, sizeof(event), "{\"event\":\"downtime_start\",\"layer\":\"FRONT\",\"reason\":\"%s\",\"timestamp\":\"%s\"}", reason, timestamp);
+  publishEvent(event);
   updateDashboardStatus();
   showDowntimeInfo("pageDtInfoF");
 }
@@ -34,6 +39,11 @@ void startBackDowntime(const char* reason) {
   sendDowntimeText("pageSys.tBDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tBDtStart.txt=pageSys.tNow.txt");
   lockInterlock();
+  char timestamp[25];
+  char event[192];
+  getCurrentTimestamp(timestamp, sizeof(timestamp));
+  snprintf(event, sizeof(event), "{\"event\":\"downtime_start\",\"layer\":\"BACK\",\"reason\":\"%s\",\"timestamp\":\"%s\"}", reason, timestamp);
+  publishEvent(event);
   updateDashboardStatus();
   showDowntimeInfo("pageDtInfoB");
 }
@@ -43,6 +53,11 @@ void startMachineDowntime(const char* reason) {
   sendDowntimeText("pageSys.tMDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tMDtStart.txt=pageSys.tNow.txt");
   lockInterlock();
+  char timestamp[25];
+  char event[192];
+  getCurrentTimestamp(timestamp, sizeof(timestamp));
+  snprintf(event, sizeof(event), "{\"event\":\"downtime_start\",\"layer\":\"MACHINE\",\"reason\":\"%s\",\"timestamp\":\"%s\"}", reason, timestamp);
+  publishEvent(event);
   updateDashboardStatus();
   showDowntimeInfo("pageDtMcInfo");
 }
@@ -52,6 +67,11 @@ void clearFrontDowntime() {
   sendCommand("pageSys.tFDtType.txt=\"\"");
   sendCommand("pageSys.tFDtStart.txt=\"\"");
   sendCommand("pageSys.nDtPop.val=0");
+  char timestamp[25];
+  char event[128];
+  getCurrentTimestamp(timestamp, sizeof(timestamp));
+  snprintf(event, sizeof(event), "{\"event\":\"downtime_clear\",\"layer\":\"FRONT\",\"timestamp\":\"%s\"}", timestamp);
+  publishEvent(event);
   updateDashboardStatus();
   sendCommand("page pageDashboard");
 }
@@ -61,6 +81,11 @@ void clearBackDowntime() {
   sendCommand("pageSys.tBDtType.txt=\"\"");
   sendCommand("pageSys.tBDtStart.txt=\"\"");
   sendCommand("pageSys.nDtPop.val=0");
+  char timestamp[25];
+  char event[128];
+  getCurrentTimestamp(timestamp, sizeof(timestamp));
+  snprintf(event, sizeof(event), "{\"event\":\"downtime_clear\",\"layer\":\"BACK\",\"timestamp\":\"%s\"}", timestamp);
+  publishEvent(event);
   updateDashboardStatus();
   sendCommand("page pageDashboard");
 }
@@ -70,6 +95,11 @@ void clearMachineDowntime() {
   sendCommand("pageSys.tMDtType.txt=\"\"");
   sendCommand("pageSys.tMDtStart.txt=\"\"");
   sendCommand("pageSys.nDtPop.val=0");
+  char timestamp[25];
+  char event[128];
+  getCurrentTimestamp(timestamp, sizeof(timestamp));
+  snprintf(event, sizeof(event), "{\"event\":\"downtime_clear\",\"layer\":\"MACHINE\",\"timestamp\":\"%s\"}", timestamp);
+  publishEvent(event);
   updateDashboardStatus();
   sendCommand("page pageDashboard");
 }

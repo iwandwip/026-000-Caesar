@@ -1,6 +1,14 @@
 unsigned long lastWifiAttempt = 0;
 unsigned long lastMqttAttempt = 0;
 
+void publishEvent(const char* json) {
+  if (!mqttClient.connected()) {
+    return;
+  }
+
+  mqttClient.publish(EVENT_TOPIC, json, false);
+}
+
 void mqttCallback(char* topic, uint8_t* payload, unsigned int length) {
   if (strcmp(topic, CONTROL_TOPIC) == 0 && length == 6 && memcmp(payload, "REBOOT", 6) == 0) {
     ESP.restart();

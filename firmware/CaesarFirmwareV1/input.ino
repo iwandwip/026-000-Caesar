@@ -426,6 +426,35 @@ void bClearLotBCallback(void* ptr) {
   clearBackLot();
 }
 
+void publishNgEvent(const char* layer, const char* typeComponent, const char* countComponent, const char* acceptedComponent) {
+  uint32_t accepted = 0;
+  uint32_t count = 0;
+  if (!readNextionValue(acceptedComponent, &accepted) || accepted == 0 || !readNextionValue(countComponent, &count) || count == 0) {
+    return;
+  }
+
+  char type[32];
+  if (!readNextionText(typeComponent, type, sizeof(type)) || type[0] == '\0') {
+    return;
+  }
+
+  char timestamp[25];
+  char event[192];
+  getCurrentTimestamp(timestamp, sizeof(timestamp));
+  snprintf(event, sizeof(event), "{\"event\":\"ng_submit\",\"layer\":\"%s\",\"ng_type\":\"%s\",\"ng_count\":%lu,\"timestamp\":\"%s\"}", layer, type, (unsigned long)count, timestamp);
+  publishEvent(event);
+  sendInputValue(countComponent, 0);
+  sendInputValue(acceptedComponent, 0);
+}
+
+void bOkNgFCallback(void* ptr) {
+  publishNgEvent("FRONT", "pageSys.tFNgType", "nNgInF", "pageSys.nFNgEvent");
+}
+
+void bOkNgBCallback(void* ptr) {
+  publishNgEvent("BACK", "pageSys.tBNgType", "nNgInB", "pageSys.nBNgEvent");
+}
+
 void registerInputCallbacks() {
   bOkMF.attachPop(bOkMFCallback);
   bOkMB.attachPop(bOkMBCallback);
@@ -435,4 +464,6 @@ void registerInputCallbacks() {
   bClearMB.attachPop(bClearMBCallback);
   bClearLotF.attachPop(bClearLotFCallback);
   bClearLotB.attachPop(bClearLotBCallback);
+  bOkNgF.attachPop(bOkNgFCallback);
+  bOkNgB.attachPop(bOkNgBCallback);
 }

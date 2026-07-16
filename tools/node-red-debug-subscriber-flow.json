@@ -248,6 +248,38 @@
     "y": 320,
     "wires": [
       [
+        "caesar-db-init-downtime"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-db-init-downtime",
+    "type": "sqlite",
+    "z": "caesar-debug-tab",
+    "mydb": "caesar-debug-db",
+    "sqlquery": "fixed",
+    "sql": "CREATE TABLE IF NOT EXISTS downtime_data (id INTEGER PRIMARY KEY AUTOINCREMENT, layer TEXT NOT NULL, reason TEXT NOT NULL, start_time TEXT NOT NULL, clear_time TEXT, received_at TEXT NOT NULL)",
+    "name": "Create downtime_data table",
+    "x": 700,
+    "y": 320,
+    "wires": [
+      [
+        "caesar-db-init-ng"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-db-init-ng",
+    "type": "sqlite",
+    "z": "caesar-debug-tab",
+    "mydb": "caesar-debug-db",
+    "sqlquery": "fixed",
+    "sql": "CREATE TABLE IF NOT EXISTS ng_data (id INTEGER PRIMARY KEY AUTOINCREMENT, layer TEXT NOT NULL, ng_type TEXT NOT NULL, ng_count INTEGER NOT NULL, received_at TEXT NOT NULL)",
+    "name": "Create ng_data table",
+    "x": 930,
+    "y": 320,
+    "wires": [
+      [
         "caesar-db-columns"
       ]
     ]
@@ -277,6 +309,105 @@
     "statusType": "auto",
     "x": 650,
     "y": 200,
+    "wires": []
+  },
+  {
+    "id": "caesar-event-mqtt-in",
+    "type": "mqtt in",
+    "z": "caesar-debug-tab",
+    "name": "EVENT",
+    "topic": "event/IOTHP-BP/91c21b8614cd",
+    "qos": "0",
+    "datatype": "utf8",
+    "broker": "caesar-debug-broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 180,
+    "y": 420,
+    "wires": [
+      [
+        "caesar-event-json"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-event-json",
+    "type": "json",
+    "z": "caesar-debug-tab",
+    "name": "Parse Event JSON",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 430,
+    "y": 420,
+    "wires": [
+      [
+        "caesar-event-route"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-event-route",
+    "type": "function",
+    "z": "caesar-debug-tab",
+    "name": "Route Event",
+    "func": "const data = msg.payload;\nconst WIB_OFFSET_MS = 7 * 60 * 60 * 1000;\nconst receivedAt = new Date(Date.now() + WIB_OFFSET_MS).toISOString().replace(\"Z\", \"+07:00\");\nif (data.event === \"downtime_start\") {\n  msg.params = { $layer: data.layer, $reason: data.reason, $start_time: data.timestamp, $received_at: receivedAt };\n  return [msg, null, null];\n}\nif (data.event === \"downtime_clear\") {\n  msg.params = { $clear_time: data.timestamp, $layer: data.layer };\n  return [null, msg, null];\n}\nif (data.event === \"ng_submit\") {\n  msg.params = { $layer: data.layer, $ng_type: data.ng_type, $ng_count: data.ng_count, $received_at: receivedAt };\n  return [null, null, msg];\n}\nreturn null;",
+    "outputs": 3,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 690,
+    "y": 420,
+    "wires": [
+      [
+        "caesar-dt-start-insert"
+      ],
+      [
+        "caesar-dt-clear-update"
+      ],
+      [
+        "caesar-ng-insert"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-dt-start-insert",
+    "type": "sqlite",
+    "z": "caesar-debug-tab",
+    "mydb": "caesar-debug-db",
+    "sqlquery": "prepared",
+    "sql": "INSERT INTO downtime_data (layer, reason, start_time, received_at) VALUES ($layer, $reason, $start_time, $received_at)",
+    "name": "Save Downtime Start",
+    "x": 970,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "caesar-dt-clear-update",
+    "type": "sqlite",
+    "z": "caesar-debug-tab",
+    "mydb": "caesar-debug-db",
+    "sqlquery": "prepared",
+    "sql": "UPDATE downtime_data SET clear_time = $clear_time WHERE id = (SELECT id FROM downtime_data WHERE layer = $layer AND clear_time IS NULL ORDER BY id DESC LIMIT 1)",
+    "name": "Clear Downtime",
+    "x": 960,
+    "y": 420,
+    "wires": []
+  },
+  {
+    "id": "caesar-ng-insert",
+    "type": "sqlite",
+    "z": "caesar-debug-tab",
+    "mydb": "caesar-debug-db",
+    "sqlquery": "prepared",
+    "sql": "INSERT INTO ng_data (layer, ng_type, ng_count, received_at) VALUES ($layer, $ng_type, $ng_count, $received_at)",
+    "name": "Save NG Event",
+    "x": 950,
+    "y": 460,
     "wires": []
   },
   {

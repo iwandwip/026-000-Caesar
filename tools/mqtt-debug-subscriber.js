@@ -8,6 +8,7 @@ const address = "91c21b8614cd";
 const topics = [
   `dataA/IOTHP-BP/${address}`,
   `dataB/IOTHP-BP/${address}`,
+  `event/IOTHP-BP/${address}`,
 ];
 const databaseDirectory = path.join(__dirname, "..", "data");
 const databaseFile = process.env.CAESAR_DB_PATH || path.join(databaseDirectory, "caesar.db");
@@ -56,6 +57,34 @@ const insertCycleData = db.prepare(`
   )
 `);
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS downtime_data (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    layer TEXT NOT NULL,
+    reason TEXT NOT NULL,
+    start_time TEXT NOT NULL,
+    clear_time TEXT,
+    received_at TEXT NOT NULL
+  );
+  CREATE TABLE IF NOT EXISTS ng_data (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    layer TEXT NOT NULL,
+    ng_type TEXT NOT NULL,
+    ng_count INTEGER NOT NULL,
+    received_at TEXT NOT NULL
+  )
+`);
+
+const insertDowntime = db.prepare(
+  "INSERT INTO downtime_data (layer, reason, start_time, received_at) VALUES (?, ?, ?, ?)"
+);
+const clearDowntime = db.prepare(
+  "UPDATE downtime_data SET clear_time = ? WHERE id = (SELECT id FROM downtime_data WHERE layer = ? AND clear_time IS NULL ORDER BY id DESC LIMIT 1)"
+);
+const insertNg = db.prepare(
+  "INSERT INTO ng_data (layer, ng_type, ng_count, received_at) VALUES (?, ?, ?, ?)"
+);
+
 const client = mqtt.connect(broker);
 
 client.on("connect", () => {
@@ -73,11 +102,22 @@ client.on("connect", () => {
 });
 
 client.on("message", (topic, payload) => {
-  const layer = topic.startsWith("dataA/") ? "FRONT" : "BACK";
   const timestamp = toWibTimestamp();
 
   try {
     const data = JSON.parse(payload.toString());
+    if (topic.startsWith("event/")) {
+      if (data.event === "downtime_start") {
+        insertDowntime.run(data.layer, data.reason, data.timestamp, timestamp);
+      } else if (data.event === "downtime_clear") {
+        clearDowntime.run(data.timestamp, data.layer);
+      } else if (data.event === "ng_submit") {
+        insertNg.run(data.layer, data.ng_type, data.ng_count, timestamp);
+      }
+      return;
+    }
+
+    const layer = topic.startsWith("dataA/") ? "FRONT" : "BACK";
     const result = insertCycleData.run({
       layer,
       cycle: data.cycle ?? null,
@@ -100,7 +140,7 @@ client.on("message", (topic, payload) => {
     console.log(JSON.stringify(data, null, 2));
     console.log(`Saved row ${result.lastInsertRowid} to ${databaseFile}`);
   } catch (error) {
-    console.error(`\n[${timestamp}] ${layer} invalid JSON: ${payload.toString()}`);
+    console.error(`\n[${timestamp}] ${topic} invalid JSON: ${payload.toString()}`);
   }
 });
 

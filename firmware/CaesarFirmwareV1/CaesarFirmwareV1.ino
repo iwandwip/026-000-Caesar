@@ -94,6 +94,8 @@ NexButton bOkLotB = NexButton(PAGE_LOT_B_ID, 6, "bOkB");
 NexText tInLotB = NexText(PAGE_LOT_B_ID, 11, "tInB");
 NexNumber nIsiLotB = NexNumber(PAGE_LOT_B_ID, 12, "nIsiLotB");
 NexPage pageOutputNG = NexPage(PAGE_OUTPUT_NG_ID, 0, "pageOutputNG");
+NexButton bOkNgF = NexButton(PAGE_OUTPUT_NG_ID, 5, "bOkNgF");
+NexButton bOkNgB = NexButton(PAGE_OUTPUT_NG_ID, 17, "bOkNgB");
 NexPage pageInputNGF = NexPage(PAGE_INPUT_NG_F_ID, 0, "pageInputNGF");
 NexPage pageInputNGB = NexPage(PAGE_INPUT_NG_B_ID, 0, "pageInputNGB");
 NexPage pageDtF = NexPage(PAGE_DT_F_ID, 0, "pageDtF");
@@ -150,7 +152,7 @@ NexTouch* nex_listen_list[] = {
   &pageMldB, &bClearMB, &bOkMB, &tInMB,
   &pageLotF, &bClearLotF, &bOkLotF, &tInLotF, &nIsiLotF,
   &pageLotB, &bClearLotB, &bOkLotB, &tInLotB, &nIsiLotB,
-  &pageOutputNG, &pageInputNGF, &pageInputNGB,
+  &pageOutputNG, &bOkNgF, &bOkNgB, &pageInputNGF, &pageInputNGB,
   &pageDtF, &bBackDtF, &bBhnF, &bTggPnsF, &bMoffF, &bLbhPnsF, &bKrgPnsF, &bRunF, &bTrialF,
   &pageDtB, &bBackDtB, &bBhnB, &bTggPnsB, &bMoffB, &bLbhPnsB, &bKrgPnsB, &bRunB, &bTrialB,
   &pageDtInfoF, &pageDtInfoB,
@@ -174,6 +176,7 @@ void setupWifi();
 void setupMqtt();
 void mqttLoop();
 void publishBothLayers();
+void publishEvent(const char* json);
 
 void setup() {
   Serial.begin(115200);
