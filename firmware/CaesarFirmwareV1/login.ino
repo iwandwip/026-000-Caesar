@@ -17,6 +17,8 @@ void setFrontLogin(uint32_t id, const char* name) {
   sendFormattedCommand("pageSys.nFOpId.val=%lu", id);
   sendFormattedCommand("pageSys.tFOpName.txt=\"%s\"", name);
   tNameF.setText(name);
+  sendInputText("pageDashboard.tFOpD", name);
+  updateDashboardStatus();
 }
 
 void setBackLogin(uint32_t id, const char* name) {
@@ -24,6 +26,8 @@ void setBackLogin(uint32_t id, const char* name) {
   sendFormattedCommand("pageSys.nBOpId.val=%lu", id);
   sendFormattedCommand("pageSys.tBOpName.txt=\"%s\"", name);
   tNameB.setText(name);
+  sendInputText("pageDashboard.tBOpD", name);
+  updateDashboardStatus();
 }
 
 void clearFrontLogin() {
@@ -33,6 +37,8 @@ void clearFrontLogin() {
   sendCommand("pageSys.tFOpName.txt=\"\"");
   nIdF.setValue(0);
   tNameF.setText("");
+  sendInputText("pageDashboard.tFOpD", "Silahkan Login");
+  updateDashboardStatus();
   sendCommand("page pageDashboard");
 }
 
@@ -43,6 +49,8 @@ void clearBackLogin() {
   sendCommand("pageSys.tBOpName.txt=\"\"");
   nIdB.setValue(0);
   tNameB.setText("");
+  sendInputText("pageDashboard.tBOpD", "Silahkan Login");
+  updateDashboardStatus();
   sendCommand("page pageDashboard");
 }
 
@@ -90,6 +98,9 @@ void bLogoutBCallback(void* ptr) {
 
 void pageCallback(void* ptr) {
   currentPageId = *((const uint8_t*)ptr);
+  if (currentPageId == PAGE_SIM_ID) {
+    syncSimulationTargets();
+  }
 }
 
 void bBackFCallback(void* ptr) {

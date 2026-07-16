@@ -60,6 +60,7 @@ void updateCycle() {
       updateBackDashboardDisplay(backCycle, backOutput, backIsi);
       sendInputValue("pageDashboard.nFNgD", frontNg);
       sendInputValue("pageDashboard.nBNgD", backNg);
+      updateDashboardStatus();
     }
   }
 

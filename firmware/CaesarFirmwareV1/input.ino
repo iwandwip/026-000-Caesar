@@ -166,6 +166,10 @@ void handleFrontMould() {
   sendInputValue("pageSys.nFCav", mould->cavity);
   sendInputValue("pageSys.nFIsi", mould->cavity);
   sendInputValue("pageLotF.nIsiLotF", mould->cavity);
+  sendInputValue("pageDashboard.nFCavD", mould->cavity);
+  sendInputValue("pageDashboard.nFIsiD", mould->cavity);
+  sendInputValue("pageSim.nSIsiF", mould->cavity);
+  updateDashboardStatus();
 }
 
 void handleBackMould() {
@@ -188,6 +192,10 @@ void handleBackMould() {
   sendInputValue("pageSys.nBCav", mould->cavity);
   sendInputValue("pageSys.nBIsi", mould->cavity);
   sendInputValue("pageLotB.nIsiLotB", mould->cavity);
+  sendInputValue("pageDashboard.nBCavD", mould->cavity);
+  sendInputValue("pageDashboard.nBIsiD", mould->cavity);
+  sendInputValue("pageSim.nSIsiB", mould->cavity);
+  updateDashboardStatus();
 }
 
 void handleFrontLot() {
@@ -237,6 +245,13 @@ void handleFrontLot() {
   sendInputValue("pageSys.nFTarget", lot->target);
   sendInputValue("pageSys.nFQuota", lot->target);
   sendInputValue("pageSys.nFIsi", isi);
+  sendInputText("pageDashboard.bFLot", lot->model);
+  sendInputValue("pageDashboard.nFTgtD", lot->target);
+  sendInputValue("pageDashboard.nFIsiD", isi);
+  sendInputValue("pageSim.nSTgtF", lot->target);
+  sendInputValue("pageSim.nSQuotaF", lot->target);
+  sendInputValue("pageSim.nSIsiF", isi);
+  updateDashboardStatus();
 }
 
 void handleBackLot() {
@@ -286,6 +301,13 @@ void handleBackLot() {
   sendInputValue("pageSys.nBTarget", lot->target);
   sendInputValue("pageSys.nBQuota", lot->target);
   sendInputValue("pageSys.nBIsi", isi);
+  sendInputText("pageDashboard.bBLot", lot->model);
+  sendInputValue("pageDashboard.nBTgtD", lot->target);
+  sendInputValue("pageDashboard.nBIsiD", isi);
+  sendInputValue("pageSim.nSTgtB", lot->target);
+  sendInputValue("pageSim.nSQuotaB", lot->target);
+  sendInputValue("pageSim.nSIsiB", isi);
+  updateDashboardStatus();
 }
 
 void clearFrontMould() {
@@ -298,6 +320,10 @@ void clearFrontMould() {
   sendInputValue("pageSys.nFCav", 0);
   sendInputValue("pageSys.nFIsi", 0);
   sendInputValue("pageLotF.nIsiLotF", 0);
+  sendInputValue("pageDashboard.nFCavD", 0);
+  sendInputValue("pageDashboard.nFIsiD", 0);
+  sendInputValue("pageSim.nSIsiF", 0);
+  updateDashboardStatus();
 }
 
 void clearBackMould() {
@@ -310,6 +336,10 @@ void clearBackMould() {
   sendInputValue("pageSys.nBCav", 0);
   sendInputValue("pageSys.nBIsi", 0);
   sendInputValue("pageLotB.nIsiLotB", 0);
+  sendInputValue("pageDashboard.nBCavD", 0);
+  sendInputValue("pageDashboard.nBIsiD", 0);
+  sendInputValue("pageSim.nSIsiB", 0);
+  updateDashboardStatus();
 }
 
 void clearFrontLot() {
@@ -325,6 +355,13 @@ void clearFrontLot() {
   sendInputValue("pageSys.nFTarget", 0);
   sendInputValue("pageSys.nFQuota", 0);
   sendInputValue("pageSys.nFIsi", cavity);
+  sendInputText("pageDashboard.bFLot", "Input LOT");
+  sendInputValue("pageDashboard.nFTgtD", 0);
+  sendInputValue("pageDashboard.nFIsiD", cavity);
+  sendInputValue("pageSim.nSTgtF", 0);
+  sendInputValue("pageSim.nSQuotaF", 0);
+  sendInputValue("pageSim.nSIsiF", cavity);
+  updateDashboardStatus();
 }
 
 void clearBackLot() {
@@ -340,6 +377,13 @@ void clearBackLot() {
   sendInputValue("pageSys.nBTarget", 0);
   sendInputValue("pageSys.nBQuota", 0);
   sendInputValue("pageSys.nBIsi", cavity);
+  sendInputText("pageDashboard.bBLot", "Input LOT");
+  sendInputValue("pageDashboard.nBTgtD", 0);
+  sendInputValue("pageDashboard.nBIsiD", cavity);
+  sendInputValue("pageSim.nSTgtB", 0);
+  sendInputValue("pageSim.nSQuotaB", 0);
+  sendInputValue("pageSim.nSIsiB", cavity);
+  updateDashboardStatus();
 }
 
 void bOkMFCallback(void* ptr) {

@@ -87,6 +87,7 @@ void runAutoFrontCycle() {
   updateFrontSimulationDisplay(cycle, output, quota, isi, ng, ok);
   updateFrontDashboardDisplay(cycle, output, isi);
   setSimulationInfo("AUTO CYCLE F OK");
+  updateDashboardStatus();
 }
 
 void runAutoBackCycle() {
@@ -133,6 +134,7 @@ void runAutoBackCycle() {
   updateBackSimulationDisplay(cycle, output, quota, isi, ng, ok);
   updateBackDashboardDisplay(cycle, output, isi);
   setSimulationInfo("AUTO CYCLE B OK");
+  updateDashboardStatus();
 }
 
 void bAutoEnFCallback(void* ptr) {

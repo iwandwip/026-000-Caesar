@@ -24,6 +24,7 @@ void startFrontDowntime(const char* reason) {
   sendDowntimeText("pageSys.tFDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tFDtStart.txt=pageSys.tNow.txt");
   lockInterlock();
+  updateDashboardStatus();
   showDowntimeInfo("pageDtInfoF");
 }
 
@@ -32,6 +33,7 @@ void startBackDowntime(const char* reason) {
   sendDowntimeText("pageSys.tBDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tBDtStart.txt=pageSys.tNow.txt");
   lockInterlock();
+  updateDashboardStatus();
   showDowntimeInfo("pageDtInfoB");
 }
 
@@ -40,6 +42,7 @@ void startMachineDowntime(const char* reason) {
   sendDowntimeText("pageSys.tMDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tMDtStart.txt=pageSys.tNow.txt");
   lockInterlock();
+  updateDashboardStatus();
   showDowntimeInfo("pageDtMcInfo");
 }
 
@@ -48,6 +51,7 @@ void clearFrontDowntime() {
   sendCommand("pageSys.tFDtType.txt=\"\"");
   sendCommand("pageSys.tFDtStart.txt=\"\"");
   sendCommand("pageSys.nDtPop.val=0");
+  updateDashboardStatus();
   sendCommand("page pageDashboard");
 }
 
@@ -56,6 +60,7 @@ void clearBackDowntime() {
   sendCommand("pageSys.tBDtType.txt=\"\"");
   sendCommand("pageSys.tBDtStart.txt=\"\"");
   sendCommand("pageSys.nDtPop.val=0");
+  updateDashboardStatus();
   sendCommand("page pageDashboard");
 }
 
@@ -64,6 +69,7 @@ void clearMachineDowntime() {
   sendCommand("pageSys.tMDtType.txt=\"\"");
   sendCommand("pageSys.tMDtStart.txt=\"\"");
   sendCommand("pageSys.nDtPop.val=0");
+  updateDashboardStatus();
   sendCommand("page pageDashboard");
 }
 
