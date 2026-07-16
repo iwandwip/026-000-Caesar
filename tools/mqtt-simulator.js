@@ -1,8 +1,8 @@
 const mqtt = require("mqtt");
 
 const client = mqtt.connect("mqtt://broker.hivemq.com:1883");
-const startTopic = "start/IOTHP-BP/be57077be216";
-const finishTopic = "finish/IOTHP-BP/be57077be216";
+const startTopic = "start/IOTHP-BP/91c21b8614cd";
+const finishTopic = "finish/IOTHP-BP/91c21b8614cd";
 const cycleIntervalMs = 10000;
 const WIB_OFFSET_MS = 7 * 60 * 60 * 1000;
 let cycleRunning = false;

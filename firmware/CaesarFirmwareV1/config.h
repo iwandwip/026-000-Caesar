@@ -29,7 +29,7 @@
 
 #define NTP_SERVER "pool.ntp.org"
 #define WIB_TIMEZONE "WIB-7"
-#define MQTT_ADDR "be57077be216"
+#define MQTT_ADDR "91c21b8614cd"
 #define MQTT_CLIENT_ID "IOTHP-BP/" MQTT_ADDR
 #define CONTROL_TOPIC "CONTROL/IOTHP-BP/" MQTT_ADDR
 #define FINISH_TOPIC "finish/IOTHP-BP/" MQTT_ADDR

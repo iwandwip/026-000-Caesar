@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const broker = "mqtt://broker.hivemq.com:1883";
-const address = "be57077be216";
+const address = "91c21b8614cd";
 const topics = [
   `dataA/IOTHP-BP/${address}`,
   `dataB/IOTHP-BP/${address}`,
