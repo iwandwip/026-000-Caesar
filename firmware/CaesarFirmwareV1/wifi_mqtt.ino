@@ -15,6 +15,11 @@ void mqttCallback(char* topic, uint8_t* payload, unsigned int length) {
 
   if (strcmp(topic, CONTROL_TOPIC) == 0 && strcmp(message, "REBOOT") == 0) {
     ESP.restart();
+    return;
+  }
+
+  if (strcmp(topic, FINISH_TOPIC) == 0 && strcmp(message, "1cycle") == 0) {
+    handleMqttCycle();
   }
 }
 
@@ -50,6 +55,7 @@ void reconnectMqtt() {
   lastMqttAttempt = millis();
   if (mqttClient.connect(MQTT_CLIENT_ID)) {
     mqttClient.subscribe(CONTROL_TOPIC);
+    mqttClient.subscribe(FINISH_TOPIC);
   }
 }
 

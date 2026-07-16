@@ -135,7 +135,6 @@ void updateTnow();
 void setupWifi();
 void setupMqtt();
 void mqttLoop();
-void updateCycle();
 
 void setup() {
   Serial.begin(115200);
@@ -154,6 +153,5 @@ void loop() {
   mqttLoop();
   handleScanner();
   updateTnow();
-  updateCycle();
   updateSimulation();
 }
