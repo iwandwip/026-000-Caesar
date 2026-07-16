@@ -170,6 +170,7 @@ void handleFrontMould() {
   sendInputValue("pageDashboard.nFIsiD", mould->cavity);
   sendInputValue("pageSim.nSIsiF", mould->cavity);
   updateDashboardStatus();
+  publishBothLayers();
 }
 
 void handleBackMould() {
@@ -196,6 +197,7 @@ void handleBackMould() {
   sendInputValue("pageDashboard.nBIsiD", mould->cavity);
   sendInputValue("pageSim.nSIsiB", mould->cavity);
   updateDashboardStatus();
+  publishBothLayers();
 }
 
 void handleFrontLot() {
@@ -252,6 +254,7 @@ void handleFrontLot() {
   sendInputValue("pageSim.nSQuotaF", lot->target);
   sendInputValue("pageSim.nSIsiF", isi);
   updateDashboardStatus();
+  publishBothLayers();
 }
 
 void handleBackLot() {
@@ -308,6 +311,7 @@ void handleBackLot() {
   sendInputValue("pageSim.nSQuotaB", lot->target);
   sendInputValue("pageSim.nSIsiB", isi);
   updateDashboardStatus();
+  publishBothLayers();
 }
 
 void clearFrontMould() {
@@ -324,6 +328,7 @@ void clearFrontMould() {
   sendInputValue("pageDashboard.nFIsiD", 0);
   sendInputValue("pageSim.nSIsiF", 0);
   updateDashboardStatus();
+  publishBothLayers();
 }
 
 void clearBackMould() {
@@ -340,6 +345,7 @@ void clearBackMould() {
   sendInputValue("pageDashboard.nBIsiD", 0);
   sendInputValue("pageSim.nSIsiB", 0);
   updateDashboardStatus();
+  publishBothLayers();
 }
 
 void clearFrontLot() {
@@ -362,6 +368,7 @@ void clearFrontLot() {
   sendInputValue("pageSim.nSQuotaF", 0);
   sendInputValue("pageSim.nSIsiF", cavity);
   updateDashboardStatus();
+  publishBothLayers();
 }
 
 void clearBackLot() {
@@ -384,6 +391,7 @@ void clearBackLot() {
   sendInputValue("pageSim.nSQuotaB", 0);
   sendInputValue("pageSim.nSIsiB", cavity);
   updateDashboardStatus();
+  publishBothLayers();
 }
 
 void bOkMFCallback(void* ptr) {

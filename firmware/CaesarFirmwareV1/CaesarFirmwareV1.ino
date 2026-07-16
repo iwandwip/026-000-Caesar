@@ -135,6 +135,7 @@ void updateTnow();
 void setupWifi();
 void setupMqtt();
 void mqttLoop();
+void publishBothLayers();
 
 void setup() {
   Serial.begin(115200);

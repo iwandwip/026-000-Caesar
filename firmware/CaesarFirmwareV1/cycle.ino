@@ -51,5 +51,6 @@ void handleMqttCycle() {
     sendInputValue("pageDashboard.nFNgD", frontNg);
     sendInputValue("pageDashboard.nBNgD", backNg);
     updateDashboardStatus();
+    publishBothLayers();
   }
 }

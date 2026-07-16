@@ -19,6 +19,7 @@ void setFrontLogin(uint32_t id, const char* name) {
   tNameF.setText(name);
   sendInputText("pageDashboard.tFOpD", name);
   updateDashboardStatus();
+  publishBothLayers();
 }
 
 void setBackLogin(uint32_t id, const char* name) {
@@ -28,6 +29,7 @@ void setBackLogin(uint32_t id, const char* name) {
   tNameB.setText(name);
   sendInputText("pageDashboard.tBOpD", name);
   updateDashboardStatus();
+  publishBothLayers();
 }
 
 void clearFrontLogin() {
@@ -39,6 +41,7 @@ void clearFrontLogin() {
   tNameF.setText("");
   sendInputText("pageDashboard.tFOpD", "Silahkan Login");
   updateDashboardStatus();
+  publishBothLayers();
   sendCommand("page pageDashboard");
 }
 
@@ -51,6 +54,7 @@ void clearBackLogin() {
   tNameB.setText("");
   sendInputText("pageDashboard.tBOpD", "Silahkan Login");
   updateDashboardStatus();
+  publishBothLayers();
   sendCommand("page pageDashboard");
 }
 

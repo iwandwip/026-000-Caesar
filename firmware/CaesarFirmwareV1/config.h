@@ -20,6 +20,8 @@
 #define MQTT_CLIENT_ID "IOTHP-BP/" MQTT_ADDR
 #define CONTROL_TOPIC "CONTROL/IOTHP-BP/" MQTT_ADDR
 #define FINISH_TOPIC "finish/IOTHP-BP/" MQTT_ADDR
+#define DATA_A_TOPIC "dataA/IOTHP-BP/" MQTT_ADDR
+#define DATA_B_TOPIC "dataB/IOTHP-BP/" MQTT_ADDR
 
 struct Operator {
   uint32_t id;

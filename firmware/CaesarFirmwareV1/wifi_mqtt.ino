@@ -33,6 +33,7 @@ void setupWifi() {
 void setupMqtt() {
   mqttClient.setServer(MQTT_SERVER, MQTT_PORT);
   mqttClient.setCallback(mqttCallback);
+  mqttClient.setBufferSize(512);
   mqttClient.setKeepAlive(60);
   mqttClient.setSocketTimeout(5);
 }
