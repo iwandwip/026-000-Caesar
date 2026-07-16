@@ -1,0 +1,145 @@
+[
+  {
+    "id": "caesar-debug-tab",
+    "type": "tab",
+    "label": "Caesar Debug Subscriber",
+    "disabled": false,
+    "info": "Subscribes to retained Front and Back firmware JSON output."
+  },
+  {
+    "id": "caesar-front-mqtt-in",
+    "type": "mqtt in",
+    "z": "caesar-debug-tab",
+    "name": "FRONT dataA",
+    "topic": "dataA/IOTHP-BP/be57077be216",
+    "qos": "0",
+    "datatype": "utf8",
+    "broker": "caesar-debug-broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 180,
+    "y": 100,
+    "wires": [
+      [
+        "caesar-front-json"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-front-json",
+    "type": "json",
+    "z": "caesar-debug-tab",
+    "name": "Parse FRONT JSON",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 430,
+    "y": 100,
+    "wires": [
+      [
+        "caesar-front-debug"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-front-debug",
+    "type": "debug",
+    "z": "caesar-debug-tab",
+    "name": "FRONT",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "caesar-back-mqtt-in",
+    "type": "mqtt in",
+    "z": "caesar-debug-tab",
+    "name": "BACK dataB",
+    "topic": "dataB/IOTHP-BP/be57077be216",
+    "qos": "0",
+    "datatype": "utf8",
+    "broker": "caesar-debug-broker",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 180,
+    "y": 200,
+    "wires": [
+      [
+        "caesar-back-json"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-back-json",
+    "type": "json",
+    "z": "caesar-debug-tab",
+    "name": "Parse BACK JSON",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 430,
+    "y": 200,
+    "wires": [
+      [
+        "caesar-back-debug"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-back-debug",
+    "type": "debug",
+    "z": "caesar-debug-tab",
+    "name": "BACK",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "caesar-debug-broker",
+    "type": "mqtt-broker",
+    "name": "HiveMQ Caesar Debug",
+    "broker": "broker.hivemq.com",
+    "port": "1883",
+    "clientid": "",
+    "autoConnect": true,
+    "usetls": false,
+    "protocolVersion": "4",
+    "keepalive": "60",
+    "cleansession": true,
+    "autoUnsubscribe": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "birthMsg": {},
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "closeMsg": {},
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "willMsg": {},
+    "userProps": "",
+    "sessionExpiry": ""
+  }
+]

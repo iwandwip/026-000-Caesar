@@ -44,6 +44,8 @@ void publishLayerState(const char* topic, const LayerComponents& components) {
   doc["model"] = state.model;
   doc["lot"] = state.lot;
   doc["operator"] = state.operatorName;
+  doc["startTime"] = cycleStartTime;
+  doc["finishTime"] = cycleFinishTime;
 
   // PubSubClient buffer is configured to 512 bytes in setupMqtt().
   char payload[384];

@@ -6,6 +6,8 @@
 
 WiFiClient espClient;
 PubSubClient mqttClient(espClient);
+char cycleStartTime[25] = "";
+char cycleFinishTime[25] = "";
 
 struct LayerComponents {
   const char* cycle;

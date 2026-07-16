@@ -18,10 +18,12 @@ function publish(topic, payload) {
 }
 
 function runCycle() {
+  const startTime = new Date().toISOString();
   publish(startTopic, "START");
 
   setTimeout(() => {
-    publish(finishTopic, "1cycle");
+    const finishTime = new Date().toISOString();
+    publish(finishTopic, JSON.stringify({ event: "1cycle", startTime, finishTime }));
     runCycle();
   }, cycleIntervalMs);
 }

@@ -2,18 +2,23 @@ unsigned long lastWifiAttempt = 0;
 unsigned long lastMqttAttempt = 0;
 
 void mqttCallback(char* topic, uint8_t* payload, unsigned int length) {
-  char message[32];
-  unsigned int messageLength = length < sizeof(message) - 1 ? length : sizeof(message) - 1;
-  memcpy(message, payload, messageLength);
-  message[messageLength] = '\0';
-
-  if (strcmp(topic, CONTROL_TOPIC) == 0 && strcmp(message, "REBOOT") == 0) {
+  if (strcmp(topic, CONTROL_TOPIC) == 0 && length == 6 && memcmp(payload, "REBOOT", 6) == 0) {
     ESP.restart();
     return;
   }
 
-  if (strcmp(topic, FINISH_TOPIC) == 0 && strcmp(message, "1cycle") == 0) {
-    handleMqttCycle();
+  if (strcmp(topic, FINISH_TOPIC) == 0) {
+    JsonDocument doc;
+    if (deserializeJson(doc, payload, length)) {
+      return;
+    }
+
+    const char* event = doc["event"];
+    const char* startTime = doc["startTime"];
+    const char* finishTime = doc["finishTime"];
+    if (event != nullptr && startTime != nullptr && finishTime != nullptr && strcmp(event, "1cycle") == 0) {
+      handleMqttCycle(startTime, finishTime);
+    }
   }
 }
 

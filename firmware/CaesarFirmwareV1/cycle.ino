@@ -1,4 +1,4 @@
-void handleMqttCycle() {
+void handleMqttCycle(const char* startTime, const char* finishTime) {
   uint32_t machineReady = 0;
   if (!readNextionValue("pageSys.nMReady", &machineReady) || machineReady == 0) {
     return;
@@ -16,6 +16,8 @@ void handleMqttCycle() {
   uint32_t backNg = 0;
 
   if (readNextionValue("pageSys.nFCyc", &frontCycle) && readNextionValue("pageSys.nBCyc", &backCycle) && readNextionValue("pageSys.nFOut", &frontOutput) && readNextionValue("pageSys.nBOut", &backOutput) && readNextionValue("pageSys.nFQuota", &frontQuota) && readNextionValue("pageSys.nBQuota", &backQuota) && readNextionValue("pageSys.nFIsi", &frontIsi) && readNextionValue("pageSys.nBIsi", &backIsi) && readNextionValue("pageSys.nFNG", &frontNg) && readNextionValue("pageSys.nBNG", &backNg) && frontIsi > 0 && backIsi > 0 && frontQuota >= frontIsi && backQuota >= backIsi) {
+    strlcpy(cycleStartTime, startTime, sizeof(cycleStartTime));
+    strlcpy(cycleFinishTime, finishTime, sizeof(cycleFinishTime));
     frontCycle++;
     backCycle++;
     frontOutput += frontIsi;

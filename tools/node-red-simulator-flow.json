@@ -1,0 +1,194 @@
+[
+  {
+    "id": "caesar-simulator-tab",
+    "type": "tab",
+    "label": "Caesar Simulator",
+    "disabled": false,
+    "info": "Publishes START immediately and 1cycle after 10 seconds."
+  },
+  {
+    "id": "caesar-start-inject",
+    "type": "inject",
+    "z": "caesar-simulator-tab",
+    "name": "START every 10 seconds",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "start/IOTHP-BP/be57077be216",
+    "payload": "START",
+    "payloadType": "str",
+    "x": 180,
+    "y": 120,
+    "wires": [
+      [
+        "caesar-mark-start"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-mark-start",
+    "type": "function",
+    "z": "caesar-simulator-tab",
+    "name": "Mark START time",
+    "func": "msg.startTime = new Date().toISOString();\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 370,
+    "y": 120,
+    "wires": [
+      [
+        "caesar-start-mqtt-out",
+        "caesar-cycle-delay",
+        "caesar-start-debug"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-start-mqtt-out",
+    "type": "mqtt out",
+    "z": "caesar-simulator-tab",
+    "name": "START",
+    "topic": "",
+    "qos": "0",
+    "retain": "false",
+    "broker": "caesar-simulator-broker",
+    "x": 440,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "caesar-start-debug",
+    "type": "debug",
+    "z": "caesar-simulator-tab",
+    "name": "START to MQTT",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 440,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "caesar-cycle-delay",
+    "type": "delay",
+    "z": "caesar-simulator-tab",
+    "name": "Wait 10 seconds",
+    "pauseType": "delay",
+    "timeout": "10",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 440,
+    "y": 160,
+    "wires": [
+      [
+        "caesar-set-cycle"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-set-cycle",
+    "type": "function",
+    "z": "caesar-simulator-tab",
+    "name": "Set 1cycle",
+    "func": "var finishTime = new Date().toISOString();\nmsg.topic = \"finish/IOTHP-BP/be57077be216\";\nmsg.payload = JSON.stringify({ event: \"1cycle\", startTime: msg.startTime, finishTime: finishTime });\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 650,
+    "y": 160,
+    "wires": [
+      [
+        "caesar-finish-mqtt-out",
+        "caesar-cycle-debug"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-cycle-debug",
+    "type": "debug",
+    "z": "caesar-simulator-tab",
+    "name": "1cycle to MQTT",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 860,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "caesar-finish-mqtt-out",
+    "type": "mqtt out",
+    "z": "caesar-simulator-tab",
+    "name": "1cycle",
+    "topic": "",
+    "qos": "0",
+    "retain": "false",
+    "broker": "caesar-simulator-broker",
+    "x": 860,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "caesar-simulator-broker",
+    "type": "mqtt-broker",
+    "name": "HiveMQ Caesar Simulator",
+    "broker": "broker.hivemq.com",
+    "port": "1883",
+    "clientid": "",
+    "autoConnect": true,
+    "usetls": false,
+    "protocolVersion": "4",
+    "keepalive": "60",
+    "cleansession": true,
+    "autoUnsubscribe": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "birthMsg": {},
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "closeMsg": {},
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "willMsg": {},
+    "userProps": "",
+    "sessionExpiry": ""
+  }
+]
