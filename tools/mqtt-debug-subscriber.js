@@ -11,6 +11,11 @@ const topics = [
 ];
 const databaseDirectory = path.join(__dirname, "..", "data");
 const databaseFile = process.env.CAESAR_DB_PATH || path.join(databaseDirectory, "caesar.db");
+const WIB_OFFSET_MS = 7 * 60 * 60 * 1000;
+
+function toWibTimestamp(date = new Date()) {
+  return new Date(date.getTime() + WIB_OFFSET_MS).toISOString().replace("Z", "+07:00");
+}
 
 fs.mkdirSync(path.dirname(databaseFile), { recursive: true });
 
@@ -63,7 +68,7 @@ client.on("connect", () => {
 
 client.on("message", (topic, payload) => {
   const layer = topic.startsWith("dataA/") ? "FRONT" : "BACK";
-  const timestamp = new Date().toISOString();
+  const timestamp = toWibTimestamp();
 
   try {
     const data = JSON.parse(payload.toString());

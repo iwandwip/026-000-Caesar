@@ -6,8 +6,8 @@
 
 WiFiClient espClient;
 PubSubClient mqttClient(espClient);
-char cycleStartTime[25] = "";
-char cycleFinishTime[25] = "";
+char cycleStartTime[32] = "";
+char cycleFinishTime[32] = "";
 
 struct LayerComponents {
   const char* cycle;
@@ -165,6 +165,7 @@ void registerSimulationCallbacks();
 void handleScanner();
 void updateSimulation();
 void initRtc();
+void syncRtcWithNtp();
 void updateTnow();
 void setupWifi();
 void setupMqtt();
@@ -186,6 +187,7 @@ void setup() {
 void loop() {
   nexLoop(nex_listen_list);
   mqttLoop();
+  syncRtcWithNtp();
   handleScanner();
   updateTnow();
   updateSimulation();

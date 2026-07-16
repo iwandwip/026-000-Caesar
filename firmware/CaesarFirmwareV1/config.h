@@ -16,6 +16,17 @@
 #define WIFI_PASS "55555555"
 #define MQTT_SERVER "broker.hivemq.com"
 #define MQTT_PORT 1883
+
+// Select exactly one time source. NTP defaults to Asia/Jakarta (WIB).
+#define TIME_SOURCE_NTP 1
+#define TIME_SOURCE_RTC 0
+
+#if (TIME_SOURCE_NTP + TIME_SOURCE_RTC) != 1
+#error "Select exactly one time source"
+#endif
+
+#define NTP_SERVER "pool.ntp.org"
+#define WIB_TIMEZONE "WIB-7"
 #define MQTT_ADDR "be57077be216"
 #define MQTT_CLIENT_ID "IOTHP-BP/" MQTT_ADDR
 #define CONTROL_TOPIC "CONTROL/IOTHP-BP/" MQTT_ADDR
