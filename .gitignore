@@ -27,6 +27,9 @@ Thumbs.db
 # opencode
 opencode.json
 
+# Node.js dependencies
+node_modules/
+
 # Nextion generated output/tools
 # nextion/output/
 # nextion/Nextion2Text/

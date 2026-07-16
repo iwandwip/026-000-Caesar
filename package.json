@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "mqtt:simulate": "node tools/mqtt-simulator.js"
+  },
+  "dependencies": {
+    "mqtt": "^5.14.1"
+  }
+}
