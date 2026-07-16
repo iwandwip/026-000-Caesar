@@ -30,6 +30,11 @@ opencode.json
 # Node.js dependencies
 node_modules/
 
+# Local SQLite data
+data/*.db
+data/*.db-shm
+data/*.db-wal
+
 # Nextion generated output/tools
 # nextion/output/
 # nextion/Nextion2Text/

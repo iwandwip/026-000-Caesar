@@ -5,6 +5,7 @@
     "mqtt:debug": "node tools/mqtt-debug-subscriber.js"
   },
   "dependencies": {
+    "better-sqlite3": "^12.11.1",
     "mqtt": "^5.14.1"
   }
 }

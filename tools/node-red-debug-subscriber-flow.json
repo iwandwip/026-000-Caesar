@@ -39,9 +39,42 @@
     "y": 100,
     "wires": [
       [
-        "caesar-front-debug"
+        "caesar-front-debug",
+        "caesar-front-prepare"
       ]
     ]
+  },
+  {
+    "id": "caesar-front-prepare",
+    "type": "function",
+    "z": "caesar-debug-tab",
+    "name": "Prepare FRONT SQLite row",
+    "func": "const data = msg.payload;\nfunction value(name) {\n  return Object.prototype.hasOwnProperty.call(data, name) ? data[name] : null;\n}\nmsg.params = {\n  $layer: \"FRONT\",\n  $cycle: value(\"cycle\"),\n  $output: value(\"output\"),\n  $ok: value(\"ok\"),\n  $ng: value(\"ng\"),\n  $quota: value(\"quota\"),\n  $isi: value(\"isi\"),\n  $target: value(\"target\"),\n  $model: value(\"model\"),\n  $lot: value(\"lot\"),\n  $operator_name: value(\"operator\"),\n  $start_time: value(\"startTime\"),\n  $finish_time: value(\"finishTime\"),\n  $received_at: new Date().toISOString()\n};\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 690,
+    "y": 140,
+    "wires": [
+      [
+        "caesar-front-insert"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-front-insert",
+    "type": "sqlite",
+    "z": "caesar-debug-tab",
+    "mydb": "caesar-debug-db",
+    "sqlquery": "prepared",
+    "sql": "INSERT INTO cycle_data (layer, cycle, output, ok, ng, quota, isi, target, model, lot, operator_name, start_time, finish_time, received_at) VALUES ($layer, $cycle, $output, $ok, $ng, $quota, $isi, $target, $model, $lot, $operator_name, $start_time, $finish_time, $received_at)",
+    "name": "Save FRONT SQLite",
+    "x": 950,
+    "y": 140,
+    "wires": []
   },
   {
     "id": "caesar-front-debug",
@@ -93,9 +126,89 @@
     "y": 200,
     "wires": [
       [
-        "caesar-back-debug"
+        "caesar-back-debug",
+        "caesar-back-prepare"
       ]
     ]
+  },
+  {
+    "id": "caesar-back-prepare",
+    "type": "function",
+    "z": "caesar-debug-tab",
+    "name": "Prepare BACK SQLite row",
+    "func": "const data = msg.payload;\nfunction value(name) {\n  return Object.prototype.hasOwnProperty.call(data, name) ? data[name] : null;\n}\nmsg.params = {\n  $layer: \"BACK\",\n  $cycle: value(\"cycle\"),\n  $output: value(\"output\"),\n  $ok: value(\"ok\"),\n  $ng: value(\"ng\"),\n  $quota: value(\"quota\"),\n  $isi: value(\"isi\"),\n  $target: value(\"target\"),\n  $model: value(\"model\"),\n  $lot: value(\"lot\"),\n  $operator_name: value(\"operator\"),\n  $start_time: value(\"startTime\"),\n  $finish_time: value(\"finishTime\"),\n  $received_at: new Date().toISOString()\n};\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 690,
+    "y": 240,
+    "wires": [
+      [
+        "caesar-back-insert"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-back-insert",
+    "type": "sqlite",
+    "z": "caesar-debug-tab",
+    "mydb": "caesar-debug-db",
+    "sqlquery": "prepared",
+    "sql": "INSERT INTO cycle_data (layer, cycle, output, ok, ng, quota, isi, target, model, lot, operator_name, start_time, finish_time, received_at) VALUES ($layer, $cycle, $output, $ok, $ng, $quota, $isi, $target, $model, $lot, $operator_name, $start_time, $finish_time, $received_at)",
+    "name": "Save BACK SQLite",
+    "x": 950,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "caesar-db-init-inject",
+    "type": "inject",
+    "z": "caesar-debug-tab",
+    "name": "Initialize SQLite table",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 190,
+    "y": 320,
+    "wires": [
+      [
+        "caesar-db-init"
+      ]
+    ]
+  },
+  {
+    "id": "caesar-db-init",
+    "type": "sqlite",
+    "z": "caesar-debug-tab",
+    "mydb": "caesar-debug-db",
+    "sqlquery": "fixed",
+    "sql": "CREATE TABLE IF NOT EXISTS cycle_data (id INTEGER PRIMARY KEY AUTOINCREMENT, layer TEXT NOT NULL, cycle INTEGER, output INTEGER, ok INTEGER, ng INTEGER, quota INTEGER, isi INTEGER, target INTEGER, model TEXT, lot TEXT, operator_name TEXT, start_time TEXT, finish_time TEXT, received_at TEXT NOT NULL)",
+    "name": "Create cycle_data table",
+    "x": 460,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "caesar-sqlite-install-note",
+    "type": "comment",
+    "z": "caesar-debug-tab",
+    "name": "Install node-red-node-sqlite before deploying this flow",
+    "info": "Menu > Manage Palette > Install > node-red-node-sqlite",
+    "x": 340,
+    "y": 380,
+    "wires": []
   },
   {
     "id": "caesar-back-debug",
@@ -113,6 +226,12 @@
     "x": 650,
     "y": 200,
     "wires": []
+  },
+  {
+    "id": "caesar-debug-db",
+    "type": "sqlitedb",
+    "db": "caesar.db",
+    "mode": "RWC"
   },
   {
     "id": "caesar-debug-broker",
