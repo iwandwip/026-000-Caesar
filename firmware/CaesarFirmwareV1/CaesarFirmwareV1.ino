@@ -164,8 +164,8 @@ void registerDowntimeCallbacks();
 void registerSimulationCallbacks();
 void handleScanner();
 void updateSimulation();
-void initRtc();
-void syncRtcWithNtp();
+void initTimeSource();
+void syncTimeSource();
 void updateTnow();
 void setupWifi();
 void setupMqtt();
@@ -175,7 +175,7 @@ void publishBothLayers();
 void setup() {
   Serial.begin(115200);
   SCANNER_SERIAL.begin(SCANNER_BAUD, SERIAL_8N1, SCANNER_RX_PIN, SCANNER_TX_PIN);
-  initRtc();
+  initTimeSource();
   registerLoginCallbacks();
   registerInputCallbacks();
   registerDowntimeCallbacks();
@@ -187,7 +187,7 @@ void setup() {
 void loop() {
   nexLoop(nex_listen_list);
   mqttLoop();
-  syncRtcWithNtp();
+  syncTimeSource();
   handleScanner();
   updateTnow();
   updateSimulation();

@@ -3,19 +3,25 @@
 #if TIME_SOURCE_NTP
 #include <time.h>
 #include <WiFi.h>
+#else
+#include <Wire.h>
+#include <RTClib.h>
 #endif
 
+#if TIME_SOURCE_RTC
 RTC_DS3231 rtc;
 bool rtcReady = false;
-unsigned long lastRtcUpdate = 0;
-const unsigned long RTC_UPDATE_INTERVAL = 1000;
+#endif
 
 #if TIME_SOURCE_NTP
 const unsigned long NTP_RETRY_INTERVAL = 1000;
-bool rtcNtpConfigured = false;
-bool rtcNtpSynchronized = false;
+bool ntpConfigured = false;
+bool ntpReady = false;
 unsigned long lastNtpAttempt = 0;
 #endif
+
+unsigned long lastRtcUpdate = 0;
+const unsigned long RTC_UPDATE_INTERVAL = 1000;
 
 void sendRtcText(const char* value) {
   char command[96];
@@ -23,14 +29,12 @@ void sendRtcText(const char* value) {
   sendCommand(command);
 }
 
-void initRtc() {
-  Wire.begin();
-
+void initTimeSource() {
 #if TIME_SOURCE_NTP
   setenv("TZ", WIB_TIMEZONE, 1);
   tzset();
-#endif
-
+#else
+  Wire.begin();
   if (!rtc.begin()) {
     rtcReady = false;
     return;
@@ -41,11 +45,12 @@ void initRtc() {
   }
 
   rtcReady = true;
+#endif
 }
 
 #if TIME_SOURCE_NTP
-void syncRtcWithNtp() {
-  if (!rtcReady || rtcNtpSynchronized || WiFi.status() != WL_CONNECTED) {
+void syncTimeSource() {
+  if (ntpReady || WiFi.status() != WL_CONNECTED) {
     return;
   }
 
@@ -54,28 +59,44 @@ void syncRtcWithNtp() {
   }
   lastNtpAttempt = millis();
 
-  if (!rtcNtpConfigured) {
+  if (!ntpConfigured) {
     configTime(0, 0, NTP_SERVER);
-    rtcNtpConfigured = true;
+    ntpConfigured = true;
   }
 
   struct tm timeInfo;
   if (getLocalTime(&timeInfo, 10)) {
-    rtc.adjust(DateTime(
-      timeInfo.tm_year + 1900,
-      timeInfo.tm_mon + 1,
-      timeInfo.tm_mday,
-      timeInfo.tm_hour,
-      timeInfo.tm_min,
-      timeInfo.tm_sec));
-    rtcNtpSynchronized = true;
+    ntpReady = true;
   }
 }
 #else
-void syncRtcWithNtp() {}
+void syncTimeSource() {}
 #endif
 
-void getRtcTimestamp(char* buffer, size_t length) {
+void getCurrentTimestamp(char* buffer, size_t length) {
+#if TIME_SOURCE_NTP
+  if (!ntpReady) {
+    snprintf(buffer, length, "0000-00-00 00:00:00");
+    return;
+  }
+
+  struct tm timeInfo;
+  if (!getLocalTime(&timeInfo, 10)) {
+    snprintf(buffer, length, "0000-00-00 00:00:00");
+    return;
+  }
+
+  snprintf(
+    buffer,
+    length,
+    "%04d-%02d-%02d %02d:%02d:%02d",
+    timeInfo.tm_year + 1900,
+    timeInfo.tm_mon + 1,
+    timeInfo.tm_mday,
+    timeInfo.tm_hour,
+    timeInfo.tm_min,
+    timeInfo.tm_sec);
+#else
   if (!rtcReady) {
     snprintf(buffer, length, "0000-00-00 00:00:00");
     return;
@@ -92,9 +113,34 @@ void getRtcTimestamp(char* buffer, size_t length) {
     now.hour(),
     now.minute(),
     now.second());
+#endif
 }
 
 void syncDashboardClock() {
+#if TIME_SOURCE_NTP
+  if (!ntpReady) {
+    return;
+  }
+
+  struct tm timeInfo;
+  if (!getLocalTime(&timeInfo, 10)) {
+    return;
+  }
+
+  char hour[3];
+  char minute[3];
+  char second[3];
+  snprintf(hour, sizeof(hour), "%02u", timeInfo.tm_hour);
+  snprintf(minute, sizeof(minute), "%02u", timeInfo.tm_min);
+  snprintf(second, sizeof(second), "%02u", timeInfo.tm_sec);
+
+  sendInputValue("pageSys.nHH", timeInfo.tm_hour);
+  sendInputValue("pageSys.nMM", timeInfo.tm_min);
+  sendInputValue("pageSys.nSS", timeInfo.tm_sec);
+  sendInputText("pageDashboard.tHH", hour);
+  sendInputText("pageDashboard.tMM", minute);
+  sendInputText("pageDashboard.tSS", second);
+#else
   if (!rtcReady) {
     return;
   }
@@ -113,6 +159,7 @@ void syncDashboardClock() {
   sendInputText("pageDashboard.tHH", hour);
   sendInputText("pageDashboard.tMM", minute);
   sendInputText("pageDashboard.tSS", second);
+#endif
 }
 
 void updateTnow() {
@@ -125,7 +172,7 @@ void updateTnow() {
   lastRtcUpdate = currentMillis;
 
   char timestamp[25];
-  getRtcTimestamp(timestamp, sizeof(timestamp));
+  getCurrentTimestamp(timestamp, sizeof(timestamp));
   sendRtcText(timestamp);
   syncDashboardClock();
 }

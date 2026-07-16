@@ -4,8 +4,6 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
-#include <Wire.h>
-#include <RTClib.h>
 
 #define SCANNER_SERIAL Serial2
 #define SCANNER_RX_PIN 16
@@ -22,6 +20,11 @@
 
 #if (TIME_SOURCE_NTP + TIME_SOURCE_RTC) != 1
 #error "Select exactly one time source"
+#endif
+
+#if TIME_SOURCE_RTC
+#include <Wire.h>
+#include <RTClib.h>
 #endif
 
 #define NTP_SERVER "pool.ntp.org"
