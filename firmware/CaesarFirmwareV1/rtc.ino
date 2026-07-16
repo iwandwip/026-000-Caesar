@@ -60,7 +60,7 @@ void syncTimeSource() {
   lastNtpAttempt = millis();
 
   if (!ntpConfigured) {
-    configTime(0, 0, NTP_SERVER);
+    configTzTime(WIB_TIMEZONE, NTP_SERVER);
     ntpConfigured = true;
   }
 
