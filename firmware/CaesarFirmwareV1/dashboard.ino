@@ -36,6 +36,7 @@ void updateDashboardStatus() {
   uint32_t backIsi = 0;
 
   if (!readNextionValue("pageSys.frontLogin", &frontLogin) || !readNextionValue("pageSys.backLogin", &backLogin) || !readNextionValue("pageSys.nMDtAct", &machineDowntime) || !readNextionValue("pageSys.nFDtAct", &frontDowntime) || !readNextionValue("pageSys.nBDtAct", &backDowntime) || !readNextionValue("pageSys.nFQuota", &frontQuota) || !readNextionValue("pageSys.nBQuota", &backQuota) || !readNextionValue("pageSys.nFCav", &frontCavity) || !readNextionValue("pageSys.nBCav", &backCavity) || !readNextionValue("pageSys.nFIsi", &frontIsi) || !readNextionValue("pageSys.nBIsi", &backIsi)) {
+    setInterlock(false);
     return;
   }
 
@@ -54,6 +55,7 @@ void updateDashboardStatus() {
   sendInputValue("pageSys.nMReady", machineReady);
   sendCommand(machineReady ? "pageDashboard.tILock.bco=2024" : "pageDashboard.tILock.bco=63488");
   sendInputText("pageDashboard.tILock", "");
+  setInterlock(machineReady);
 }
 
 void syncSimulationTargets() {

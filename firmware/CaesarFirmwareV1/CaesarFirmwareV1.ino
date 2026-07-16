@@ -167,6 +167,7 @@ void updateSimulation();
 void initTimeSource();
 void syncTimeSource();
 void updateTnow();
+void initInterlock();
 void setupWifi();
 void setupMqtt();
 void mqttLoop();
@@ -176,6 +177,7 @@ void setup() {
   Serial.begin(115200);
   SCANNER_SERIAL.begin(SCANNER_BAUD, SERIAL_8N1, SCANNER_RX_PIN, SCANNER_TX_PIN);
   initTimeSource();
+  initInterlock();
   registerLoginCallbacks();
   registerInputCallbacks();
   registerDowntimeCallbacks();

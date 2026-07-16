@@ -14,6 +14,7 @@ void showDowntimeInfo(const char* pageName) {
 }
 
 void lockInterlock() {
+  setInterlock(false);
   sendCommand("pageSys.nMReady.val=0");
   sendCommand("tILock.bco=63488");
   sendCommand("tILock.txt=\"\"");
