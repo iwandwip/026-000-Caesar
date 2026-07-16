@@ -1,0 +1,476 @@
+Page pageLotF
+    Attributes
+        ID               : 0
+        Scope            : local
+        Send Component ID: disabled
+        Width            : 480
+        Locked           : no
+        Fill             : no background (white)
+    
+    Events
+        Preinitialize Event
+            printh 65 05 00 00 FF FF FF
+        
+        Postinitialize Event
+            tModF.txt=pageSys.tFModel.txt
+            nTgtF.val=pageSys.nFTarget.val
+            nQuoF.val=pageSys.nFQuota.val
+        
+        Touch Press Event
+            
+        Touch Release Event
+            
+        Page Exit Event
+            
+Number nQuoF
+    Attributes
+        ID                      : 9
+        Scope                   : global
+        Send Component ID       : on release
+        x coordinate            : 211
+        y coordinate            : 165
+        Width                   : 51
+        Height                  : 50
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 4
+        Back. Color             : 65535
+        Font Color              : 33280
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nIsiLotF
+    Attributes
+        ID                      : 12
+        Scope                   : global
+        Send Component ID       : on release
+        x coordinate            : 288
+        y coordinate            : 165
+        Width                   : 51
+        Height                  : 50
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : 2
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 4
+        Back. Color             : 65535
+        Font Color              : 1438
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Number nTgtF
+    Attributes
+        ID                      : 13
+        Scope                   : global
+        Send Component ID       : on release
+        x coordinate            : 136
+        y coordinate            : 166
+        Width                   : 51
+        Height                  : 50
+        Fill                    : solid color
+        Style                   : border
+        Associated Keyboard     : none
+        Border Color            : 0
+        Border Width            : 2
+        Font ID                 : 4
+        Back. Color             : 65535
+        Font Color              : 1024
+        Horizontal Alignment    : center
+        Vertical Alignment      : center
+        Value                   : 0
+        Significant digits shown: all
+        Format                  : decimal
+        Word wrap               : enabled
+        Horizontal Spacing      : 0
+        Vertical Spacing        : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t5
+    Attributes
+        ID                  : 1
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 0
+        y coordinate        : 0
+        Width               : 480
+        Height              : 320
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 0
+        Back. Color         : 64512
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : 
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t1
+    Attributes
+        ID                  : 2
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 249
+        y coordinate        : 73
+        Width               : 60
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 64512
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : LOT WG
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t38
+    Attributes
+        ID                  : 3
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 54
+        y coordinate        : 69
+        Width               : 109
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 64512
+        Font Color          : 0
+        Horizontal Alignment: left
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : LOT WO
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text tModF
+    Attributes
+        ID                  : 4
+        Scope               : global
+        Send Component ID   : on release
+        x coordinate        : 249
+        y coordinate        : 91
+        Width               : 175
+        Height              : 45
+        Fill                : solid color
+        Style               : border
+        Associated Keyboard : none
+        Border Color        : 0
+        Border Width        : 2
+        Font ID             : 3
+        Back. Color         : 65535
+        Font Color          : 396
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : 
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t2
+    Attributes
+        ID                  : 8
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 209
+        y coordinate        : 145
+        Width               : 54
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 64512
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : Kuota
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t4
+    Attributes
+        ID                  : 10
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 176
+        y coordinate        : 36
+        Width               : 160
+        Height              : 26
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 2
+        Back. Color         : 50712
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : BP 01 DEPAN
+        Max. Text Size      : 30
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text tInF
+    Attributes
+        ID                  : 11
+        Scope               : global
+        Send Component ID   : on release
+        x coordinate        : 40
+        y coordinate        : 94
+        Width               : 175
+        Height              : 42
+        Fill                : solid color
+        Style               : border
+        Associated Keyboard : 1
+        Border Color        : 0
+        Border Width        : 2
+        Font ID             : 4
+        Back. Color         : 65535
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : 
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t0
+    Attributes
+        ID                  : 14
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 287
+        y coordinate        : 144
+        Width               : 54
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 64512
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : Cavity
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Text t3
+    Attributes
+        ID                  : 15
+        Scope               : local
+        Send Component ID   : disabled
+        x coordinate        : 133
+        y coordinate        : 146
+        Width               : 54
+        Height              : 20
+        Fill                : solid color
+        Style               : flat
+        Associated Keyboard : none
+        Font ID             : 1
+        Back. Color         : 64512
+        Font Color          : 0
+        Horizontal Alignment: center
+        Vertical Alignment  : center
+        Input Type          : character
+        Text                : Pcs
+        Max. Text Size      : 10
+        Word wrap           : disabled
+        Horizontal Spacing  : 0
+        Vertical Spacing    : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bClearF
+    Attributes
+        ID                        : 5
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 150
+        y coordinate              : 234
+        Width                     : 80
+        Height                    : 50
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 2
+        Back. Color               : 34816
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 65535
+        Font Color (Unpressed)    : 65535
+        Font Color (Pressed)      : 34816
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : CLEAR
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bOkF
+    Attributes
+        ID                        : 6
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 256
+        y coordinate              : 233
+        Width                     : 80
+        Height                    : 50
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 4
+        Back. Color               : 2016
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 2016
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : OK
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            
+Button bBackF
+    Attributes
+        ID                        : 7
+        Scope                     : local
+        Send Component ID         : on release
+        x coordinate              : 440
+        y coordinate              : 0
+        Width                     : 40
+        Height                    : 40
+        Fill                      : solid color
+        Style                     : 3D auto
+        Font ID                   : 5
+        Back. Color               : 63488
+        Back. Picture ID (Pressed): 65535
+        Back. Color (Pressed)     : 0
+        Font Color (Unpressed)    : 0
+        Font Color (Pressed)      : 63488
+        Horizontal Alignment      : center
+        Vertical Alignment        : center
+        State                     : unpressed
+        Text                      : X
+        Max. Text Size            : 10
+        Word wrap                 : disabled
+        Horizontal Spacing        : 0
+        Vertical Spacing          : 0
+    
+    Events
+        Touch Press Event
+            
+        Touch Release Event
+            page pageDashboard
+        
