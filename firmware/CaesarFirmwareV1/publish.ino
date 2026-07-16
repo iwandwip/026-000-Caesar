@@ -28,6 +28,11 @@ void publishLayerState(const char* topic, const LayerComponents& components) {
     return;
   }
 
+  uint32_t machineReady = 0;
+  if (!readNextionValue("pageSys.nMReady", &machineReady) || machineReady == 0) {
+    return;
+  }
+
   LayerState state;
   if (!readLayerState(components, &state)) {
     return;
