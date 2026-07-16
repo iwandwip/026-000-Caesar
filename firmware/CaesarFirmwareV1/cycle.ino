@@ -16,8 +16,7 @@ void updateCycle() {
   if (machineReadyKnown && machineReady == 1 && previousMachineReady == 0) {
     uint32_t frontCycle = 0;
     uint32_t backCycle = 0;
-    if (readNextionValue("pageSys.nFCyc", &frontCycle) &&
-        readNextionValue("pageSys.nBCyc", &backCycle)) {
+    if (readNextionValue("pageSys.nFCyc", &frontCycle) && readNextionValue("pageSys.nBCyc", &backCycle)) {
       sendInputValue("pageSys.nFCyc", frontCycle + 1);
       sendInputValue("pageSys.nBCyc", backCycle + 1);
     }

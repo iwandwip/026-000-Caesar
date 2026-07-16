@@ -112,10 +112,7 @@ bool readNextionValue(const char* component, uint32_t* value) {
 
     terminatorCount++;
     if (terminatorCount == 3) {
-      *value = ((uint32_t)bytes[3] << 24) |
-               ((uint32_t)bytes[2] << 16) |
-               ((uint32_t)bytes[1] << 8) |
-               bytes[0];
+      *value = ((uint32_t)bytes[3] << 24) | ((uint32_t)bytes[2] << 16) | ((uint32_t)bytes[1] << 8) | bytes[0];
       return true;
     }
   }

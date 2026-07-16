@@ -43,8 +43,7 @@ void reconnectWifi() {
 }
 
 void reconnectMqtt() {
-  if (mqttClient.connected() ||
-      (lastMqttAttempt != 0 && millis() - lastMqttAttempt < 5000)) {
+  if (mqttClient.connected() || (lastMqttAttempt != 0 && millis() - lastMqttAttempt < 5000)) {
     return;
   }
 

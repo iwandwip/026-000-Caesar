@@ -51,12 +51,7 @@ void runAutoFrontCycle() {
   uint32_t isi = 0;
   uint32_t ng = 0;
 
-  if (!readNextionValue("pageSys.nMReady", &ready) ||
-      !readNextionValue("pageSys.nFCyc", &cycle) ||
-      !readNextionValue("pageSys.nFOut", &output) ||
-      !readNextionValue("pageSys.nFQuota", &quota) ||
-      !readNextionValue("pageSys.nFIsi", &isi) ||
-      !readNextionValue("pageSys.nFNG", &ng)) {
+  if (!readNextionValue("pageSys.nMReady", &ready) || !readNextionValue("pageSys.nFCyc", &cycle) || !readNextionValue("pageSys.nFOut", &output) || !readNextionValue("pageSys.nFQuota", &quota) || !readNextionValue("pageSys.nFIsi", &isi) || !readNextionValue("pageSys.nFNG", &ng)) {
     autoFrontEnabled = false;
     setSimulationInfo("AUTO F READ NG");
     return;
@@ -102,12 +97,7 @@ void runAutoBackCycle() {
   uint32_t isi = 0;
   uint32_t ng = 0;
 
-  if (!readNextionValue("pageSys.nMReady", &ready) ||
-      !readNextionValue("pageSys.nBCyc", &cycle) ||
-      !readNextionValue("pageSys.nBOut", &output) ||
-      !readNextionValue("pageSys.nBQuota", &quota) ||
-      !readNextionValue("pageSys.nBIsi", &isi) ||
-      !readNextionValue("pageSys.nBNG", &ng)) {
+  if (!readNextionValue("pageSys.nMReady", &ready) || !readNextionValue("pageSys.nBCyc", &cycle) || !readNextionValue("pageSys.nBOut", &output) || !readNextionValue("pageSys.nBQuota", &quota) || !readNextionValue("pageSys.nBIsi", &isi) || !readNextionValue("pageSys.nBNG", &ng)) {
     autoBackEnabled = false;
     setSimulationInfo("AUTO B READ NG");
     return;
