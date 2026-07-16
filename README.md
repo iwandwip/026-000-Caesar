@@ -104,9 +104,12 @@ node-red
 # Stop Node-RED, then install the SQLite node.
 cd $env:USERPROFILE\.node-red
 npm install node-red-node-sqlite
+
+# Create the shared SQLite directory once.
+New-Item -ItemType Directory -Force C:\sqlite-data
 ```
 
-Import `tools/node-red-simulator-flow.json` for the machine simulator. Import `tools/node-red-debug-subscriber-flow.json` for the subscriber and SQLite writer. Deploy both flows after import. The debug flow writes `C:\Users\Brainless\.node-red\caesar.db`. On another Windows user account, edit the SQLite config node and replace `Brainless` with that account name.
+Import `tools/node-red-simulator-flow.json` for the machine simulator. Import `tools/node-red-debug-subscriber-flow.json` for the subscriber and SQLite writer. Deploy both flows after import. The debug flow writes `C:\sqlite-data\caesar.db` for every Windows user. If Windows denies directory creation, create `C:\sqlite-data` once from an elevated PowerShell session.
 
 Run one simulator only: JavaScript or Node-RED. Running both publishes duplicate finish events and doubles cycle counts.
 
