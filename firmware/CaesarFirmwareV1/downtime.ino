@@ -103,7 +103,13 @@ void clearMachineDowntime() {
 }
 
 void bBackDtFCallback(void* ptr) {
-  sendCommand("page pageDashboard");
+  uint32_t dtAct = 0;
+  readNextionValue("pageSys.nFDtAct", &dtAct);
+  if (dtAct == 1) {
+    showDowntimeInfo("pageDtInfoF");
+  } else {
+    sendCommand("page pageDashboard");
+  }
 }
 
 void bBhnFCallback(void* ptr) {
@@ -135,7 +141,13 @@ void bTrialFCallback(void* ptr) {
 }
 
 void bBackDtBCallback(void* ptr) {
-  sendCommand("page pageDashboard");
+  uint32_t dtAct = 0;
+  readNextionValue("pageSys.nBDtAct", &dtAct);
+  if (dtAct == 1) {
+    showDowntimeInfo("pageDtInfoB");
+  } else {
+    sendCommand("page pageDashboard");
+  }
 }
 
 void bBhnBCallback(void* ptr) {
@@ -167,7 +179,13 @@ void bTrialBCallback(void* ptr) {
 }
 
 void bBackMcCallback(void* ptr) {
-  sendCommand("page pageDashboard");
+  uint32_t dtAct = 0;
+  readNextionValue("pageSys.nMDtAct", &dtAct);
+  if (dtAct == 1) {
+    showDowntimeInfo("pageDtMcInfo");
+  } else {
+    sendCommand("page pageDashboard");
+  }
 }
 
 void bGMldMcCallback(void* ptr) {
