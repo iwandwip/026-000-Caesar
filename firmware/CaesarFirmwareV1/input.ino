@@ -426,7 +426,9 @@ void bClearLotBCallback(void* ptr) {
   clearBackLot();
 }
 
-void publishNgEvent(const char* layer, const char* typeComponent, const char* countComponent, const char* acceptedComponent) {
+void publishNgEvent(const char* layer, const char* typeComponent, const char* countComponent,
+                    const char* acceptedComponent, const char* operatorIdComponent,
+                    const char* operatorNameComponent, const char* lotComponent) {
   uint32_t accepted = 0;
   uint32_t count = 0;
   if (!readNextionValue(acceptedComponent, &accepted) || accepted == 0 || !readNextionValue(countComponent, &count) || count == 0) {
@@ -438,21 +440,30 @@ void publishNgEvent(const char* layer, const char* typeComponent, const char* co
     return;
   }
 
+  uint32_t operatorId = 0;
+  readNextionValue(operatorIdComponent, &operatorId);
+
+  char operatorName[32];
+  readNextionText(operatorNameComponent, operatorName, sizeof(operatorName));
+
+  char lot[32];
+  readNextionText(lotComponent, lot, sizeof(lot));
+
   char timestamp[25];
-  char event[192];
+  char event[320];
   getCurrentTimestamp(timestamp, sizeof(timestamp));
-  snprintf(event, sizeof(event), "{\"event\":\"ng_submit\",\"layer\":\"%s\",\"ng_type\":\"%s\",\"ng_count\":%lu,\"timestamp\":\"%s\"}", layer, type, (unsigned long)count, timestamp);
+  snprintf(event, sizeof(event), "{\"event\":\"ng_submit\",\"layer\":\"%s\",\"ng_type\":\"%s\",\"ng_count\":%lu,\"operator_id\":%lu,\"operator_name\":\"%s\",\"lot\":\"%s\",\"timestamp\":\"%s\"}", layer, type, (unsigned long)count, (unsigned long)operatorId, operatorName, lot, timestamp);
   publishEvent(event);
   sendInputValue(countComponent, 0);
   sendInputValue(acceptedComponent, 0);
 }
 
 void bOkNgFCallback(void* ptr) {
-  publishNgEvent("FRONT", "pageSys.tFNgType", "nNgInF", "pageSys.nFNgEvent");
+  publishNgEvent("FRONT", "pageSys.tFNgType", "nNgInF", "pageSys.nFNgEvent", "pageSys.nFOpId", "pageSys.tFOpName", "pageSys.tFLot");
 }
 
 void bOkNgBCallback(void* ptr) {
-  publishNgEvent("BACK", "pageSys.tBNgType", "nNgInB", "pageSys.nBNgEvent");
+  publishNgEvent("BACK", "pageSys.tBNgType", "nNgInB", "pageSys.nBNgEvent", "pageSys.nBOpId", "pageSys.tBOpName", "pageSys.tBLot");
 }
 
 void registerInputCallbacks() {

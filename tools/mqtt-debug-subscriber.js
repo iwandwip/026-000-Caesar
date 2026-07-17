@@ -71,9 +71,23 @@ db.exec(`
     layer TEXT NOT NULL,
     ng_type TEXT NOT NULL,
     ng_count INTEGER NOT NULL,
+    operator_id INTEGER,
+    operator_name TEXT,
+    lot TEXT,
     received_at TEXT NOT NULL
   )
 `);
+
+const ngColumns = db.prepare("PRAGMA table_info(ng_data)").all();
+if (!ngColumns.some((column) => column.name === "operator_id")) {
+  db.exec("ALTER TABLE ng_data ADD COLUMN operator_id INTEGER");
+}
+if (!ngColumns.some((column) => column.name === "operator_name")) {
+  db.exec("ALTER TABLE ng_data ADD COLUMN operator_name TEXT");
+}
+if (!ngColumns.some((column) => column.name === "lot")) {
+  db.exec("ALTER TABLE ng_data ADD COLUMN lot TEXT");
+}
 
 const insertDowntime = db.prepare(
   "INSERT INTO downtime_data (layer, reason, start_time, received_at) VALUES (?, ?, ?, ?)"
@@ -82,7 +96,7 @@ const clearDowntime = db.prepare(
   "UPDATE downtime_data SET clear_time = ? WHERE id = (SELECT id FROM downtime_data WHERE layer = ? AND clear_time IS NULL ORDER BY id DESC LIMIT 1)"
 );
 const insertNg = db.prepare(
-  "INSERT INTO ng_data (layer, ng_type, ng_count, received_at) VALUES (?, ?, ?, ?)"
+  "INSERT INTO ng_data (layer, ng_type, ng_count, operator_id, operator_name, lot, received_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
 );
 
 const client = mqtt.connect(broker);
@@ -112,7 +126,7 @@ client.on("message", (topic, payload) => {
       } else if (data.event === "downtime_clear") {
         clearDowntime.run(data.timestamp, data.layer);
       } else if (data.event === "ng_submit") {
-        insertNg.run(data.layer, data.ng_type, data.ng_count, timestamp);
+        insertNg.run(data.layer, data.ng_type, data.ng_count, data.operator_id ?? null, data.operator_name ?? null, data.lot ?? null, timestamp);
       }
       return;
     }
