@@ -26,11 +26,6 @@ void startFrontDowntime(const char* reason) {
   sendDowntimeText("pageSys.tFDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tFDtStart.txt=pageSys.tNow.txt");
   lockInterlock();
-  char timestamp[25];
-  char event[192];
-  getCurrentTimestamp(timestamp, sizeof(timestamp));
-  snprintf(event, sizeof(event), "{\"event\":\"downtime_start\",\"layer\":\"FRONT\",\"reason\":\"%s\",\"timestamp\":\"%s\"}", reason, timestamp);
-  publishEvent(event);
   updateDashboardStatus();
   showDowntimeInfo("pageDtInfoF");
 }
@@ -40,11 +35,6 @@ void startBackDowntime(const char* reason) {
   sendDowntimeText("pageSys.tBDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tBDtStart.txt=pageSys.tNow.txt");
   lockInterlock();
-  char timestamp[25];
-  char event[192];
-  getCurrentTimestamp(timestamp, sizeof(timestamp));
-  snprintf(event, sizeof(event), "{\"event\":\"downtime_start\",\"layer\":\"BACK\",\"reason\":\"%s\",\"timestamp\":\"%s\"}", reason, timestamp);
-  publishEvent(event);
   updateDashboardStatus();
   showDowntimeInfo("pageDtInfoB");
 }
@@ -54,52 +44,59 @@ void startMachineDowntime(const char* reason) {
   sendDowntimeText("pageSys.tMDtType.txt=\"%s\"", reason);
   sendCommand("pageSys.tMDtStart.txt=pageSys.tNow.txt");
   lockInterlock();
-  char timestamp[25];
-  char event[192];
-  getCurrentTimestamp(timestamp, sizeof(timestamp));
-  snprintf(event, sizeof(event), "{\"event\":\"downtime_start\",\"layer\":\"MACHINE\",\"reason\":\"%s\",\"timestamp\":\"%s\"}", reason, timestamp);
-  publishEvent(event);
   updateDashboardStatus();
   showDowntimeInfo("pageDtMcInfo");
 }
 
 void clearFrontDowntime() {
+  char reason[32];
+  char startTime[25];
+  readNextionText("pageSys.tFDtType", reason, sizeof(reason));
+  readNextionText("pageSys.tFDtStart", startTime, sizeof(startTime));
   sendCommand("pageSys.nFDtAct.val=0");
   sendCommand("pageSys.tFDtType.txt=\"\"");
   sendCommand("pageSys.tFDtStart.txt=\"\"");
   sendCommand("pageSys.nDtPop.val=0");
-  char timestamp[25];
-  char event[128];
-  getCurrentTimestamp(timestamp, sizeof(timestamp));
-  snprintf(event, sizeof(event), "{\"event\":\"downtime_clear\",\"layer\":\"FRONT\",\"timestamp\":\"%s\"}", timestamp);
+  char clearTime[25];
+  char event[256];
+  getCurrentTimestamp(clearTime, sizeof(clearTime));
+  snprintf(event, sizeof(event), "{\"event\":\"downtime_clear\",\"layer\":\"FRONT\",\"reason\":\"%s\",\"start_time\":\"%s\",\"clear_time\":\"%s\"}", reason, startTime, clearTime);
   publishEvent(event);
   updateDashboardStatus();
   sendCommand("page pageDashboard");
 }
 
 void clearBackDowntime() {
+  char reason[32];
+  char startTime[25];
+  readNextionText("pageSys.tBDtType", reason, sizeof(reason));
+  readNextionText("pageSys.tBDtStart", startTime, sizeof(startTime));
   sendCommand("pageSys.nBDtAct.val=0");
   sendCommand("pageSys.tBDtType.txt=\"\"");
   sendCommand("pageSys.tBDtStart.txt=\"\"");
   sendCommand("pageSys.nDtPop.val=0");
-  char timestamp[25];
-  char event[128];
-  getCurrentTimestamp(timestamp, sizeof(timestamp));
-  snprintf(event, sizeof(event), "{\"event\":\"downtime_clear\",\"layer\":\"BACK\",\"timestamp\":\"%s\"}", timestamp);
+  char clearTime[25];
+  char event[256];
+  getCurrentTimestamp(clearTime, sizeof(clearTime));
+  snprintf(event, sizeof(event), "{\"event\":\"downtime_clear\",\"layer\":\"BACK\",\"reason\":\"%s\",\"start_time\":\"%s\",\"clear_time\":\"%s\"}", reason, startTime, clearTime);
   publishEvent(event);
   updateDashboardStatus();
   sendCommand("page pageDashboard");
 }
 
 void clearMachineDowntime() {
+  char reason[32];
+  char startTime[25];
+  readNextionText("pageSys.tMDtType", reason, sizeof(reason));
+  readNextionText("pageSys.tMDtStart", startTime, sizeof(startTime));
   sendCommand("pageSys.nMDtAct.val=0");
   sendCommand("pageSys.tMDtType.txt=\"\"");
   sendCommand("pageSys.tMDtStart.txt=\"\"");
   sendCommand("pageSys.nDtPop.val=0");
-  char timestamp[25];
-  char event[128];
-  getCurrentTimestamp(timestamp, sizeof(timestamp));
-  snprintf(event, sizeof(event), "{\"event\":\"downtime_clear\",\"layer\":\"MACHINE\",\"timestamp\":\"%s\"}", timestamp);
+  char clearTime[25];
+  char event[256];
+  getCurrentTimestamp(clearTime, sizeof(clearTime));
+  snprintf(event, sizeof(event), "{\"event\":\"downtime_clear\",\"layer\":\"MACHINE\",\"reason\":\"%s\",\"start_time\":\"%s\",\"clear_time\":\"%s\"}", reason, startTime, clearTime);
   publishEvent(event);
   updateDashboardStatus();
   sendCommand("page pageDashboard");

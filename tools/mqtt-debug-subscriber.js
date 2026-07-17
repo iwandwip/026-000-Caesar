@@ -63,7 +63,7 @@ db.exec(`
     layer TEXT NOT NULL,
     reason TEXT NOT NULL,
     start_time TEXT NOT NULL,
-    clear_time TEXT,
+    clear_time TEXT NOT NULL,
     received_at TEXT NOT NULL
   );
   CREATE TABLE IF NOT EXISTS ng_data (
@@ -90,10 +90,7 @@ if (!ngColumns.some((column) => column.name === "lot")) {
 }
 
 const insertDowntime = db.prepare(
-  "INSERT INTO downtime_data (layer, reason, start_time, received_at) VALUES (?, ?, ?, ?)"
-);
-const clearDowntime = db.prepare(
-  "UPDATE downtime_data SET clear_time = ? WHERE id = (SELECT id FROM downtime_data WHERE layer = ? AND clear_time IS NULL ORDER BY id DESC LIMIT 1)"
+  "INSERT INTO downtime_data (layer, reason, start_time, clear_time, received_at) VALUES (?, ?, ?, ?, ?)"
 );
 const insertNg = db.prepare(
   "INSERT INTO ng_data (layer, ng_type, ng_count, operator_id, operator_name, lot, received_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
@@ -121,10 +118,8 @@ client.on("message", (topic, payload) => {
   try {
     const data = JSON.parse(payload.toString());
     if (topic.startsWith("event/")) {
-      if (data.event === "downtime_start") {
-        insertDowntime.run(data.layer, data.reason, data.timestamp, timestamp);
-      } else if (data.event === "downtime_clear") {
-        clearDowntime.run(data.timestamp, data.layer);
+      if (data.event === "downtime_clear") {
+        insertDowntime.run(data.layer, data.reason, data.start_time, data.clear_time, timestamp);
       } else if (data.event === "ng_submit") {
         insertNg.run(data.layer, data.ng_type, data.ng_count, data.operator_id ?? null, data.operator_name ?? null, data.lot ?? null, timestamp);
       }
